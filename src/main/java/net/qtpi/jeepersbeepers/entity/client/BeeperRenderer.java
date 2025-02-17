@@ -12,15 +12,13 @@ import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class BeeperRenderer extends GeoEntityRenderer<BeeperEntity> {
-    public boolean angry = false;
     public BeeperRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new DefaultedEntityGeoModel<>(new ResourceLocation(JeepersBeepers.MOD_ID, "beeper")));
     }
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(BeeperEntity animatable) {
-        if (angry) return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_angry.png");
-        else return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper.png");
+        return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper.png");
     }
 
     @Override
@@ -28,7 +26,6 @@ public class BeeperRenderer extends GeoEntityRenderer<BeeperEntity> {
         if (entity.isBaby()) {
             poseStack.scale(0.4f, 0.4f, 0.4f);
         }
-        angry = entity.isAngry();
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
     }
 }

@@ -14,5 +14,5 @@ public class EntityRegistry {
     public static final EntityType<BeeperEntity> BEEPER = Registry.register(
             BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(JeepersBeepers.MOD_ID, "beeper"),
             FabricEntityTypeBuilder.create(MobCategory.CREATURE, BeeperEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.7f, 0.7f)).build());
+                    .dimensions(EntityDimensions.fixed(0.8f, 0.8f)).build());
 }
