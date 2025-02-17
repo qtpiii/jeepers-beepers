@@ -2,7 +2,10 @@ package net.qtpi.jeepersbeepers;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.qtpi.jeepersbeepers.entity.BeeperEntity;
 import net.qtpi.jeepersbeepers.registry.EffectRegistry;
+import net.qtpi.jeepersbeepers.registry.EntityRegistry;
 import net.qtpi.jeepersbeepers.registry.TabRegistry;
 import net.qtpi.jeepersbeepers.registry.ItemRegistry;
 import org.slf4j.Logger;
@@ -17,5 +20,7 @@ public class JeepersBeepers implements ModInitializer {
 		TabRegistry.registerCreativeModeTabs();
 		ItemRegistry.registerModItems();
 		EffectRegistry.registerModEffects();
+
+		FabricDefaultAttributeRegistry.register(EntityRegistry.BEEPER, BeeperEntity.setAttributes());
 	}
 }

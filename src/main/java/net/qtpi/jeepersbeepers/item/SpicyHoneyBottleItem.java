@@ -1,4 +1,4 @@
-package net.qtpi.jeepersbeepers.item.custom;
+package net.qtpi.jeepersbeepers.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.advancements.CriteriaTriggers;

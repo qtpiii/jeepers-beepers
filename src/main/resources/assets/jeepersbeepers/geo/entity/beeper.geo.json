@@ -1,0 +1,109 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "main",
+					"pivot": [0, 7, -6]
+				},
+				{
+					"name": "body",
+					"parent": "main",
+					"pivot": [0, 7, 0],
+					"cubes": [
+						{"origin": [-3.5, 4.5, -7], "size": [7, 7, 14], "uv": [0, 22]}
+					]
+				},
+				{
+					"name": "fluff",
+					"parent": "body",
+					"pivot": [0, 7, 0],
+					"cubes": [
+						{"origin": [-5, 3, -6], "size": [10, 10, 11], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "stinger",
+					"parent": "body",
+					"pivot": [0, 7, 0],
+					"cubes": [
+						{"origin": [-0.5, 7.5, 7], "size": [1, 1, 2], "uv": [44, 6]}
+					]
+				},
+				{
+					"name": "antennaL",
+					"parent": "body",
+					"pivot": [3, 10, -6],
+					"cubes": [
+						{"origin": [2, 10, -7], "size": [2, 4, 2], "pivot": [3, 10, -6], "rotation": [45, 0, 0], "uv": [44, 0]}
+					]
+				},
+				{
+					"name": "antennaR",
+					"parent": "body",
+					"pivot": [-3, 10, -6],
+					"cubes": [
+						{"origin": [-4, 10, -7], "size": [2, 4, 2], "pivot": [-3, 10, -6], "rotation": [45, 0, 0], "uv": [44, 0]}
+					]
+				},
+				{
+					"name": "legL1",
+					"parent": "main",
+					"pivot": [2.5, 4, -3],
+					"cubes": [
+						{"origin": [1, 0, -4], "size": [3, 6, 2], "uv": [0, 43]}
+					]
+				},
+				{
+					"name": "legL2",
+					"parent": "main",
+					"pivot": [2.5, 4, 1],
+					"cubes": [
+						{"origin": [1, 0, 0], "size": [3, 6, 2], "uv": [0, 43]}
+					]
+				},
+				{
+					"name": "legR1",
+					"parent": "main",
+					"pivot": [-2.5, 4, -3],
+					"cubes": [
+						{"origin": [-4, 0, -4], "size": [3, 6, 2], "uv": [0, 43], "mirror": true}
+					]
+				},
+				{
+					"name": "legR2",
+					"parent": "main",
+					"pivot": [-2.5, 4, 1],
+					"cubes": [
+						{"origin": [-4, 0, 0], "size": [3, 6, 2], "uv": [0, 43], "mirror": true}
+					]
+				},
+				{
+					"name": "wingL",
+					"parent": "main",
+					"pivot": [4, 9, 0],
+					"cubes": [
+						{"origin": [4, 9, -2], "size": [6, 0, 4], "uv": [42, 33]}
+					]
+				},
+				{
+					"name": "wingR",
+					"parent": "main",
+					"pivot": [-4, 9, 0],
+					"cubes": [
+						{"origin": [-10, 9, -2], "size": [6, 0, 4], "uv": [42, 33], "mirror": true}
+					]
+				}
+			]
+		}
+	]
+}

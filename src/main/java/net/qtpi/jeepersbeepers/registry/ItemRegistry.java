@@ -10,7 +10,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
-import net.qtpi.jeepersbeepers.item.custom.SpicyHoneyBottleItem;
+import net.qtpi.jeepersbeepers.item.SpicyHoneyBottleItem;
 
 public class ItemRegistry {
 
