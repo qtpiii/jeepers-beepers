@@ -65,6 +65,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
+import net.qtpi.jeepersbeepers.registry.BlockEntityRegistry;
 import net.qtpi.jeepersbeepers.registry.EntityRegistry;
 import net.qtpi.jeepersbeepers.registry.ItemRegistry;
 import net.qtpi.jeepersbeepers.registry.TagRegistry;
@@ -107,7 +108,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     public static final String TAG_TICKS_SINCE_POLLINATION = "TicksSincePollination";
     public static final String TAG_HAS_STUNG = "HasStung";
     public static final String TAG_HAS_NECTAR = "HasNectar";
-    public static final String TAG_HAS_FLUFF = "HasFluff";
+    public static final String TAG_IS_NAKED = "IsNaked";
     public static final String TAG_FLOWER_POS = "FlowerPos";
     public static final String TAG_HIVE_POS = "HivePos";
     private static final UniformInt PERSISTENT_ANGER_TIME;
@@ -239,7 +240,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
         compound.putBoolean("HasNectar", this.hasNectar());
         compound.putBoolean("HasStung", this.hasStung());
-        compound.putBoolean("HasFluff", this.hasFluff());
+        compound.putBoolean("IsNaked", this.isNaked());
         compound.putInt("TicksSincePollination", this.ticksWithoutNectarSinceExitingHive);
         compound.putInt("CannotEnterHiveTicks", this.stayOutOfHiveCountdown);
         compound.putInt("CropsGrownSincePollination", this.numCropsGrownSincePollination);
@@ -260,7 +261,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         super.readAdditionalSaveData(compound);
         this.setHasNectar(compound.getBoolean("HasNectar"));
         this.setHasStung(compound.getBoolean("HasStung"));
-        this.setHasFluff(compound.getBoolean("HasFluff"));
+        this.setIsNaked(compound.getBoolean("IsNaked"));
         this.ticksWithoutNectarSinceExitingHive = compound.getInt("TicksSincePollination");
         this.stayOutOfHiveCountdown = compound.getInt("CannotEnterHiveTicks");
         this.numCropsGrownSincePollination = compound.getInt("CropsGrownSincePollination");
@@ -327,7 +328,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
     public void shear(SoundSource source) {
         this.level().playSound((Player)null, this, SoundEvents.SHEEP_SHEAR, source, 1.0F, 1.0F);
-        this.setHasFluff(false);
+        this.setIsNaked(true);
         int i = 1 + this.random.nextInt(2);
 
         for(int j = 0; j < i; ++j) {
@@ -339,7 +340,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     }
 
     public boolean readyForShearing() {
-        return this.isAlive() && this.hasFluff() && !this.isBaby();
+        return this.isAlive() && !this.isNaked() && !this.isBaby();
     }
 
     void pathfindRandomlyTowards(BlockPos pos) {
@@ -397,7 +398,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
     boolean wantsToEnterHive() {
         if (this.stayOutOfHiveCountdown <= 0 && !this.beePollinateGoal.isPollinating() && !this.hasStung() && this.getTarget() == null) {
-            boolean bl = this.isTiredOfLookingForNectar() || this.level().isRaining() || this.level().isNight() || this.hasNectar();
+            boolean bl = this.isTiredOfLookingForNectar() || this.level().isRaining() || this.level().isNight() || this.hasNectar() || this.isNaked();
             return bl && !this.isHiveNearFire();
         } else {
             return false;
@@ -537,6 +538,10 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
                 --this.remainingCooldownBeforeLocatingNewFlower;
             }
 
+            if (this.remainingCooldownBeforeNextSneeze > 0) {
+                --this.remainingCooldownBeforeNextSneeze;
+            }
+
             boolean bl = this.isAngry() && !this.hasStung() && this.getTarget() != null && this.getTarget().distanceToSqr(this) < (double)4.0F;
             this.setRolling(bl);
             if (this.tickCount % 20 == 0 && !this.isHiveValid()) {
@@ -553,13 +558,13 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             return false;
         } else {
             BlockEntity blockEntity = this.level().getBlockEntity(this.hivePos);
-            return blockEntity != null && blockEntity.getType() == BlockEntityType.BEEHIVE;
+            return blockEntity != null && blockEntity.getType() == BlockEntityRegistry.BEEPER_HIVE_BLOCK_ENTITY;
         }
     }
 
-    public boolean hasFluff() { return this.getFlag(12); }
+    public boolean isNaked() { return this.getFlag(12); }
 
-    private void setHasFluff(boolean hasFluff) { this.setFlag(12, hasFluff); }
+    private void setIsNaked(boolean isNaked) { this.setFlag(12, isNaked); }
 
     public boolean hasNectar() {
         return this.getFlag(8);
@@ -568,6 +573,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     void setHasNectar(boolean hasNectar) {
         if (hasNectar) {
             this.resetTicksWithoutNectarSinceExitingHive();
+            this.remainingCooldownBeforeNextSneeze = 0;
         }
 
         this.setFlag(8, hasNectar);
@@ -1051,7 +1057,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
                 return false;
             } else if (BeeperEntity.this.level().isRaining()) {
                 return false;
-            } else if (!BeeperEntity.this.hasFluff()) {
+            } else if (BeeperEntity.this.isNaked()) {
                 return false;
             } else if (this.hasPollinatedLongEnough()) {
                 return BeeperEntity.this.random.nextFloat() < 0.2F;
@@ -1205,7 +1211,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             }
         }
 
-        private List findNearbyHivesWithSpace() {
+        private List<BlockPos> findNearbyHivesWithSpace() {
             BlockPos blockPos = BeeperEntity.this.blockPosition();
             PoiManager poiManager = ((ServerLevel)BeeperEntity.this.level()).getPoiManager();
             Stream<PoiRecord> stream = poiManager.getInRange((holder) -> holder.is(TagRegistry.Blocks.BEEPER_HOME), blockPos, 20, PoiManager.Occupancy.ANY);
@@ -1346,9 +1352,8 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         public boolean canBeeperUse() {
             if (BeeperEntity.this.hasHive() && BeeperEntity.this.wantsToEnterHive() && BeeperEntity.this.hivePos.closerToCenterThan(BeeperEntity.this.position(), (double)2.0F)) {
                 BlockEntity blockEntity = BeeperEntity.this.level().getBlockEntity(BeeperEntity.this.hivePos);
-                if (blockEntity instanceof BeeperHiveBlockEntity) {
-                    BeeperHiveBlockEntity beehiveBlockEntity = (BeeperHiveBlockEntity)blockEntity;
-                    if (!beehiveBlockEntity.isFull()) {
+                if (blockEntity instanceof BeeperHiveBlockEntity beeperHiveBlockEntity) {
+                    if (!beeperHiveBlockEntity.isFull()) {
                         return true;
                     }
 
@@ -1365,8 +1370,8 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
         public void start() {
             BlockEntity blockEntity = BeeperEntity.this.level().getBlockEntity(BeeperEntity.this.hivePos);
-            if (blockEntity instanceof BeeperHiveBlockEntity beehiveBlockEntity) {
-                beehiveBlockEntity.addOccupant(BeeperEntity.this, BeeperEntity.this.hasNectar());
+            if (blockEntity instanceof BeeperHiveBlockEntity beeperHiveBlockEntity) {
+                beeperHiveBlockEntity.addOccupant(BeeperEntity.this, BeeperEntity.this.hasNectar());
             }
 
         }
