@@ -9,6 +9,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.SpawnEggItem;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.item.SpicyHoneyBottleItem;
 
@@ -16,6 +17,10 @@ public class ItemRegistry {
 
     public static final Item SPICY_HONEY_BOTTLE = registerItem("spicy_honey_bottle", new SpicyHoneyBottleItem(
             new FabricItemSettings().maxCount(16).food(new FoodProperties.Builder().nutrition(6).saturationMod(0.1f).build())));
+    public static final Item SPICY_HONEYCOMB = registerItem("spicy_honeycomb", new Item(new FabricItemSettings()));
+    public static final Item BEEPER_SPAWN_EGG = registerItem("beeper_spawn_egg", new SpawnEggItem(EntityRegistry.BEEPER,
+            6651479, 12567454, new FabricItemSettings()));
+    public static final Item BEEPER_FLUFF = registerItem("beeper_fluff", new Item(new FabricItemSettings()));
 
     private static void addItemsToIngredientTabItemGroup(FabricItemGroupEntries entries) {
 

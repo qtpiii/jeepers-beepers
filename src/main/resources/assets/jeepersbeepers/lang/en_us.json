@@ -1,7 +1,10 @@
 {
   "item.jeepersbeepers.spicy_honey_bottle": "Spicy Honey Bottle",
+  "item.jeepersbeepers.spicy_honeycomb": "Spicy Honeycomb",
+  "item.jeepersbeepers.beeper_spawn_egg": "Beeper Spawn Egg",
+  "item.jeepersbeepers.beeper_fluff": "Beeper Fluff",
 
-  "block.jeepersbeepers.beeper_nest": "Beeper Nest",
+  "block.jeepersbeepers.beeper_hive": "Beeper Hive",
 
   "itemtab.jeepersbeepers": "Jeepers Beepers!",
 

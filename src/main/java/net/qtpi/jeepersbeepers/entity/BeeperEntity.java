@@ -6,13 +6,13 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
-import net.minecraft.network.protocol.game.DebugPackets;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.PoiTypeTags;
@@ -22,6 +22,8 @@ import net.minecraft.util.TimeUtil;
 import net.minecraft.util.VisibleForDebug;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -42,29 +44,33 @@ import net.minecraft.world.entity.ai.util.HoverRandomPos;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiRecord;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.Bee;
 import net.minecraft.world.entity.animal.FlyingAnimal;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
+import net.qtpi.jeepersbeepers.block.entity.BeeperHiveBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
 import net.qtpi.jeepersbeepers.registry.EntityRegistry;
+import net.qtpi.jeepersbeepers.registry.ItemRegistry;
+import net.qtpi.jeepersbeepers.registry.TagRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.animation.AnimationState;
@@ -84,6 +90,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     private static final int FLAG_ROLL = 2;
     private static final int FLAG_HAS_STUNG = 4;
     private static final int FLAG_HAS_NECTAR = 8;
+    private static final int FLAG_HAS_FLUFF = 12;
     private static final int STING_DEATH_COUNTDOWN = 1200;
     private static final int TICKS_BEFORE_GOING_TO_KNOWN_FLOWER = 2400;
     private static final int TICKS_WITHOUT_NECTAR_BEFORE_GOING_HOME = 3600;
@@ -100,6 +107,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     public static final String TAG_TICKS_SINCE_POLLINATION = "TicksSincePollination";
     public static final String TAG_HAS_STUNG = "HasStung";
     public static final String TAG_HAS_NECTAR = "HasNectar";
+    public static final String TAG_HAS_FLUFF = "HasFluff";
     public static final String TAG_FLOWER_POS = "FlowerPos";
     public static final String TAG_HIVE_POS = "HivePos";
     private static final UniformInt PERSISTENT_ANGER_TIME;
@@ -115,6 +123,12 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     int remainingCooldownBeforeLocatingNewHive;
     private static final int COOLDOWN_BEFORE_LOCATING_NEW_FLOWER = 200;
     int remainingCooldownBeforeLocatingNewFlower;
+    private static final int COOLDOWN_BEFORE_NEXT_SNEEZE = 200;
+    int remainingCooldownBeforeNextSneeze;
+    boolean wantsToSneeze;
+    int wantsToSneezeCountdown;
+    boolean readyToSneeze;
+    int readyToSneezeCountdown;
     @Nullable
     BlockPos savedFlowerPos;
     @Nullable
@@ -164,8 +178,16 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     }
 
     private PlayState predicate(AnimationState<BeeperEntity> beeperEntityAnimationState) {
-        beeperEntityAnimationState.getController().setAnimation(IDLE_ANIM);
-        return PlayState.CONTINUE;
+        if (this.wantsToSneeze) {
+            beeperEntityAnimationState.getController().setAnimation(PRESNEEZE_ANIM);
+            return PlayState.CONTINUE;
+        } else if (this.readyToSneeze) {
+            beeperEntityAnimationState.getController().setAnimation(SNEEZE_ANIM);
+            return PlayState.CONTINUE;
+        } else {
+            beeperEntityAnimationState.getController().setAnimation(IDLE_ANIM);
+            return PlayState.CONTINUE;
+        }
     }
 
     @Override
@@ -179,7 +201,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         this.entityData.define(DATA_REMAINING_ANGER_TIME, 0);
     }
 
-    public float getWalkTargetValue(BlockPos pos, LevelReader level) {
+    public float getWalkTargetValue(@NotNull BlockPos pos, LevelReader level) {
         return level.getBlockState(pos).isAir() ? 10.0F : 0.0F;
     }
 
@@ -197,14 +219,15 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         this.goToKnownFlowerGoal = new BeeperEntity.BeeperGoToKnownFlowerGoal(this);
         this.goalSelector.addGoal(6, this.goToKnownFlowerGoal);
         this.goalSelector.addGoal(7, new BeeperEntity.BeeperGrowCropGoal(this));
-        this.goalSelector.addGoal(8, new BeeperEntity.BeeperWanderGoal(this));
-        this.goalSelector.addGoal(9, new FloatGoal(this));
+        this.goalSelector.addGoal(8, new BeeperEntity.BeeperSneezeGoal(this));
+        this.goalSelector.addGoal(9, new BeeperEntity.BeeperWanderGoal(this));
+        this.goalSelector.addGoal(10, new FloatGoal(this));
         this.targetSelector.addGoal(1, (new BeeperEntity.BeeperHurtByOtherGoal(this, this)).setAlertOthers(new Class[0]));
         this.targetSelector.addGoal(2, new BeeperEntity.BeeperBecomeAngryTargetGoal(this));
-        this.targetSelector.addGoal(3, new ResetUniversalAngerTargetGoal(this, true));
+        this.targetSelector.addGoal(3, new ResetUniversalAngerTargetGoal<>(this, true));
     }
 
-    public void addAdditionalSaveData(CompoundTag compound) {
+    public void addAdditionalSaveData(@NotNull CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         if (this.hasHive()) {
             compound.put("HivePos", NbtUtils.writeBlockPos(this.getHivePos()));
@@ -216,6 +239,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
         compound.putBoolean("HasNectar", this.hasNectar());
         compound.putBoolean("HasStung", this.hasStung());
+        compound.putBoolean("HasFluff", this.hasFluff());
         compound.putInt("TicksSincePollination", this.ticksWithoutNectarSinceExitingHive);
         compound.putInt("CannotEnterHiveTicks", this.stayOutOfHiveCountdown);
         compound.putInt("CropsGrownSincePollination", this.numCropsGrownSincePollination);
@@ -236,6 +260,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         super.readAdditionalSaveData(compound);
         this.setHasNectar(compound.getBoolean("HasNectar"));
         this.setHasStung(compound.getBoolean("HasStung"));
+        this.setHasFluff(compound.getBoolean("HasFluff"));
         this.ticksWithoutNectarSinceExitingHive = compound.getInt("TicksSincePollination");
         this.stayOutOfHiveCountdown = compound.getInt("CannotEnterHiveTicks");
         this.numCropsGrownSincePollination = compound.getInt("CropsGrownSincePollination");
@@ -283,6 +308,40 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         level.addParticle(particleOption, Mth.lerp(level.random.nextDouble(), startX, endX), posY, Mth.lerp(level.random.nextDouble(), startZ, endZ), (double)0.0F, (double)0.0F, (double)0.0F);
     }
 
+    @Override
+    public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        if (itemStack.is(Items.SHEARS)) {
+            if (!this.level().isClientSide && this.readyForShearing()) {
+                this.shear(SoundSource.PLAYERS);
+                this.gameEvent(GameEvent.SHEAR, player);
+                itemStack.hurtAndBreak(1, player, (playerx) -> playerx.broadcastBreakEvent(hand));
+                return InteractionResult.SUCCESS;
+            } else {
+                return InteractionResult.CONSUME;
+            }
+        } else {
+            return super.mobInteract(player, hand);
+        }
+    }
+
+    public void shear(SoundSource source) {
+        this.level().playSound((Player)null, this, SoundEvents.SHEEP_SHEAR, source, 1.0F, 1.0F);
+        this.setHasFluff(false);
+        int i = 1 + this.random.nextInt(2);
+
+        for(int j = 0; j < i; ++j) {
+            ItemEntity itemEntity = this.spawnAtLocation(ItemRegistry.BEEPER_FLUFF, 1);
+            if (itemEntity != null) {
+                itemEntity.setDeltaMovement(itemEntity.getDeltaMovement().add((double)((this.random.nextFloat() - this.random.nextFloat()) * 0.1F), (double)(this.random.nextFloat() * 0.05F), (double)((this.random.nextFloat() - this.random.nextFloat()) * 0.1F)));
+            }
+        }
+    }
+
+    public boolean readyForShearing() {
+        return this.isAlive() && this.hasFluff() && !this.isBaby();
+    }
+
     void pathfindRandomlyTowards(BlockPos pos) {
         Vec3 vec3 = Vec3.atBottomCenterOf(pos);
         int i = 0;
@@ -318,7 +377,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         return this.savedFlowerPos != null;
     }
 
-    public void setSavedFlowerPos(BlockPos savedFlowerPos) {
+    public void setSavedFlowerPos(@Nullable BlockPos savedFlowerPos) {
         this.savedFlowerPos = savedFlowerPos;
     }
 
@@ -401,7 +460,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             return false;
         } else {
             BlockEntity blockEntity = this.level().getBlockEntity(this.hivePos);
-            return blockEntity instanceof BeehiveBlockEntity && ((BeehiveBlockEntity)blockEntity).isFireNearby();
+            return blockEntity instanceof BeeperHiveBlockEntity && ((BeeperHiveBlockEntity)blockEntity).isFireNearby();
         }
     }
 
@@ -428,8 +487,8 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
     private boolean doesHiveHaveSpace(BlockPos hivePos) {
         BlockEntity blockEntity = this.level().getBlockEntity(hivePos);
-        if (blockEntity instanceof BeehiveBlockEntity) {
-            return !((BeehiveBlockEntity)blockEntity).isFull();
+        if (blockEntity instanceof BeeperHiveBlockEntity) {
+            return !((BeeperHiveBlockEntity)blockEntity).isFull();
         } else {
             return false;
         }
@@ -498,6 +557,10 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         }
     }
 
+    public boolean hasFluff() { return this.getFlag(12); }
+
+    private void setHasFluff(boolean hasFluff) { this.setFlag(12, hasFluff); }
+
     public boolean hasNectar() {
         return this.getFlag(8);
     }
@@ -543,11 +606,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         return ((Byte)this.entityData.get(DATA_FLAGS_ID) & flagId) != 0;
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, (double)10.0F).add(Attributes.FLYING_SPEED, (double)0.6F).add(Attributes.MOVEMENT_SPEED, (double)0.3F).add(Attributes.ATTACK_DAMAGE, (double)2.0F).add(Attributes.FOLLOW_RANGE, (double)48.0F);
-    }
-
-    protected PathNavigation createNavigation(Level level) {
+    protected @NotNull PathNavigation createNavigation(@NotNull Level level) {
         FlyingPathNavigation flyingPathNavigation = new FlyingPathNavigation(this, level) {
             public boolean isStableDestination(BlockPos pos) {
                 return !this.level.getBlockState(pos.below()).isAir();
@@ -593,15 +652,15 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     }
 
     @Nullable
-    public BeeperEntity getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
+    public BeeperEntity getBreedOffspring(@NotNull ServerLevel level, @NotNull AgeableMob otherParent) {
         return EntityRegistry.BEEPER.create(level);
     }
 
-    protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
-        return this.isBaby() ? dimensions.height * 0.5F : dimensions.height * 0.5F;
+    protected float getStandingEyeHeight(@NotNull Pose pose, EntityDimensions dimensions) {
+        return dimensions.height * 0.5F;
     }
 
-    protected void checkFallDamage(double y, boolean onGround, BlockState state, BlockPos pos) {
+    protected void checkFallDamage(double y, boolean onGround, @NotNull BlockState state, @NotNull BlockPos pos) {
     }
 
     public boolean isFlapping() {
@@ -617,7 +676,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         this.resetNumCropsGrownSincePollination();
     }
 
-    public boolean hurt(DamageSource source, float amount) {
+    public boolean hurt(@NotNull DamageSource source, float amount) {
         if (this.isInvulnerableTo(source)) {
             return false;
         } else {
@@ -629,15 +688,15 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         }
     }
 
-    public MobType getMobType() {
+    public @NotNull MobType getMobType() {
         return MobType.ARTHROPOD;
     }
 
-    protected void jumpInLiquid(TagKey<Fluid> fluidTag) {
+    protected void jumpInLiquid(@NotNull TagKey<Fluid> fluidTag) {
         this.setDeltaMovement(this.getDeltaMovement().add((double)0.0F, 0.01, (double)0.0F));
     }
 
-    public Vec3 getLeashOffset() {
+    public @NotNull Vec3 getLeashOffset() {
         return new Vec3((double)0.0F, (double)(0.5F * this.getEyeHeight()), (double)(this.getBbWidth() * 0.2F));
     }
 
@@ -648,7 +707,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     static {
         DATA_FLAGS_ID = SynchedEntityData.defineId(BeeperEntity.class, EntityDataSerializers.BYTE);
         DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(BeeperEntity.class, EntityDataSerializers.INT);
-        PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
+        PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(15, 29);
     }
 
     class BeeperHurtByOtherGoal extends HurtByTargetGoal {
@@ -660,7 +719,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             return BeeperEntity.this.isAngry() && super.canContinueToUse();
         }
 
-        protected void alertOther(Mob mob, LivingEntity target) {
+        protected void alertOther(@NotNull Mob mob, @NotNull LivingEntity target) {
             if (mob instanceof BeeperEntity && this.mob.hasLineOfSight(target)) {
                 mob.setTarget(target);
             }
@@ -768,7 +827,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         }
 
         public boolean canBeeperUse() {
-            return BeeperEntity.this.hivePos != null && !BeeperEntity.this.hasRestriction() && BeeperEntity.this.wantsToEnterHive() && !this.hasReachedTarget(BeeperEntity.this.hivePos) && BeeperEntity.this.level().getBlockState(BeeperEntity.this.hivePos).is(BlockTags.BEEHIVES);
+            return BeeperEntity.this.hivePos != null && !BeeperEntity.this.hasRestriction() && BeeperEntity.this.wantsToEnterHive() && !this.hasReachedTarget(BeeperEntity.this.hivePos) && BeeperEntity.this.level().getBlockState(BeeperEntity.this.hivePos).is(TagRegistry.Blocks.BEEPER_HIVES);
         }
 
         public boolean canBeeperContinueToUse() {
@@ -992,6 +1051,8 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
                 return false;
             } else if (BeeperEntity.this.level().isRaining()) {
                 return false;
+            } else if (!BeeperEntity.this.hasFluff()) {
+                return false;
             } else if (this.hasPollinatedLongEnough()) {
                 return BeeperEntity.this.random.nextFloat() < 0.2F;
             } else if (BeeperEntity.this.tickCount % 20 == 0 && !BeeperEntity.this.isFlowerValid(BeeperEntity.this.savedFlowerPos)) {
@@ -1144,11 +1205,11 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             }
         }
 
-        private List<BlockPos> findNearbyHivesWithSpace() {
+        private List findNearbyHivesWithSpace() {
             BlockPos blockPos = BeeperEntity.this.blockPosition();
             PoiManager poiManager = ((ServerLevel)BeeperEntity.this.level()).getPoiManager();
-            Stream<PoiRecord> stream = poiManager.getInRange((holder) -> holder.is(PoiTypeTags.BEE_HOME), blockPos, 20, PoiManager.Occupancy.ANY);
-            return (List)stream.map(PoiRecord::getPos).filter(BeeperEntity.this::doesHiveHaveSpace).sorted(Comparator.comparingDouble((blockPos2) -> blockPos2.distSqr(blockPos))).collect(Collectors.toList());
+            Stream<PoiRecord> stream = poiManager.getInRange((holder) -> holder.is(TagRegistry.Blocks.BEEPER_HOME), blockPos, 20, PoiManager.Occupancy.ANY);
+            return (List<BlockPos>)stream.map(PoiRecord::getPos).filter(BeeperEntity.this::doesHiveHaveSpace).sorted(Comparator.comparingDouble((blockPos2) -> blockPos2.distSqr(blockPos))).collect(Collectors.toList());
         }
     }
 
@@ -1212,6 +1273,57 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         }
     }
 
+    class BeeperSneezeGoal extends BaseBeeperGoal {
+
+        BeeperSneezeGoal(BeeperEntity beeper) {
+            super(beeper);
+        }
+
+        @Override
+        public boolean canBeeperUse() {
+            if (BeeperEntity.this.getCropsGrownSincePollination() >= 30) {
+                return false;
+            } else if (BeeperEntity.this.random.nextFloat() < 0.3F) {
+                return false;
+            } else {
+                return BeeperEntity.this.hasNectar() && BeeperEntity.this.remainingCooldownBeforeNextSneeze == 0;
+            }
+        }
+
+        @Override
+        public boolean canBeeperContinueToUse() {
+            return this.canBeeperUse();
+        }
+
+        @Override
+        public boolean requiresUpdateEveryTick() {
+            return true;
+        }
+
+        @Override
+        public void start() {
+            BeeperEntity.this.remainingCooldownBeforeNextSneeze = 200;
+            BeeperEntity.this.wantsToSneeze = true;
+            BeeperEntity.this.wantsToSneezeCountdown = 40;
+        }
+
+        @Override
+        public void tick() {
+            if (BeeperEntity.this.wantsToSneeze) {
+                --BeeperEntity.this.wantsToSneezeCountdown;
+                if (BeeperEntity.this.wantsToSneezeCountdown == 0) {
+                    BeeperEntity.this.wantsToSneeze = false;
+                }
+            }
+            if (BeeperEntity.this.readyToSneeze) {
+                --BeeperEntity.this.readyToSneezeCountdown;
+                if (BeeperEntity.this.readyToSneezeCountdown == 0) {
+                    BeeperEntity.this.readyToSneeze = false;
+                }
+            }
+        }
+    }
+
     class BeeperAttackGoal extends MeleeAttackGoal {
         BeeperAttackGoal(BeeperEntity beeper, PathfinderMob mob, double speedModifier, boolean followingTargetEvenIfNotSeen) {
             super(mob, speedModifier, followingTargetEvenIfNotSeen);
@@ -1234,8 +1346,8 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         public boolean canBeeperUse() {
             if (BeeperEntity.this.hasHive() && BeeperEntity.this.wantsToEnterHive() && BeeperEntity.this.hivePos.closerToCenterThan(BeeperEntity.this.position(), (double)2.0F)) {
                 BlockEntity blockEntity = BeeperEntity.this.level().getBlockEntity(BeeperEntity.this.hivePos);
-                if (blockEntity instanceof BeehiveBlockEntity) {
-                    BeehiveBlockEntity beehiveBlockEntity = (BeehiveBlockEntity)blockEntity;
+                if (blockEntity instanceof BeeperHiveBlockEntity) {
+                    BeeperHiveBlockEntity beehiveBlockEntity = (BeeperHiveBlockEntity)blockEntity;
                     if (!beehiveBlockEntity.isFull()) {
                         return true;
                     }
@@ -1253,7 +1365,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
         public void start() {
             BlockEntity blockEntity = BeeperEntity.this.level().getBlockEntity(BeeperEntity.this.hivePos);
-            if (blockEntity instanceof BeehiveBlockEntity beehiveBlockEntity) {
+            if (blockEntity instanceof BeeperHiveBlockEntity beehiveBlockEntity) {
                 beehiveBlockEntity.addOccupant(BeeperEntity.this, BeeperEntity.this.hasNectar());
             }
 

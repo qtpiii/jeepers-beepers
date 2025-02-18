@@ -15,6 +15,10 @@ public class TabRegistry {
             FabricItemGroup.builder().title(Component.translatable("itemtab.jeepersbeepers"))
                     .icon(() -> new ItemStack(ItemRegistry.SPICY_HONEY_BOTTLE)).displayItems((displayContext, entries) -> {
                         entries.accept(ItemRegistry.SPICY_HONEY_BOTTLE);
+                        entries.accept(ItemRegistry.SPICY_HONEYCOMB);
+                        entries.accept(ItemRegistry.BEEPER_SPAWN_EGG);
+                        entries.accept(ItemRegistry.BEEPER_FLUFF);
+                        entries.accept(BlockRegistry.BEEPER_HIVE);
                     }).build());
 
     public static void registerCreativeModeTabs() {

@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "jeepersbeepers:block/beeper_hive_end",
+    "front": "jeepersbeepers:block/beeper_hive_front_honey",
+    "particle": "jeepersbeepers:block/beeper_hive_side",
+    "side": "jeepersbeepers:block/beeper_hive_side",
+    "top": "jeepersbeepers:block/beeper_hive_end"
+  }
+}

@@ -11,10 +11,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
+import net.qtpi.jeepersbeepers.block.BeeperHiveBlock;
 
 public class BlockRegistry {
 
-
+    public static final Block BEEPER_HIVE = registerBlock("beeper_hive", new BeeperHiveBlock(FabricBlockSettings.copyOf(Blocks.BEEHIVE)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
@@ -27,7 +28,6 @@ public class BlockRegistry {
     }
 
     public static void registerModBlocks() {
-
         JeepersBeepers.LOGGER.info("Registering Mod Blocks for " + JeepersBeepers.MOD_ID);
     }
 }

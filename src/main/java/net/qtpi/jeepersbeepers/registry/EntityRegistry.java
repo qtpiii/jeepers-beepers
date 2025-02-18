@@ -15,4 +15,8 @@ public class EntityRegistry {
             BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(JeepersBeepers.MOD_ID, "beeper"),
             FabricEntityTypeBuilder.create(MobCategory.CREATURE, BeeperEntity::new)
                     .dimensions(EntityDimensions.fixed(0.8f, 0.8f)).build());
+
+    public static void registerModEntities() {
+        JeepersBeepers.LOGGER.info("Registering Mod Entities for " + JeepersBeepers.MOD_ID);
+    }
 }

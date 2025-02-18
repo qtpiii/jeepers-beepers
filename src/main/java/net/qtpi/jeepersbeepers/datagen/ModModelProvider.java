@@ -25,5 +25,7 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
         itemModelGenerators.generateFlatItem(ItemRegistry.SPICY_HONEY_BOTTLE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ItemRegistry.SPICY_HONEYCOMB, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ItemRegistry.BEEPER_FLUFF, ModelTemplates.FLAT_ITEM);
     }
 }
