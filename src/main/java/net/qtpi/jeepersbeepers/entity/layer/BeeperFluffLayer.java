@@ -20,14 +20,15 @@ public class BeeperFluffLayer extends GeoRenderLayer<BeeperEntity> {
 
     @Override
     public void render(PoseStack poseStack, BeeperEntity entity, BakedGeoModel bakedModel, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
-
-        RenderType renderLayer;
-        if (entity.hasNectar()) {
-            renderLayer = RenderType.entityCutoutNoCull(TEXTURE2);
-        } else {
-            renderLayer = RenderType.entityCutoutNoCull(TEXTURE1);
+        if (entity.hasFluff()) {
+            RenderType renderLayer;
+            if (entity.hasNectar()) {
+                renderLayer = RenderType.entityCutoutNoCull(TEXTURE2);
+            } else {
+                renderLayer = RenderType.entityCutoutNoCull(TEXTURE1);
+            }
+            getRenderer().reRender(getDefaultBakedModel(entity), poseStack, bufferSource, entity, renderLayer,
+                    bufferSource.getBuffer(renderLayer), partialTick, packedLight, packedOverlay, 1, 1, 1, 1);
         }
-        getRenderer().reRender(getDefaultBakedModel(entity), poseStack, bufferSource, entity, renderLayer,
-                bufferSource.getBuffer(renderLayer), partialTick, packedLight, packedOverlay, 1, 1, 1, 1);
     }
 }
