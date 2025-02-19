@@ -54,6 +54,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
+import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.block.entity.BeeperHiveBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -91,7 +92,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     private static final int FLAG_ROLL = 2;
     private static final int FLAG_HAS_STUNG = 4;
     private static final int FLAG_HAS_NECTAR = 8;
-    private static final int FLAG_HAS_FLUFF = 12;
+    private static final int FLAG_HAS_FLUFF = 16;
     private static final int STING_DEATH_COUNTDOWN = 1200;
     private static final int TICKS_BEFORE_GOING_TO_KNOWN_FLOWER = 2400;
     private static final int TICKS_WITHOUT_NECTAR_BEFORE_GOING_HOME = 3600;
@@ -562,9 +563,11 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         }
     }
 
-    public boolean isNaked() { return this.getFlag(12); }
+    public boolean isNaked() {
+        return this.getFlag(16);
+    }
 
-    private void setIsNaked(boolean isNaked) { this.setFlag(12, isNaked); }
+    private void setIsNaked(boolean isNaked) { this.setFlag(16, isNaked); }
 
     public boolean hasNectar() {
         return this.getFlag(8);
