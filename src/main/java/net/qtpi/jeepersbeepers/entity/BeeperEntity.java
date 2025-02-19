@@ -15,7 +15,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.PoiTypeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.TimeUtil;
@@ -50,14 +49,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
-import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.block.entity.BeeperHiveBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -1210,7 +1206,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         private List<BlockPos> findNearbyHivesWithSpace() {
             BlockPos blockPos = BeeperEntity.this.blockPosition();
             PoiManager poiManager = ((ServerLevel)BeeperEntity.this.level()).getPoiManager();
-            Stream<PoiRecord> stream = poiManager.getInRange((holder) -> holder.is(TagRegistry.Blocks.BEEPER_HOME), blockPos, 20, PoiManager.Occupancy.ANY);
+            Stream<PoiRecord> stream = poiManager.getInRange((holder) -> holder.is(TagRegistry.Misc.BEEPER_HOME), blockPos, 20, PoiManager.Occupancy.ANY);
             return (List<BlockPos>)stream.map(PoiRecord::getPos).filter(BeeperEntity.this::doesHiveHaveSpace).sorted(Comparator.comparingDouble((blockPos2) -> blockPos2.distSqr(blockPos))).collect(Collectors.toList());
         }
     }
@@ -1277,6 +1273,8 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
     class BeeperSneezeGoal extends BaseBeeperGoal {
 
+        private int sneezeTicks;
+
         BeeperSneezeGoal(BeeperEntity beeper) {
             super(beeper);
         }
@@ -1305,13 +1303,17 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         @Override
         public void start() {
             BeeperEntity.this.remainingCooldownBeforeNextSneeze = 200;
+            sneezeTicks = 0;
             BeeperEntity.this.readyToSneeze = true;
         }
 
         @Override
         public void tick() {
             if (BeeperEntity.this.readyToSneeze) {
-                readyToSneeze = false;
+                sneezeTicks++;
+                if (sneezeTicks == 80) {
+                    readyToSneeze = false;
+                }
             }
         }
     }

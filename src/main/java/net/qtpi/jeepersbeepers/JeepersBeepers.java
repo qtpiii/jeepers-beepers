@@ -3,6 +3,11 @@ package net.qtpi.jeepersbeepers;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.qtpi.jeepersbeepers.entity.BeeperEntity;
 import net.qtpi.jeepersbeepers.registry.*;
 import org.slf4j.Logger;
@@ -14,12 +19,14 @@ public class JeepersBeepers implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		TabRegistry.registerCreativeModeTabs();
 		ItemRegistry.registerModItems();
-		EffectRegistry.registerModEffects();
 		BlockRegistry.registerModBlocks();
 		BlockEntityRegistry.registerModBlockEntities();
+		TabRegistry.registerCreativeModeTabs();
 		EntityRegistry.registerModEntities();
+		EffectRegistry.registerModEffects();
+		TagRegistry.registerModTags();
+		MiscRegistry.registerMisc();
 
 		FabricDefaultAttributeRegistry.register(EntityRegistry.BEEPER, BeeperEntity.setAttributes());
 	}

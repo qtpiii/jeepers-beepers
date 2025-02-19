@@ -28,6 +28,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.qtpi.jeepersbeepers.block.BeeperHiveBlock;
 import net.qtpi.jeepersbeepers.entity.BeeperEntity;
 import net.qtpi.jeepersbeepers.registry.BlockEntityRegistry;
+import net.qtpi.jeepersbeepers.registry.TagRegistry;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -175,7 +176,7 @@ public class BeeperHiveBlockEntity extends BlockEntity {
             } else {
                 Entity entity = EntityType.loadEntityRecursive(compoundTag, level, (entityx) -> entityx);
                 if (entity != null) {
-                    if (!entity.getType().is(EntityTypeTags.BEEHIVE_INHABITORS)) {
+                    if (!entity.getType().is(TagRegistry.Misc.BEEPER_HIVE_INHABITORS)) {
                         return false;
                     } else {
                         if (entity instanceof BeeperEntity beeper) {
@@ -185,7 +186,7 @@ public class BeeperHiveBlockEntity extends BlockEntity {
 
                             if (releaseStatus == BeeperHiveBlockEntity.BeeperReleaseStatus.HONEY_DELIVERED) {
                                 beeper.dropOffNectar();
-                                if (state.is(BlockTags.BEEHIVES, (blockStateBase) -> blockStateBase.hasProperty(BeeperHiveBlock.HONEY_LEVEL))) {
+                                if (state.is(TagRegistry.Blocks.BEEPER_HIVES, (blockStateBase) -> blockStateBase.hasProperty(BeeperHiveBlock.HONEY_LEVEL))) {
                                     int i = getHoneyLevel(state);
                                     if (i < 5) {
                                         int j = level.random.nextInt(100) == 0 ? 2 : 1;

@@ -22,6 +22,6 @@ public class TabRegistry {
                     }).build());
 
     public static void registerCreativeModeTabs() {
-        JeepersBeepers.LOGGER.info("Registering Item Groups for " + JeepersBeepers.MOD_ID);
+        JeepersBeepers.LOGGER.info("Registering Creative Mode Tabs for " + JeepersBeepers.MOD_ID);
     }
 }

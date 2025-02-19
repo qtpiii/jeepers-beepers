@@ -33,16 +33,14 @@ public class BeeperRenderer extends GeoEntityRenderer<BeeperEntity> {
 
     @Override
     public void preRender(PoseStack poseStack, BeeperEntity entity, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        if (!isReRender) {
+            if (entity.isBaby()) {
+                poseStack.scale(0.5f, 0.5f, 0.5f);
+            } else {
+                poseStack.scale(1.0f, 1.0f, 1.0f);
+            }
+        }
         angry = entity.isAngry();
         super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
-    }
-
-    @Override
-    public void scaleModelForRender(float widthScale, float heightScale, PoseStack poseStack, BeeperEntity entity, BakedGeoModel model, boolean isReRender, float partialTick, int packedLight, int packedOverlay) {
-        if (entity.isBaby()) {
-            poseStack.scale(0.5f, 0.5f, 0.5f);
-        } else {
-            poseStack.scale(1.0f, 1.0f, 1.0f);
-        }
     }
 }
