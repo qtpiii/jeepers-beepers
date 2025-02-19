@@ -11,18 +11,18 @@ import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.renderer.GeoRenderer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 
-public class BeeperStingerLayer extends GeoRenderLayer<BeeperEntity> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_stinger.png");
-    public BeeperStingerLayer(GeoRenderer<BeeperEntity> entityRendererIn) {
+public class BeeperNectarLayer extends GeoRenderLayer<BeeperEntity> {
+    private static final ResourceLocation TEXTURE = new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_fluff_nectar.png");
+    public BeeperNectarLayer(GeoRenderer<BeeperEntity> entityRendererIn) {
         super(entityRendererIn);
     }
 
     @Override
     public void render(PoseStack poseStack, BeeperEntity entity, BakedGeoModel bakedModel, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
-        if (!entity.hasStung()) {
-            RenderType stingerLayer = RenderType.entityCutoutNoCull(TEXTURE);
-            getRenderer().reRender(getDefaultBakedModel(entity), poseStack, bufferSource, entity, stingerLayer,
-                    bufferSource.getBuffer(stingerLayer), partialTick, packedLight, packedOverlay, 1, 1, 1, 1);
+        if (!entity.isNaked() && entity.hasNectar()) {
+            RenderType nectarLayer = RenderType.entityCutoutNoCull(TEXTURE);
+            getRenderer().reRender(getDefaultBakedModel(entity), poseStack, bufferSource, entity, nectarLayer,
+                    bufferSource.getBuffer(nectarLayer), partialTick, packedLight, packedOverlay, 1, 1, 1, 1);
         }
     }
 }

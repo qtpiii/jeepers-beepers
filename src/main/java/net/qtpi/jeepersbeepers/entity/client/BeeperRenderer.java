@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.entity.BeeperEntity;
 import net.qtpi.jeepersbeepers.entity.layer.BeeperFluffLayer;
+import net.qtpi.jeepersbeepers.entity.layer.BeeperNectarLayer;
 import net.qtpi.jeepersbeepers.entity.layer.BeeperStingerLayer;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
@@ -20,6 +21,7 @@ public class BeeperRenderer extends GeoEntityRenderer<BeeperEntity> {
         super(renderManager, new DefaultedEntityGeoModel<>(new ResourceLocation(JeepersBeepers.MOD_ID, "beeper")));
 
         this.addRenderLayer(new BeeperFluffLayer(this));
+        this.addRenderLayer(new BeeperNectarLayer(this));
         this.addRenderLayer(new BeeperStingerLayer(this));
     }
 
