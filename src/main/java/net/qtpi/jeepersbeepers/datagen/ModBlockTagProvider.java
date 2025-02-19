@@ -3,6 +3,8 @@ package net.qtpi.jeepersbeepers.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.BlockTags;
+import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -13,6 +15,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
+                .add(BlockRegistry.BEEPER_HIVE);
+        getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
+                .add(BlockRegistry.BEEPER_FLUFF_BLOCK);
+        getOrCreateTagBuilder(BlockTags.DAMPENS_VIBRATIONS)
+                .add(BlockRegistry.BEEPER_FLUFF_BLOCK);
     }
 }

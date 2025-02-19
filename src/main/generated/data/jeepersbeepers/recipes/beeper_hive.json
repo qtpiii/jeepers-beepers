@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "H": {
+      "item": "jeepersbeepers:spicy_honeycomb"
+    },
+    "S": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "HHH",
+    "SSS"
+  ],
+  "result": {
+    "item": "jeepersbeepers:beeper_hive"
+  },
+  "show_notification": true
+}

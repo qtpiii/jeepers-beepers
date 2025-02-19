@@ -19,8 +19,8 @@ public class InvigorationEffect extends MobEffect {
 
     public void applyEffectTick(LivingEntity entity, int amplifier) {
         if (!entity.getCommandSenderWorld().isClientSide && entity instanceof Player player) {
-            super.addAttributeModifier(Attributes.ATTACK_SPEED, "AF8B6E3F-3328-4C0A-AA36-5BA2BB9DBEF3", 0.15D * (float)(amplifier + 1), AttributeModifier.Operation.MULTIPLY_TOTAL);
-            super.addAttributeModifier(Attributes.MOVEMENT_SPEED, "91AEAA56-376B-4498-935B-2F7F68070635", 0.15D * (float)(amplifier + 1), AttributeModifier.Operation.MULTIPLY_TOTAL);
+            super.addAttributeModifier(Attributes.ATTACK_SPEED, "AF8B6E3F-3328-4C0A-AA36-5BA2BB9DBEF3", 0.3D * (float)(amplifier + 1), AttributeModifier.Operation.MULTIPLY_TOTAL);
+            super.addAttributeModifier(Attributes.MOVEMENT_SPEED, "91AEAA56-376B-4498-935B-2F7F68070635", 0.3D * (float)(amplifier + 1), AttributeModifier.Operation.MULTIPLY_TOTAL);
             player.causeFoodExhaustion(0.025F * (float)(amplifier + 1));
         }
     }

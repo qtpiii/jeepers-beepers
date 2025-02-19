@@ -18,6 +18,7 @@ public class TabRegistry {
                         entries.accept(ItemRegistry.SPICY_HONEYCOMB);
                         entries.accept(ItemRegistry.BEEPER_SPAWN_EGG);
                         entries.accept(ItemRegistry.BEEPER_FLUFF);
+                        entries.accept(BlockRegistry.BEEPER_FLUFF_BLOCK);
                         entries.accept(BlockRegistry.BEEPER_HIVE);
                     }).build());
 

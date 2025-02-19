@@ -12,7 +12,7 @@ import software.bernie.geckolib.renderer.GeoRenderer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 
 public class BeeperFluffLayer extends GeoRenderLayer<BeeperEntity> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_fluff.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_fluff_block.png");
     public BeeperFluffLayer(GeoRenderer<BeeperEntity> entityRendererIn) {
         super(entityRendererIn);
     }

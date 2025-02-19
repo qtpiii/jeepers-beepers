@@ -10,12 +10,19 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
+import net.qtpi.jeepersbeepers.block.BeeperFluffBlock;
 import net.qtpi.jeepersbeepers.block.BeeperHiveBlock;
 
 public class BlockRegistry {
 
     public static final Block BEEPER_HIVE = registerBlock("beeper_hive", new BeeperHiveBlock(FabricBlockSettings.copyOf(Blocks.BEEHIVE)));
+
+    public static final Block BEEPER_FLUFF_BLOCK = registerBlock("beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.GLOW_LICHEN).strength(0.6f).sound(SoundType.WOOL)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

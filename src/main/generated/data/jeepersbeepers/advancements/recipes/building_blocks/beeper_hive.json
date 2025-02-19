@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jeepersbeepers:beeper_hive"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "spicy_honeycomb": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jeepersbeepers:spicy_honeycomb"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "spicy_honeycomb",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jeepersbeepers:beeper_hive"
+    ]
+  },
+  "sends_telemetry_event": false
+}
