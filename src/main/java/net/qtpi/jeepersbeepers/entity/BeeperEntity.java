@@ -127,8 +127,6 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     int remainingCooldownBeforeLocatingNewFlower;
     private static final int COOLDOWN_BEFORE_NEXT_SNEEZE = 200;
     int remainingCooldownBeforeNextSneeze;
-    boolean wantsToSneeze;
-    int wantsToSneezeCountdown;
     boolean readyToSneeze;
     int readyToSneezeCountdown;
     @Nullable
@@ -142,7 +140,6 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
     protected static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("animation.beeper.idle");
     protected static final RawAnimation FLY_ANIM = RawAnimation.begin().thenLoop("animation.beeper.fly");
-    protected static final RawAnimation PRESNEEZE_ANIM = RawAnimation.begin().then("animation.beeper.sneezewindup", Animation.LoopType.HOLD_ON_LAST_FRAME);
     protected static final RawAnimation SNEEZE_ANIM = RawAnimation.begin().then("animation.beeper.sneeze", Animation.LoopType.PLAY_ONCE);
 
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
@@ -180,16 +177,12 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     }
 
     private PlayState predicate(AnimationState<BeeperEntity> beeperEntityAnimationState) {
-        if (this.wantsToSneeze) {
-            beeperEntityAnimationState.getController().setAnimation(PRESNEEZE_ANIM);
-            return PlayState.CONTINUE;
-        } else if (this.readyToSneeze) {
+        if (this.readyToSneeze) {
             beeperEntityAnimationState.getController().setAnimation(SNEEZE_ANIM);
-            return PlayState.CONTINUE;
         } else {
             beeperEntityAnimationState.getController().setAnimation(IDLE_ANIM);
-            return PlayState.CONTINUE;
         }
+        return PlayState.CONTINUE;
     }
 
     @Override
@@ -1312,23 +1305,13 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         @Override
         public void start() {
             BeeperEntity.this.remainingCooldownBeforeNextSneeze = 200;
-            BeeperEntity.this.wantsToSneeze = true;
-            BeeperEntity.this.wantsToSneezeCountdown = 40;
+            BeeperEntity.this.readyToSneeze = true;
         }
 
         @Override
         public void tick() {
-            if (BeeperEntity.this.wantsToSneeze) {
-                --BeeperEntity.this.wantsToSneezeCountdown;
-                if (BeeperEntity.this.wantsToSneezeCountdown == 0) {
-                    BeeperEntity.this.wantsToSneeze = false;
-                }
-            }
             if (BeeperEntity.this.readyToSneeze) {
-                --BeeperEntity.this.readyToSneezeCountdown;
-                if (BeeperEntity.this.readyToSneezeCountdown == 0) {
-                    BeeperEntity.this.readyToSneeze = false;
-                }
+                readyToSneeze = false;
             }
         }
     }
