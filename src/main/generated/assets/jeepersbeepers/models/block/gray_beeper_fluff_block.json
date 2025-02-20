@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "jeepersbeepers:block/gray_beeper_fluff_block"
+  }
+}

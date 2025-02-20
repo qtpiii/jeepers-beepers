@@ -8,10 +8,10 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.block.BeeperFluffBlock;
@@ -23,6 +23,87 @@ public class BlockRegistry {
 
     public static final Block BEEPER_FLUFF_BLOCK = registerBlock("beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
             .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.GLOW_LICHEN).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block WHITE_BEEPER_FLUFF_BLOCK = registerBlock("white_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.SNOW).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block LIGHT_GRAY_BEEPER_FLUFF_BLOCK = registerBlock("light_gray_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_LIGHT_GRAY).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block GRAY_BEEPER_FLUFF_BLOCK = registerBlock("gray_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_GRAY).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block BLACK_BEEPER_FLUFF_BLOCK = registerBlock("black_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_BLACK).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block BROWN_BEEPER_FLUFF_BLOCK = registerBlock("brown_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_BROWN).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block RED_BEEPER_FLUFF_BLOCK = registerBlock("red_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_RED).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block ORANGE_BEEPER_FLUFF_BLOCK = registerBlock("orange_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_ORANGE).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block YELLOW_BEEPER_FLUFF_BLOCK = registerBlock("yellow_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_YELLOW).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block LIME_BEEPER_FLUFF_BLOCK = registerBlock("lime_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_LIGHT_GREEN).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block GREEN_BEEPER_FLUFF_BLOCK = registerBlock("green_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_GREEN).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block CYAN_BEEPER_FLUFF_BLOCK = registerBlock("cyan_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_CYAN).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block LIGHT_BLUE_BEEPER_FLUFF_BLOCK = registerBlock("light_blue_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_LIGHT_BLUE).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block BLUE_BEEPER_FLUFF_BLOCK = registerBlock("blue_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_BLUE).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block PURPLE_BEEPER_FLUFF_BLOCK = registerBlock("purple_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_PURPLE).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block MAGENTA_BEEPER_FLUFF_BLOCK = registerBlock("magenta_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_MAGENTA).strength(0.6f).sound(SoundType.WOOL)));
+    public static final Block PINK_BEEPER_FLUFF_BLOCK = registerBlock("pink_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
+            .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_PINK).strength(0.6f).sound(SoundType.WOOL)));
+
+    public static final Block MIGNONETTE_LOG = registerBlock("mignonette_log",
+            new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)
+            .mapColor(MapColor.COLOR_GREEN)));
+    public static final Block MIGNONETTE_WOOD = registerBlock("mignonette_wood",
+            new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            .mapColor(MapColor.COLOR_GREEN)));
+    public static final Block STRIPPED_MIGNONETTE_LOG = registerBlock("stripped_mignonette_log",
+            new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_LOG)
+            .mapColor(MapColor.GLOW_LICHEN)));
+    public static final Block STRIPPED_MIGNONETTE_WOOD = registerBlock("stripped_mignonette_wood",
+            new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_WOOD)
+            .mapColor(MapColor.GLOW_LICHEN)));
+
+    public static final Block MIGNONETTE_LEAVES = registerBlock("mignonette_leaves",
+            new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)
+                    .mapColor(MapColor.COLOR_LIGHT_GREEN).nonOpaque()));
+
+    public static final Block MIGNONETTE_PLANKS = registerBlock("mignonette_planks",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+            .mapColor(MapColor.GLOW_LICHEN)));
+    public static final Block MIGNONETTE_STAIRS = registerBlock("mignonette_stairs",
+            new StairBlock(BlockRegistry.MIGNONETTE_PLANKS.defaultBlockState(),
+                    FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+                    .mapColor(MapColor.GLOW_LICHEN)));
+    public static final Block MIGNONETTE_SLAB = registerBlock("mignonette_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+            .mapColor(MapColor.GLOW_LICHEN)));
+
+    public static final Block MIGNONETTE_BUTTON = registerBlock("mignonette_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+            .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK, 10, true));
+    public static final Block MIGNONETTE_PRESSURE_PLATE = registerBlock("mignonette_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+            .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK));
+
+    public static final Block MIGNONETTE_FENCE = registerBlock("mignonette_fence",
+            new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+            .mapColor(MapColor.GLOW_LICHEN)));
+    public static final Block MIGNONETTE_FENCE_GATE = registerBlock("mignonette_fence_gate",
+            new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+            .mapColor(MapColor.GLOW_LICHEN), WoodType.OAK));
+
+    public static final Block MIGNONETTE_DOOR = registerBlock("mignonette_door",
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR)
+            .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK));
+    public static final Block MIGNONETTE_TRAPDOOR = registerBlock("mignonette_trapdoor",
+            new TrapDoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR)
+            .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

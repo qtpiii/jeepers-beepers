@@ -22,8 +22,23 @@ public class ItemRegistry {
             6651479, 12567454, new FabricItemSettings()));
     public static final Item BEEPER_FLUFF = registerItem("beeper_fluff", new Item(new FabricItemSettings()));
 
-    private static void addItemsToIngredientTabItemGroup(FabricItemGroupEntries entries) {
-
+    private static void addItemsToColoredBlocksTabItemGroup(FabricItemGroupEntries entries) {
+        entries.accept(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.LIGHT_GRAY_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.GRAY_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.BLACK_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.BROWN_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.RED_BEEPER_FLUFF_BLOCK );
+        entries.accept(BlockRegistry.ORANGE_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.YELLOW_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.LIME_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.GREEN_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.CYAN_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.LIGHT_BLUE_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.BLUE_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.PURPLE_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.MAGENTA_BEEPER_FLUFF_BLOCK);
+        entries.accept(BlockRegistry.PINK_BEEPER_FLUFF_BLOCK);
     }
 
     private static Item registerItem(String name, Item item) {
@@ -33,6 +48,6 @@ public class ItemRegistry {
     public static void registerModItems() {
         JeepersBeepers.LOGGER.info("Registering Mod Items for " + JeepersBeepers.MOD_ID);
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(ItemRegistry::addItemsToIngredientTabItemGroup);
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(ItemRegistry::addItemsToColoredBlocksTabItemGroup);
     }
 }

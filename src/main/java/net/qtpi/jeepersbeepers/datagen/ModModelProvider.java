@@ -6,6 +6,7 @@ import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.model.ModelTemplates;
 import net.minecraft.data.models.model.TextureMapping;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.registry.ItemRegistry;
@@ -20,6 +21,40 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
         blockModelGenerators.createTrivialCube(BlockRegistry.BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.LIGHT_GRAY_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.GRAY_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.BLACK_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.BROWN_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.RED_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.ORANGE_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.YELLOW_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.LIME_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.GREEN_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.CYAN_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.LIGHT_BLUE_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.BLUE_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.PURPLE_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.MAGENTA_BEEPER_FLUFF_BLOCK);
+        blockModelGenerators.createTrivialCube(BlockRegistry.PINK_BEEPER_FLUFF_BLOCK);
+
+        blockModelGenerators.woodProvider(BlockRegistry.MIGNONETTE_LOG)
+                .log(BlockRegistry.MIGNONETTE_LOG).wood(BlockRegistry.MIGNONETTE_WOOD);
+        blockModelGenerators.woodProvider(BlockRegistry.STRIPPED_MIGNONETTE_LOG)
+                .log(BlockRegistry.STRIPPED_MIGNONETTE_LOG).wood(BlockRegistry.STRIPPED_MIGNONETTE_WOOD);
+        blockModelGenerators.createTrivialCube(BlockRegistry.MIGNONETTE_LEAVES);
+
+        BlockModelGenerators.BlockFamilyProvider mignonette_family = blockModelGenerators.family(BlockRegistry.MIGNONETTE_PLANKS);
+        mignonette_family.stairs(BlockRegistry.MIGNONETTE_STAIRS);
+        mignonette_family.slab(BlockRegistry.MIGNONETTE_SLAB);
+        mignonette_family.button(BlockRegistry.MIGNONETTE_BUTTON);
+        mignonette_family.pressurePlate(BlockRegistry.MIGNONETTE_PRESSURE_PLATE);
+        mignonette_family.fence(BlockRegistry.MIGNONETTE_FENCE);
+        mignonette_family.fenceGate(BlockRegistry.MIGNONETTE_FENCE_GATE);
+
+        blockModelGenerators.createDoor(BlockRegistry.MIGNONETTE_DOOR);
+        blockModelGenerators.createOrientableTrapdoor(BlockRegistry.MIGNONETTE_TRAPDOOR);
+
     }
 
 

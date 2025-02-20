@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "jeepersbeepers:block/stripped_mignonette_log_top",
+    "side": "jeepersbeepers:block/stripped_mignonette_log"
+  }
+}

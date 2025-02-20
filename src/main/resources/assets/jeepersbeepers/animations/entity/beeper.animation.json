@@ -553,6 +553,11 @@
 						}
 					}
 				}
+			},
+			"particle_effects": {
+				"2.0": {
+					"effect": "sneeze"
+				}
 			}
 		}
 	},

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "jeepersbeepers:block/stripped_mignonette_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "jeepersbeepers:block/stripped_mignonette_log"
+    },
+    "axis=z": {
+      "model": "jeepersbeepers:block/stripped_mignonette_log",
+      "x": 90
+    }
+  }
+}

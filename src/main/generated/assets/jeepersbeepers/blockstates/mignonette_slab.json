@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "jeepersbeepers:block/mignonette_slab"
+    },
+    "type=double": {
+      "model": "jeepersbeepers:block/mignonette_planks"
+    },
+    "type=top": {
+      "model": "jeepersbeepers:block/mignonette_slab_top"
+    }
+  }
+}

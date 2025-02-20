@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "jeepersbeepers:block/mignonette_planks",
+    "side": "jeepersbeepers:block/mignonette_planks",
+    "top": "jeepersbeepers:block/mignonette_planks"
+  }
+}

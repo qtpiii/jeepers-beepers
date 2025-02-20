@@ -19,7 +19,37 @@ public class TabRegistry {
                         entries.accept(ItemRegistry.BEEPER_SPAWN_EGG);
                         entries.accept(ItemRegistry.BEEPER_FLUFF);
                         entries.accept(BlockRegistry.BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.LIGHT_GRAY_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.GRAY_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.BLACK_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.BROWN_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.RED_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.ORANGE_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.YELLOW_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.LIME_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.GREEN_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.CYAN_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.LIGHT_BLUE_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.BLUE_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.PURPLE_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.MAGENTA_BEEPER_FLUFF_BLOCK);
+                        entries.accept(BlockRegistry.PINK_BEEPER_FLUFF_BLOCK);
                         entries.accept(BlockRegistry.BEEPER_HIVE);
+                        entries.accept(BlockRegistry.MIGNONETTE_LOG);
+                        entries.accept(BlockRegistry.MIGNONETTE_WOOD);
+                        entries.accept(BlockRegistry.STRIPPED_MIGNONETTE_LOG);
+                        entries.accept(BlockRegistry.STRIPPED_MIGNONETTE_WOOD);
+                        entries.accept(BlockRegistry.MIGNONETTE_LEAVES);
+                        entries.accept(BlockRegistry.MIGNONETTE_PLANKS);
+                        entries.accept(BlockRegistry.MIGNONETTE_STAIRS);
+                        entries.accept(BlockRegistry.MIGNONETTE_SLAB);
+                        entries.accept(BlockRegistry.MIGNONETTE_BUTTON);
+                        entries.accept(BlockRegistry.MIGNONETTE_PRESSURE_PLATE);
+                        entries.accept(BlockRegistry.MIGNONETTE_FENCE);
+                        entries.accept(BlockRegistry.MIGNONETTE_FENCE_GATE);
+                        entries.accept(BlockRegistry.MIGNONETTE_DOOR);
+                        entries.accept(BlockRegistry.MIGNONETTE_TRAPDOOR);
                     }).build());
 
     public static void registerCreativeModeTabs() {

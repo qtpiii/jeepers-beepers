@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "jeepersbeepers:block/mignonette_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "jeepersbeepers:block/mignonette_wood"
+    },
+    "axis=z": {
+      "model": "jeepersbeepers:block/mignonette_wood",
+      "x": 90
+    }
+  }
+}

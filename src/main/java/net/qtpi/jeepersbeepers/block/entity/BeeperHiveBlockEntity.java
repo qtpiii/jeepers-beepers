@@ -6,23 +6,16 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtUtils;
-import net.minecraft.network.protocol.game.DebugPackets;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.util.VisibleForDebug;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.animal.Bee;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BeehiveBlock;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.FireBlock;
-import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.qtpi.jeepersbeepers.block.BeeperHiveBlock;
@@ -114,8 +107,8 @@ public class BeeperHiveBlockEntity extends BlockEntity {
         return list;
     }
 
-    public void addOccupant(Entity occupant, boolean hasNectar) {
-        this.addOccupantWithPresetTicks(occupant, hasNectar, 0);
+    public void addOccupant(Entity occupant, boolean hasNectar, boolean isNaked) {
+        this.addOccupantWithPresetTicks(occupant, hasNectar, isNaked, 0);
     }
 
     @VisibleForDebug
@@ -132,17 +125,17 @@ public class BeeperHiveBlockEntity extends BlockEntity {
         return CampfireBlock.isSmokeyPos(this.level, this.getBlockPos());
     }
 
-    public void addOccupantWithPresetTicks(Entity occupant, boolean hasNectar, int ticksInHive) {
+    public void addOccupantWithPresetTicks(Entity occupant, boolean hasNectar, boolean isNaked, int ticksInHive) {
         if (this.stored.size() < 3) {
             occupant.stopRiding();
             occupant.ejectPassengers();
             CompoundTag compoundTag = new CompoundTag();
             occupant.save(compoundTag);
-            this.storeBeeper(compoundTag, ticksInHive, hasNectar);
+            this.storeBeeper(compoundTag, ticksInHive, hasNectar, isNaked);
             if (this.level != null) {
                 if (occupant instanceof BeeperEntity beeper) {
                     if (beeper.hasSavedFlowerPos() && (!this.hasSavedFlowerPos() || this.level.random.nextBoolean())) {
-                        this.savedFlowerPos = beeper.getSavedFlowerPos();
+                        this.savedFlowerPos = beeper.getSavedCropPos();
                     }
                 }
 
@@ -156,8 +149,8 @@ public class BeeperHiveBlockEntity extends BlockEntity {
         }
     }
 
-    public void storeBeeper(CompoundTag entityData, int ticksInHive, boolean hasNectar) {
-        this.stored.add(new BeeperHiveBlockEntity.BeeperData(entityData, ticksInHive, hasNectar ? 2400 : 600));
+    public void storeBeeper(CompoundTag entityData, int ticksInHive, boolean hasNectar, boolean isNaked) {
+        this.stored.add(new BeeperHiveBlockEntity.BeeperData(entityData, ticksInHive, hasNectar ? 2400 : (isNaked ? 200 : 600), isNaked));
     }
 
     private static boolean releaseOccupant(Level level, BlockPos pos, BlockState state, BeeperHiveBlockEntity.BeeperData data, @Nullable List<Entity> storedInHives, BeeperHiveBlockEntity.BeeperReleaseStatus releaseStatus, @Nullable BlockPos savedFlowerPos) {
@@ -181,7 +174,7 @@ public class BeeperHiveBlockEntity extends BlockEntity {
                     } else {
                         if (entity instanceof BeeperEntity beeper) {
                             if (savedFlowerPos != null && !beeper.hasSavedFlowerPos() && level.random.nextFloat() < 0.9F) {
-                                beeper.setSavedFlowerPos(savedFlowerPos);
+                                beeper.setSavedCropPos(savedFlowerPos);
                             }
 
                             if (releaseStatus == BeeperHiveBlockEntity.BeeperReleaseStatus.HONEY_DELIVERED) {
@@ -197,6 +190,10 @@ public class BeeperHiveBlockEntity extends BlockEntity {
                                         level.setBlockAndUpdate(pos, (BlockState)state.setValue(BeeperHiveBlock.HONEY_LEVEL, i + j));
                                     }
                                 }
+                            }
+
+                            if (beeper.isNaked()) {
+                                beeper.regrowFluff();
                             }
 
                             setBeeperReleaseData(data.ticksInHive, beeper);
@@ -283,7 +280,7 @@ public class BeeperHiveBlockEntity extends BlockEntity {
 
         for(int i = 0; i < listTag.size(); ++i) {
             CompoundTag compoundTag = listTag.getCompound(i);
-            BeeperHiveBlockEntity.BeeperData beeperData = new BeeperHiveBlockEntity.BeeperData(compoundTag.getCompound("EntityData"), compoundTag.getInt("TicksInHive"), compoundTag.getInt("MinOccupationTicks"));
+            BeeperHiveBlockEntity.BeeperData beeperData = new BeeperHiveBlockEntity.BeeperData(compoundTag.getCompound("EntityData"), compoundTag.getInt("TicksInHive"), compoundTag.getInt("MinOccupationTicks"), compoundTag.getBoolean("isNaked"));
             this.stored.add(beeperData);
         }
 
@@ -332,12 +329,14 @@ public class BeeperHiveBlockEntity extends BlockEntity {
         final CompoundTag entityData;
         int ticksInHive;
         final int minOccupationTicks;
+        boolean isNaked;
 
-        BeeperData(CompoundTag entityData, int ticksInHive, int minOccupationTicks) {
+        BeeperData(CompoundTag entityData, int ticksInHive, int minOccupationTicks, boolean isNaked) {
             BeeperHiveBlockEntity.removeIgnoredBeeperTags(entityData);
             this.entityData = entityData;
             this.ticksInHive = ticksInHive;
             this.minOccupationTicks = minOccupationTicks;
+            this.isNaked = isNaked;
         }
     }
 }
