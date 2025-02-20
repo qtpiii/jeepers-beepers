@@ -8,8 +8,10 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
+import net.qtpi.jeepersbeepers.registry.CompatibilityTagRegistry;
 import net.qtpi.jeepersbeepers.registry.ItemRegistry;
 import net.qtpi.jeepersbeepers.registry.TagRegistry;
 
@@ -25,14 +27,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public void buildRecipes(Consumer<FinishedRecipe> consumer) {
 
         planksFromLog(consumer, BlockRegistry.MIGNONETTE_PLANKS, TagRegistry.Items.MIGNONETTE_LOGS, 4);
-        stairBuilder(BlockRegistry.MIGNONETTE_STAIRS, Ingredient.of(BlockRegistry.MIGNONETTE_PLANKS));
-        slabBuilder(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.MIGNONETTE_SLAB, Ingredient.of(BlockRegistry.MIGNONETTE_PLANKS));
-        buttonBuilder(BlockRegistry.MIGNONETTE_BUTTON, Ingredient.of(BlockRegistry.MIGNONETTE_PLANKS));
-        pressurePlateBuilder(RecipeCategory.REDSTONE, BlockRegistry.MIGNONETTE_PRESSURE_PLATE, Ingredient.of(BlockRegistry.MIGNONETTE_PLANKS));
-        fenceBuilder(BlockRegistry.MIGNONETTE_FENCE, Ingredient.of(BlockRegistry.MIGNONETTE_PLANKS));
-        fenceGateBuilder(BlockRegistry.MIGNONETTE_FENCE_GATE, Ingredient.of(BlockRegistry.MIGNONETTE_PLANKS));
-        doorBuilder(BlockRegistry.MIGNONETTE_DOOR, Ingredient.of(BlockRegistry.MIGNONETTE_PLANKS));
-        trapdoorBuilder(BlockRegistry.MIGNONETTE_TRAPDOOR, Ingredient.of(BlockRegistry.MIGNONETTE_PLANKS));
+        generateRecipes(consumer, BlockRegistry.MIGNONETTE_FAMILY);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.BEEPER_HIVE, 1)
                 .pattern("SSS")
@@ -41,6 +36,46 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .define('S', ItemTags.PLANKS)
                 .define('H', ItemRegistry.SPICY_HONEYCOMB)
                 .unlockedBy("spicy_honeycomb", has(ItemRegistry.SPICY_HONEYCOMB))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemRegistry.BEEKEEPER_HAT, 1)
+                .pattern(" L ")
+                .pattern("SSS")
+                .pattern("LFL")
+                .define('L', Items.LEATHER)
+                .define('S', Items.STRING)
+                .define('F', ItemRegistry.BEEPER_FLUFF)
+                .unlockedBy("beeper_fluff", has(ItemRegistry.BEEPER_FLUFF))
+                .unlockedBy("leather", has(Items.LEATHER))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemRegistry.BEEKEEPER_TUNIC, 1)
+                .pattern("L L")
+                .pattern("LFL")
+                .pattern("LFL")
+                .define('L', Items.LEATHER)
+                .define('F', ItemRegistry.BEEPER_FLUFF)
+                .unlockedBy("beeper_fluff", has(ItemRegistry.BEEPER_FLUFF))
+                .unlockedBy("leather", has(Items.LEATHER))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemRegistry.BEEKEEPER_PANTS, 1)
+                .pattern("LLL")
+                .pattern("L L")
+                .pattern("F F")
+                .define('L', Items.LEATHER)
+                .define('F', ItemRegistry.BEEPER_FLUFF)
+                .unlockedBy("beeper_fluff", has(ItemRegistry.BEEPER_FLUFF))
+                .unlockedBy("leather", has(Items.LEATHER))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemRegistry.BEEKEEPER_BOOTS, 1)
+                .pattern("F F")
+                .pattern("L L")
+                .define('L', Items.LEATHER)
+                .define('F', ItemRegistry.BEEPER_FLUFF)
+                .unlockedBy("beeper_fluff", has(ItemRegistry.BEEPER_FLUFF))
+                .unlockedBy("leather", has(Items.LEATHER))
                 .save(consumer);
     }
 }

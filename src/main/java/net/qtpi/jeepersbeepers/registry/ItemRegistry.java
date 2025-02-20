@@ -4,13 +4,12 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.SpawnEggItem;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
+import net.qtpi.jeepersbeepers.item.BeekeeperArmorItem;
 import net.qtpi.jeepersbeepers.item.SpicyHoneyBottleItem;
 
 public class ItemRegistry {
@@ -22,7 +21,12 @@ public class ItemRegistry {
             6651479, 12567454, new FabricItemSettings()));
     public static final Item BEEPER_FLUFF = registerItem("beeper_fluff", new Item(new FabricItemSettings()));
 
-    private static void addItemsToColoredBlocksTabItemGroup(FabricItemGroupEntries entries) {
+    public static final Item BEEKEEPER_HAT = registerItem("beekeeper_hat", new BeekeeperArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item BEEKEEPER_TUNIC = registerItem("beekeeper_tunic", new BeekeeperArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item BEEKEEPER_PANTS = registerItem("beekeeper_pants", new BeekeeperArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+    public static final Item BEEKEEPER_BOOTS = registerItem("beekeeper_boots", new BeekeeperArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+
+    private static void addItemsToColoredBlocksTab(FabricItemGroupEntries entries) {
         entries.accept(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);
         entries.accept(BlockRegistry.LIGHT_GRAY_BEEPER_FLUFF_BLOCK);
         entries.accept(BlockRegistry.GRAY_BEEPER_FLUFF_BLOCK);
@@ -41,6 +45,50 @@ public class ItemRegistry {
         entries.accept(BlockRegistry.PINK_BEEPER_FLUFF_BLOCK);
     }
 
+    private static void addItemsToCombatTab(FabricItemGroupEntries entries) {
+        entries.accept(ItemRegistry.BEEKEEPER_HAT);
+        entries.accept(ItemRegistry.BEEKEEPER_TUNIC);
+        entries.accept(ItemRegistry.BEEKEEPER_PANTS);
+        entries.accept(ItemRegistry.BEEKEEPER_BOOTS);
+    }
+
+    private static void addItemsToBuildingBlocksTab(FabricItemGroupEntries entries) {
+        entries.accept(BlockRegistry.MIGNONETTE_LOG);
+        entries.accept(BlockRegistry.MIGNONETTE_WOOD);
+        entries.accept(BlockRegistry.STRIPPED_MIGNONETTE_LOG);
+        entries.accept(BlockRegistry.STRIPPED_MIGNONETTE_WOOD);
+        entries.accept(BlockRegistry.MIGNONETTE_PLANKS);
+        entries.accept(BlockRegistry.MIGNONETTE_STAIRS);
+        entries.accept(BlockRegistry.MIGNONETTE_SLAB);
+        entries.accept(BlockRegistry.MIGNONETTE_FENCE);
+        entries.accept(BlockRegistry.MIGNONETTE_FENCE_GATE);
+        entries.accept(BlockRegistry.MIGNONETTE_DOOR);
+        entries.accept(BlockRegistry.MIGNONETTE_TRAPDOOR);
+        entries.accept(BlockRegistry.MIGNONETTE_PRESSURE_PLATE);
+        entries.accept(BlockRegistry.MIGNONETTE_BUTTON);
+    }
+
+    private static void addItemsToSpawnEggsTab(FabricItemGroupEntries entries) {
+        entries.accept(ItemRegistry.BEEPER_SPAWN_EGG);
+    }
+
+    private static void addItemsToFoodAndDrinksTab(FabricItemGroupEntries entries) {
+        entries.accept(ItemRegistry.SPICY_HONEY_BOTTLE);
+    }
+
+    private static void addItemsToIngredientsTab(FabricItemGroupEntries entries) {
+        entries.accept(ItemRegistry.SPICY_HONEYCOMB);
+        entries.accept(ItemRegistry.BEEPER_FLUFF);
+    }
+
+    private static void addItemsToFunctionalBlocksTab(FabricItemGroupEntries entries) {
+        entries.accept(BlockRegistry.BEEPER_HIVE);
+    }
+
+    private static void addItemsToNaturalBlocksTab(FabricItemGroupEntries entries) {
+        entries.accept(BlockRegistry.MIGNONETTE_LEAVES);
+    }
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(JeepersBeepers.MOD_ID, name), item);
     }
@@ -48,6 +96,13 @@ public class ItemRegistry {
     public static void registerModItems() {
         JeepersBeepers.LOGGER.info("Registering Mod Items for " + JeepersBeepers.MOD_ID);
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(ItemRegistry::addItemsToColoredBlocksTabItemGroup);
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(ItemRegistry::addItemsToColoredBlocksTab);
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COMBAT).register(ItemRegistry::addItemsToCombatTab);
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(ItemRegistry::addItemsToBuildingBlocksTab);
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.SPAWN_EGGS).register(ItemRegistry::addItemsToSpawnEggsTab);
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(ItemRegistry::addItemsToFoodAndDrinksTab);
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(ItemRegistry::addItemsToIngredientsTab);
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(ItemRegistry::addItemsToFunctionalBlocksTab);
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(ItemRegistry::addItemsToNaturalBlocksTab);
     }
 }

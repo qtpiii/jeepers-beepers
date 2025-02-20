@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "jeepersbeepers:mignonette_planks"
+    }
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "item": "jeepersbeepers:mignonette_pressure_plate"
+  },
+  "show_notification": true
+}

@@ -26,6 +26,7 @@ public class CompatibilityTagRegistry {
     public static final TagKey<Block> DYED_MAGENTA = conventionalBlockTag("dyed/magenta");
     public static final TagKey<Block> DYED_PINK = conventionalBlockTag("dyed/pink");
 
+
     private static TagKey<Block> conventionalBlockTag(String name) {
         return TagKey.create(Registries.BLOCK, new ResourceLocation("c", name));
     }

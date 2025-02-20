@@ -63,5 +63,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ItemRegistry.SPICY_HONEY_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ItemRegistry.SPICY_HONEYCOMB, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ItemRegistry.BEEPER_FLUFF, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ItemRegistry.BEEKEEPER_HAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ItemRegistry.BEEKEEPER_TUNIC, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ItemRegistry.BEEKEEPER_PANTS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ItemRegistry.BEEKEEPER_BOOTS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(BlockRegistry.MIGNONETTE_FLOWER.asItem(), ModelTemplates.FLAT_ITEM);
     }
 }

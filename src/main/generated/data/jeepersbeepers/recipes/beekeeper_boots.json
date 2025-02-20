@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "F": {
+      "item": "jeepersbeepers:beeper_fluff"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "F F",
+    "L L"
+  ],
+  "result": {
+    "item": "jeepersbeepers:beekeeper_boots"
+  },
+  "show_notification": true
+}

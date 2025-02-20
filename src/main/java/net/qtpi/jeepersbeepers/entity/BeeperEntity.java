@@ -1,6 +1,8 @@
 package net.qtpi.jeepersbeepers.entity;
 
 import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -45,8 +47,10 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
@@ -201,22 +205,22 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     }
 
     protected void registerGoals() {
-        //this.goalSelector.addGoal(0, new BeeperEntity.BeeperAttackGoal(this, this, (double)1.4F, true));
+        this.goalSelector.addGoal(0, new BeeperEntity.BeeperAttackGoal(this, this, (double)1.4F, true));
         //this.goalSelector.addGoal(1, new BeeperEntity.BeeperEnterHiveGoal(this));
-        //this.goalSelector.addGoal(2, new BreedGoal(this, (double)1.0F));
-        //this.goalSelector.addGoal(3, new TemptGoal(this, (double)1.25F, Ingredient.of(TagRegistry.Items.BEEPER_FOOD), false));
+        this.goalSelector.addGoal(2, new BreedGoal(this, (double)1.0F));
+        this.goalSelector.addGoal(3, new TemptGoal(this, (double)1.25F, Ingredient.of(TagRegistry.Items.BEEPER_FOOD), false));
         this.beePollinateGoal = new BeeperEntity.BeeperPollinateGoal(this);
         this.goalSelector.addGoal(4, this.beePollinateGoal);
-        //this.goalSelector.addGoal(5, new FollowParentGoal(this, (double)1.25F));
+        this.goalSelector.addGoal(5, new FollowParentGoal(this, (double)1.25F));
+        this.goalSelector.addGoal(5, new BeeperEntity.BeeperSneezeGoal(this));
         //this.goalSelector.addGoal(5, new BeeperEntity.BeeperLocateHiveGoal(this));
         //this.goToHiveGoal = new BeeperEntity.BeeperGoToHiveGoal(this);
         //this.goalSelector.addGoal(5, this.goToHiveGoal);
         this.goToKnownFlowerGoal = new BeeperEntity.BeeperGoToKnownFlowerGoal(this);
         this.goalSelector.addGoal(6, this.goToKnownFlowerGoal);
         //this.goalSelector.addGoal(7, new BeeperEntity.BeeperGrowCropGoal(this));
-        this.goalSelector.addGoal(8, new BeeperEntity.BeeperSneezeGoal(this));
-        this.goalSelector.addGoal(9, new BeeperEntity.BeeperWanderGoal(this));
-        this.goalSelector.addGoal(10, new FloatGoal(this));
+        this.goalSelector.addGoal(8, new BeeperEntity.BeeperWanderGoal(this));
+        this.goalSelector.addGoal(9, new FloatGoal(this));
         this.targetSelector.addGoal(1, (new BeeperEntity.BeeperHurtByOtherGoal(this, this)).setAlertOthers(new Class[0]));
         this.targetSelector.addGoal(2, new BeeperEntity.BeeperBecomeAngryTargetGoal(this));
         this.targetSelector.addGoal(3, new ResetUniversalAngerTargetGoal<>(this, true));
@@ -263,29 +267,41 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     }
 
     public boolean doHurtTarget(Entity target) {
-        boolean bl = target.hurt(this.damageSources().sting(this), (float)((int)this.getAttributeValue(Attributes.ATTACK_DAMAGE)));
-        if (bl) {
-            this.doEnchantDamageEffects(this, target);
-            if (target instanceof LivingEntity) {
-                ((LivingEntity)target).setStingerCount(((LivingEntity)target).getStingerCount() + 1);
-                int i = 0;
-                if (this.level().getDifficulty() == Difficulty.NORMAL) {
-                    i = 10;
-                } else if (this.level().getDifficulty() == Difficulty.HARD) {
-                    i = 18;
+        Set<Item> entityWornArmor = new ObjectOpenHashSet<>();
+        for (ItemStack stack : target.getArmorSlots()) {
+            entityWornArmor.add(stack.getItem());
+        }
+        if (entityWornArmor.containsAll(ObjectArrayList.of(
+                ItemRegistry.BEEKEEPER_BOOTS,
+                ItemRegistry.BEEKEEPER_PANTS,
+                ItemRegistry.BEEKEEPER_TUNIC,
+                ItemRegistry.BEEKEEPER_HAT))) {
+            return false;
+        } else {
+            boolean bl = target.hurt(this.damageSources().sting(this), (float)((int)this.getAttributeValue(Attributes.ATTACK_DAMAGE)));
+            if (bl) {
+                this.doEnchantDamageEffects(this, target);
+                if (target instanceof LivingEntity) {
+                    ((LivingEntity)target).setStingerCount(((LivingEntity)target).getStingerCount() + 1);
+                    int i = 0;
+                    if (this.level().getDifficulty() == Difficulty.NORMAL) {
+                        i = 10;
+                    } else if (this.level().getDifficulty() == Difficulty.HARD) {
+                        i = 18;
+                    }
+
+                    if (i > 0) {
+                        ((LivingEntity)target).addEffect(new MobEffectInstance(MobEffects.POISON, i * 20, 0), this);
+                    }
                 }
 
-                if (i > 0) {
-                    ((LivingEntity)target).addEffect(new MobEffectInstance(MobEffects.POISON, i * 20, 0), this);
-                }
+                this.setHasStung(true);
+                this.stopBeingAngry();
+                this.playSound(SoundEvents.BEE_STING, 1.0F, 1.0F);
             }
 
-            this.setHasStung(true);
-            this.stopBeingAngry();
-            this.playSound(SoundEvents.BEE_STING, 1.0F, 1.0F);
+            return bl;
         }
-
-        return bl;
     }
 
     public void tick() {
@@ -1303,7 +1319,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         public boolean canBeeperUse() {
             if (BeeperEntity.this.getCropsGrownSincePollination() >= 30) {
                 return false;
-            } else if (BeeperEntity.this.random.nextFloat() < 0.8F) {
+            } else if (BeeperEntity.this.random.nextFloat() < 0.6F) {
                 return false;
             } else {
                 return BeeperEntity.this.hasNectar() && BeeperEntity.this.remainingCooldownBeforeNextSneeze == 0;

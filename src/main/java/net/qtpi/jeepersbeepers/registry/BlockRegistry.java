@@ -5,10 +5,13 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
@@ -16,6 +19,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.block.BeeperFluffBlock;
 import net.qtpi.jeepersbeepers.block.BeeperHiveBlock;
+import net.qtpi.jeepersbeepers.block.WallFlowerBlock;
 
 public class BlockRegistry {
 
@@ -104,6 +108,20 @@ public class BlockRegistry {
     public static final Block MIGNONETTE_TRAPDOOR = registerBlock("mignonette_trapdoor",
             new TrapDoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR)
             .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK));
+
+    public static final Block MIGNONETTE_FLOWER = registerBlock("mignonette_flower",
+            new WallFlowerBlock(MobEffects.REGENERATION, 30, FabricBlockSettings.copyOf(Blocks.LILY_OF_THE_VALLEY).offsetType(BlockBehaviour.OffsetType.NONE)));
+
+    public static final BlockFamily MIGNONETTE_FAMILY = new BlockFamily.Builder(MIGNONETTE_PLANKS)
+            .stairs(MIGNONETTE_STAIRS)
+            .slab(MIGNONETTE_SLAB)
+            .button(MIGNONETTE_BUTTON)
+            .pressurePlate(MIGNONETTE_PRESSURE_PLATE)
+            .fence(MIGNONETTE_FENCE)
+            .fenceGate(MIGNONETTE_FENCE_GATE)
+            .door(MIGNONETTE_DOOR)
+            .trapdoor(MIGNONETTE_TRAPDOOR)
+            .getFamily();
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

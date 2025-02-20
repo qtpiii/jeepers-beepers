@@ -50,6 +50,11 @@ public class TabRegistry {
                         entries.accept(BlockRegistry.MIGNONETTE_FENCE_GATE);
                         entries.accept(BlockRegistry.MIGNONETTE_DOOR);
                         entries.accept(BlockRegistry.MIGNONETTE_TRAPDOOR);
+                        entries.accept(BlockRegistry.MIGNONETTE_FLOWER);
+                        entries.accept(ItemRegistry.BEEKEEPER_HAT);
+                        entries.accept(ItemRegistry.BEEKEEPER_TUNIC);
+                        entries.accept(ItemRegistry.BEEKEEPER_PANTS);
+                        entries.accept(ItemRegistry.BEEKEEPER_BOOTS);
                     }).build());
 
     public static void registerCreativeModeTabs() {

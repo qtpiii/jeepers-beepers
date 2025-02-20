@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=east": [
+      {
+        "model": "jeepersbeepers:block/mignonette_flower",
+        "y": 90
+      }
+    ],
+    "facing=north": [
+      {
+        "model": "jeepersbeepers:block/mignonette_flower"
+      }
+    ],
+    "facing=south": [
+      {
+        "model": "jeepersbeepers:block/mignonette_flower",
+        "y": 180
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "jeepersbeepers:block/mignonette_flower",
+        "y": 270
+      }
+    ]
+  }
+}

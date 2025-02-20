@@ -19,6 +19,7 @@ public class JeepersBeepersClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ParticleRegistry.BEEPER_SNEEZE_POOF, ExplodeParticle.Provider::new);
 
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.MIGNONETTE_LEAVES, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.MIGNONETTE_FLOWER, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.MIGNONETTE_DOOR, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.MIGNONETTE_TRAPDOOR, RenderType.cutout());
     }

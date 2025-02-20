@@ -4,6 +4,11 @@
   "item.jeepersbeepers.beeper_spawn_egg": "Beeper Spawn Egg",
   "item.jeepersbeepers.beeper_fluff": "Beeper Fluff",
 
+  "item.jeepersbeepers.beekeeper_hat": "Beekeeper Hat",
+  "item.jeepersbeepers.beekeeper_tunic": "Beekeeper Tunic",
+  "item.jeepersbeepers.beekeeper_pants": "Beekeeper Pants",
+  "item.jeepersbeepers.beekeeper_boots": "Beekeeper Boots",
+
   "block.jeepersbeepers.beeper_hive": "Beeper Hive",
   "block.jeepersbeepers.beeper_fluff_block": "Beeper Fluff Block",
   "block.jeepersbeepers.white_beeper_fluff_block": "White Beeper Fluff Block",
@@ -28,6 +33,7 @@
   "block.jeepersbeepers.stripped_mignonette_log": "Stripped Mignonette Log",
   "block.jeepersbeepers.stripped_mignonette_wood": "Stripped Mignonette Wood",
   "block.jeepersbeepers.mignonette_leaves": "Mignonette Leaves",
+  "block.jeepersbeepers.mignonette_flower": "Mignonette Flower",
   "block.jeepersbeepers.mignonette_planks": "Mignonette Planks",
 
   "block.jeepersbeepers.mignonette_stairs": "Mignonette Stairs",
