@@ -17,9 +17,9 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
-import net.qtpi.jeepersbeepers.block.BeeperFluffBlock;
-import net.qtpi.jeepersbeepers.block.BeeperHiveBlock;
-import net.qtpi.jeepersbeepers.block.WallFlowerBlock;
+import net.qtpi.jeepersbeepers.block.*;
+
+import java.util.function.Supplier;
 
 public class BlockRegistry {
 
@@ -111,6 +111,24 @@ public class BlockRegistry {
 
     public static final Block MIGNONETTE_FLOWER = registerBlock("mignonette_flower",
             new WallFlowerBlock(MobEffects.REGENERATION, 30, FabricBlockSettings.copyOf(Blocks.LILY_OF_THE_VALLEY).offsetType(BlockBehaviour.OffsetType.NONE)));
+
+    public static final Block BUTTERDEW_SQUASH = registerBlock("butterdew_squash",
+            new ButterdewSquashBlock(FabricBlockSettings.copyOf(Blocks.PUMPKIN)));
+    public static final Block BUTTERDEW_SQUASH_STEM = registerBlock("butterdew_squash_stem",
+            new StemBlock((StemGrownBlock) BUTTERDEW_SQUASH, () -> ItemRegistry.BUTTERDEW_SQUASH_SEEDS,
+                    FabricBlockSettings.copyOf(Blocks.PUMPKIN_STEM)));
+    public static final Block ATTACHED_BUTTERDEW_SQUASH_STEM = registerBlock("attached_butterdew_squash_stem",
+            new AttachedStemBlock((StemGrownBlock) BUTTERDEW_SQUASH, () -> ItemRegistry.BUTTERDEW_SQUASH_SEEDS,
+                    FabricBlockSettings.copyOf(Blocks.ATTACHED_PUMPKIN_STEM)));
+
+    public static final Block CARVED_BUTTERDEW_SQUASH = registerBlock("carved_butterdew_squash",
+            new EquipableCarvedButterdewSquashBlock(FabricBlockSettings.copyOf(Blocks.CARVED_PUMPKIN)));
+    public static final Block BUTTERDEW_LANTERN = registerBlock("butterdew_lantern",
+            new CarvedButterdewSquashBlock(FabricBlockSettings.copyOf(Blocks.JACK_O_LANTERN)));
+    public static final Block CAWVED_BUTTEWDEW_SQUASH = registerBlock("cawved_buttewdew_squash",
+            new EquipableCarvedButterdewSquashBlock(FabricBlockSettings.copyOf(Blocks.CARVED_PUMPKIN)));
+    public static final Block BUTTEWDEW_LANTEWN = registerBlock("buttewdew_lantewn",
+            new CarvedButterdewSquashBlock(FabricBlockSettings.copyOf(Blocks.JACK_O_LANTERN)));
 
     public static final BlockFamily MIGNONETTE_FAMILY = new BlockFamily.Builder(MIGNONETTE_PLANKS)
             .stairs(MIGNONETTE_STAIRS)

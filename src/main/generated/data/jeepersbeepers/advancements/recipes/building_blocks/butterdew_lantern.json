@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "carved_butterdew_squash": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jeepersbeepers:carved_butterdew_squash"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jeepersbeepers:butterdew_lantern"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "carved_butterdew_squash",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jeepersbeepers:butterdew_lantern"
+    ]
+  },
+  "sends_telemetry_event": false
+}

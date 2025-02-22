@@ -1,8 +1,10 @@
 package net.qtpi.jeepersbeepers.registry;
 
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -25,6 +27,8 @@ public class ItemRegistry {
     public static final Item BEEKEEPER_TUNIC = registerItem("beekeeper_tunic", new BeekeeperArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
     public static final Item BEEKEEPER_PANTS = registerItem("beekeeper_pants", new BeekeeperArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
     public static final Item BEEKEEPER_BOOTS = registerItem("beekeeper_boots", new BeekeeperArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+
+    public static final Item BUTTERDEW_SQUASH_SEEDS = registerItem("butterdew_squash_seeds", new ItemNameBlockItem(BlockRegistry.BUTTERDEW_SQUASH_STEM, new FabricItemSettings()));
 
     private static void addItemsToColoredBlocksTab(FabricItemGroupEntries entries) {
         entries.accept(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);
@@ -87,6 +91,12 @@ public class ItemRegistry {
 
     private static void addItemsToNaturalBlocksTab(FabricItemGroupEntries entries) {
         entries.accept(BlockRegistry.MIGNONETTE_LEAVES);
+        entries.accept(ItemRegistry.BUTTERDEW_SQUASH_SEEDS);
+        entries.accept(BlockRegistry.BUTTERDEW_SQUASH);
+        entries.accept(BlockRegistry.CARVED_BUTTERDEW_SQUASH);
+        entries.accept(BlockRegistry.BUTTERDEW_LANTERN);
+        entries.accept(BlockRegistry.CAWVED_BUTTEWDEW_SQUASH);
+        entries.accept(BlockRegistry.BUTTEWDEW_LANTEWN);
     }
 
     private static Item registerItem(String name, Item item) {
@@ -104,5 +114,6 @@ public class ItemRegistry {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(ItemRegistry::addItemsToIngredientsTab);
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(ItemRegistry::addItemsToFunctionalBlocksTab);
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(ItemRegistry::addItemsToNaturalBlocksTab);
+
     }
 }

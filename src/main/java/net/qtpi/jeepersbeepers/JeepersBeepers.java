@@ -29,6 +29,7 @@ public class JeepersBeepers implements ModInitializer {
 		EffectRegistry.registerModEffects();
 		TagRegistry.registerModTags();
 		CompatibilityTagRegistry.registerCompatibilityTags();
+		SoundRegistry.registerModSounds();
 		MiscRegistry.registerMisc();
 
 		FabricDefaultAttributeRegistry.register(EntityRegistry.BEEPER, BeeperEntity.setAttributes());

@@ -29,8 +29,15 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(BlockRegistry.MIGNONETTE_FENCE_GATE);
         dropSelf(BlockRegistry.MIGNONETTE_TRAPDOOR);
 
-        createDoorTable(BlockRegistry.MIGNONETTE_DOOR);
         createSlabItemTable(BlockRegistry.MIGNONETTE_SLAB);
+
+        dropSelf(BlockRegistry.BUTTERDEW_SQUASH);
+        dropSelf(BlockRegistry.CARVED_BUTTERDEW_SQUASH);
+        dropSelf(BlockRegistry.BUTTERDEW_LANTERN);
+        dropSelf(BlockRegistry.CAWVED_BUTTEWDEW_SQUASH);
+        dropSelf(BlockRegistry.BUTTEWDEW_LANTEWN);
+
+        dropSelf(BlockRegistry.MIGNONETTE_FLOWER);
 
         createLeavesDrops(BlockRegistry.MIGNONETTE_LEAVES, BlockRegistry.MIGNONETTE_WOOD, 0.05f);
     }

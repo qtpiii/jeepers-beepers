@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "B": {
+      "item": "jeepersbeepers:cawved_buttewdew_squash"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    }
+  },
+  "pattern": [
+    "B",
+    "T"
+  ],
+  "result": {
+    "item": "jeepersbeepers:buttewdew_lantewn"
+  },
+  "show_notification": true
+}

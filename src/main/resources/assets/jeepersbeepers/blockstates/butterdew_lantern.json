@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "jeepersbeepers:block/butterdew_lantern",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "jeepersbeepers:block/butterdew_lantern"
+    },
+    "facing=south": {
+      "model": "jeepersbeepers:block/butterdew_lantern",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "jeepersbeepers:block/butterdew_lantern",
+      "y": 270
+    }
+  }
+}

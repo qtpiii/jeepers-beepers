@@ -1,0 +1,63 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "dye_beeper_fluff_block",
+  "ingredients": [
+    {
+      "item": "minecraft:blue_dye"
+    },
+    [
+      {
+        "item": "jeepersbeepers:beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:white_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:light_gray_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:gray_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:black_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:brown_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:red_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:orange_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:yellow_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:lime_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:green_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:cyan_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:light_blue_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:purple_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:magenta_beeper_fluff_block"
+      },
+      {
+        "item": "jeepersbeepers:pink_beeper_fluff_block"
+      }
+    ]
+  ],
+  "result": {
+    "item": "jeepersbeepers:blue_beeper_fluff_block"
+  }
+}

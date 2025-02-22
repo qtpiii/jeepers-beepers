@@ -21,7 +21,21 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
-                .add(BlockRegistry.BEEPER_HIVE);
+                .add(BlockRegistry.BEEPER_HIVE)
+                .add(BlockRegistry.BUTTERDEW_SQUASH)
+                .add(BlockRegistry.CARVED_BUTTERDEW_SQUASH)
+                .add(BlockRegistry.BUTTERDEW_LANTERN)
+                .add(BlockRegistry.CAWVED_BUTTEWDEW_SQUASH)
+                .add(BlockRegistry.BUTTEWDEW_LANTEWN)
+                .add(BlockRegistry.MIGNONETTE_PLANKS)
+                .add(BlockRegistry.MIGNONETTE_STAIRS)
+                .add(BlockRegistry.MIGNONETTE_SLAB)
+                .add(BlockRegistry.MIGNONETTE_BUTTON)
+                .add(BlockRegistry.MIGNONETTE_PRESSURE_PLATE)
+                .add(BlockRegistry.MIGNONETTE_FENCE)
+                .add(BlockRegistry.MIGNONETTE_FENCE_GATE)
+                .add(BlockRegistry.MIGNONETTE_DOOR)
+                .add(BlockRegistry.MIGNONETTE_TRAPDOOR);
         getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
                 .add(BlockRegistry.BEEPER_FLUFF_BLOCK);
         getOrCreateTagBuilder(BlockTags.DAMPENS_VIBRATIONS)
@@ -39,7 +53,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.CARROTS);
         getOrCreateTagBuilder(TagRegistry.Blocks.BLOCK_CROPS)
                 .add(Blocks.MELON_STEM)
-                .add(Blocks.PUMPKIN_STEM);
+                .add(Blocks.PUMPKIN_STEM)
+                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM);
         getOrCreateTagBuilder(TagRegistry.Blocks.MULTI_YIELD_CROPS)
                 .add(Blocks.POTATOES)
                 .add(Blocks.CARROTS)
@@ -52,7 +67,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.PITCHER_CROP);
         getOrCreateTagBuilder(TagRegistry.Blocks.FRUIT_CROPS)
                 .add(Blocks.MELON_STEM)
-                .add(Blocks.PUMPKIN_STEM);
+                .add(Blocks.PUMPKIN_STEM)
+                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM);
         getOrCreateTagBuilder(TagRegistry.Blocks.VEGETABLE_CROPS)
                 .add(Blocks.POTATOES)
                 .add(Blocks.CARROTS)
@@ -106,5 +122,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.MIGNONETTE_FENCE);
         getOrCreateTagBuilder(BlockTags.FENCE_GATES)
                 .add(BlockRegistry.MIGNONETTE_FENCE_GATE);
+
+        getOrCreateTagBuilder(BlockTags.CROPS)
+                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM);
+
+        getOrCreateTagBuilder(BlockTags.LEAVES)
+                .add(BlockRegistry.MIGNONETTE_LEAVES);
+
+        getOrCreateTagBuilder(BlockTags.FLOWERS)
+                .add(BlockRegistry.MIGNONETTE_FLOWER);
     }
 }

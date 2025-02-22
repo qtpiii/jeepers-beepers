@@ -1,6 +1,20 @@
 {
   "replace": false,
   "values": [
-    "jeepersbeepers:beeper_hive"
+    "jeepersbeepers:beeper_hive",
+    "jeepersbeepers:butterdew_squash",
+    "jeepersbeepers:carved_butterdew_squash",
+    "jeepersbeepers:butterdew_lantern",
+    "jeepersbeepers:cawved_buttewdew_squash",
+    "jeepersbeepers:buttewdew_lantewn",
+    "jeepersbeepers:mignonette_planks",
+    "jeepersbeepers:mignonette_stairs",
+    "jeepersbeepers:mignonette_slab",
+    "jeepersbeepers:mignonette_button",
+    "jeepersbeepers:mignonette_pressure_plate",
+    "jeepersbeepers:mignonette_fence",
+    "jeepersbeepers:mignonette_fence_gate",
+    "jeepersbeepers:mignonette_door",
+    "jeepersbeepers:mignonette_trapdoor"
   ]
 }

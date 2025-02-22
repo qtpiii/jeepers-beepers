@@ -1,0 +1,29 @@
+{
+  "beeper_sneeze": {
+    "subtitle": "sounds.beeper_sneeze",
+    "sounds": [
+      "jeepersbeepers:beeper_sneeze1",
+      "jeepersbeepers:beeper_sneeze2",
+      "jeepersbeepers:beeper_sneeze3",
+      "jeepersbeepers:beeper_sneeze4",
+      "jeepersbeepers:beeper_sneeze5"
+    ]
+  },
+  "optimus_prime": {
+    "subtitle": "sounds.optimus_prime",
+    "sounds": [
+      "jeepersbeepers:optimus_prime1",
+      "jeepersbeepers:optimus_prime2",
+      "jeepersbeepers:optimus_prime3",
+      "jeepersbeepers:optimus_prime4",
+      "jeepersbeepers:optimus_prime5"
+    ]
+  },
+  "beeper_die": {
+    "subtitle": "sounds.beeper_die",
+    "sounds": [
+      "jeepersbeepers:beeper_death1",
+      "jeepersbeepers:beeper_death2"
+    ]
+  }
+}

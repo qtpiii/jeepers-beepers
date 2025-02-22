@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "jeepersbeepers:block/cawved_buttewdew_squash",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "jeepersbeepers:block/cawved_buttewdew_squash"
+    },
+    "facing=south": {
+      "model": "jeepersbeepers:block/cawved_buttewdew_squash",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "jeepersbeepers:block/cawved_buttewdew_squash",
+      "y": 270
+    }
+  }
+}

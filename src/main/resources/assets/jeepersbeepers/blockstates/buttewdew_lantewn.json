@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "jeepersbeepers:block/buttewdew_lantewn",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "jeepersbeepers:block/buttewdew_lantewn"
+    },
+    "facing=south": {
+      "model": "jeepersbeepers:block/buttewdew_lantewn",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "jeepersbeepers:block/buttewdew_lantewn",
+      "y": 270
+    }
+  }
+}

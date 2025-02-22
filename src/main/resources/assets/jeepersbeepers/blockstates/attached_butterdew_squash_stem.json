@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "jeepersbeepers:block/attached_butterdew_squash_stem",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "jeepersbeepers:block/attached_butterdew_squash_stem"
+    },
+    "facing=south": {
+      "model": "jeepersbeepers:block/attached_butterdew_squash_stem",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "jeepersbeepers:block/attached_butterdew_squash_stem",
+      "y": 270
+    }
+  }
+}

@@ -22,5 +22,8 @@ public class JeepersBeepersClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.MIGNONETTE_FLOWER, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.MIGNONETTE_DOOR, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.MIGNONETTE_TRAPDOOR, RenderType.cutout());
+
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.BUTTERDEW_SQUASH_STEM, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.ATTACHED_BUTTERDEW_SQUASH_STEM, RenderType.cutout());
     }
 }

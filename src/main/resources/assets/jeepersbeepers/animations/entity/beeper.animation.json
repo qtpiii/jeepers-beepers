@@ -554,6 +554,11 @@
 					}
 				}
 			},
+			"sound_effects": {
+				"2.0": {
+					"effect": "sneeze"
+				}
+			},
 			"particle_effects": {
 				"2.0": {
 					"effect": "sneeze"

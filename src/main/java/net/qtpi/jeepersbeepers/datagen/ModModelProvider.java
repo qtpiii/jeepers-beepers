@@ -5,12 +5,8 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.model.ModelTemplates;
-import net.minecraft.data.models.model.TextureMapping;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.registry.ItemRegistry;
-import org.jetbrains.annotations.NotNull;
 
 public class ModModelProvider extends FabricModelProvider {
 
@@ -54,7 +50,6 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockModelGenerators.createDoor(BlockRegistry.MIGNONETTE_DOOR);
         blockModelGenerators.createOrientableTrapdoor(BlockRegistry.MIGNONETTE_TRAPDOOR);
-
     }
 
 

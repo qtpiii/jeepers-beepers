@@ -55,6 +55,12 @@ public class TabRegistry {
                         entries.accept(ItemRegistry.BEEKEEPER_TUNIC);
                         entries.accept(ItemRegistry.BEEKEEPER_PANTS);
                         entries.accept(ItemRegistry.BEEKEEPER_BOOTS);
+                        entries.accept(ItemRegistry.BUTTERDEW_SQUASH_SEEDS);
+                        entries.accept(BlockRegistry.BUTTERDEW_SQUASH);
+                        entries.accept(BlockRegistry.CARVED_BUTTERDEW_SQUASH);
+                        entries.accept(BlockRegistry.BUTTERDEW_LANTERN);
+                        entries.accept(BlockRegistry.CAWVED_BUTTEWDEW_SQUASH);
+                        entries.accept(BlockRegistry.BUTTEWDEW_LANTEWN);
                     }).build());
 
     public static void registerCreativeModeTabs() {

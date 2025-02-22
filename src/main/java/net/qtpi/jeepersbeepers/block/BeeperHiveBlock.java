@@ -110,6 +110,12 @@ public class BeeperHiveBlock extends BaseEntityBlock implements EntityBlock {
         popResource(level, pos, new ItemStack(ItemRegistry.SPICY_HONEYCOMB, 3));
     }
 
+    public static void dropFluff(Level level, BlockPos pos) {
+        for(int i = 0; i < level.random.nextInt(2) + 1; ++i) {
+            popResource(level, pos, new ItemStack(ItemRegistry.BEEPER_FLUFF));
+        }
+    }
+
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getItemInHand(hand);
         int i = (Integer)state.getValue(HONEY_LEVEL);
@@ -134,7 +140,7 @@ public class BeeperHiveBlock extends BaseEntityBlock implements EntityBlock {
                 bl = true;
                 level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
             }
-
+            dropFluff(level, pos);
             if (!level.isClientSide() && bl) {
                 player.awardStat(Stats.ITEM_USED.get(item));
             }

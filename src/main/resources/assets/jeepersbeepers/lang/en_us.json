@@ -9,6 +9,8 @@
   "item.jeepersbeepers.beekeeper_pants": "Beekeeper Pants",
   "item.jeepersbeepers.beekeeper_boots": "Beekeeper Boots",
 
+  "item.jeepersbeepers.butterdew_squash_seeds": "Butterdew Squash Seeds",
+
   "block.jeepersbeepers.beeper_hive": "Beeper Hive",
   "block.jeepersbeepers.beeper_fluff_block": "Beeper Fluff Block",
   "block.jeepersbeepers.white_beeper_fluff_block": "White Beeper Fluff Block",
@@ -45,7 +47,18 @@
   "block.jeepersbeepers.mignonette_door": "Mignonette Door",
   "block.jeepersbeepers.mignonette_trapdoor": "Mignonette Trapdoor",
 
+  "block.jeepersbeepers.butterdew_squash": "Butterdew Squash",
+  "block.jeepersbeepers.carved_butterdew_squash": "Carved Butterdew Squash",
+  "block.jeepersbeepers.butterdew_lantern": "Butterdew Lantern",
+
+  "block.jeepersbeepers.cawved_buttewdew_squash": "Cawved Buttewdew Squash :3",
+  "block.jeepersbeepers.buttewdew_lantewn": "Buttewdew Lantewn :3",
+
   "itemtab.jeepersbeepers": "Jeepers Beepers!",
 
-  "effect.jeepersbeepers.invigoration": "Invigoration"
+  "effect.jeepersbeepers.invigoration": "Invigoration",
+
+  "sounds.beeper_sneeze": "Beeper Sneezes",
+  "sounds.optimus_prime": "Beeper Dubsteps",
+  "sounds.beeper_die": "Beeper Dies"
 }
