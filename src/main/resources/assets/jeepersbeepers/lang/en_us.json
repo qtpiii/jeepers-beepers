@@ -11,6 +11,9 @@
 
   "item.jeepersbeepers.butterdew_squash_seeds": "Butterdew Squash Seeds",
 
+  "item.jeepersbeepers.dragonfruit_seeds": "Dragon Fruit Seeds",
+  "item.jeepersbeepers.dragonfruit": "Dragon Fruit",
+
   "block.jeepersbeepers.beeper_hive": "Beeper Hive",
   "block.jeepersbeepers.beeper_fluff_block": "Beeper Fluff Block",
   "block.jeepersbeepers.white_beeper_fluff_block": "White Beeper Fluff Block",
@@ -53,6 +56,8 @@
 
   "block.jeepersbeepers.cawved_buttewdew_squash": "Cawved Buttewdew Squash :3",
   "block.jeepersbeepers.buttewdew_lantewn": "Buttewdew Lantewn :3",
+
+  "block.jeepersbeepers.dragonfruit_tree": "Dragon Fruit Tree",
 
   "itemtab.jeepersbeepers": "Jeepers Beepers!",
 

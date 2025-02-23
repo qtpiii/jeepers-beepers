@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_needed_dye": {
+    "has_dragonfruit": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:pink_dye"
+              "jeepersbeepers:dragonfruit"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:dye_pink_beeper_fluff_block"
+        "recipe": "minecraft:dragonfruit_seeds_from_dragonfruit"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_needed_dye",
+      "has_dragonfruit",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:dye_pink_beeper_fluff_block"
+      "minecraft:dragonfruit_seeds_from_dragonfruit"
     ]
   },
   "sends_telemetry_event": false

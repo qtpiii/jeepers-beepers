@@ -35,7 +35,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.MIGNONETTE_FENCE)
                 .add(BlockRegistry.MIGNONETTE_FENCE_GATE)
                 .add(BlockRegistry.MIGNONETTE_DOOR)
-                .add(BlockRegistry.MIGNONETTE_TRAPDOOR);
+                .add(BlockRegistry.MIGNONETTE_TRAPDOOR)
+                .add(BlockRegistry.DRAGONFRUIT_TREE);
         getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
                 .add(BlockRegistry.BEEPER_FLUFF_BLOCK);
         getOrCreateTagBuilder(BlockTags.DAMPENS_VIBRATIONS)
@@ -47,7 +48,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.MELON_STEM)
                 .add(Blocks.PUMPKIN_STEM)
                 .add(Blocks.TORCHFLOWER_CROP)
-                .add(Blocks.PITCHER_CROP);
+                .add(Blocks.PITCHER_CROP)
+                .add(BlockRegistry.DRAGONFRUIT_TREE);
         getOrCreateTagBuilder(TagRegistry.Blocks.SEEDLESS_CROPS)
                 .add(Blocks.POTATOES)
                 .add(Blocks.CARROTS);
@@ -58,7 +60,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(TagRegistry.Blocks.MULTI_YIELD_CROPS)
                 .add(Blocks.POTATOES)
                 .add(Blocks.CARROTS)
-                .add(Blocks.BEETROOTS);
+                .add(Blocks.BEETROOTS)
+                .add(BlockRegistry.DRAGONFRUIT_TREE);
         getOrCreateTagBuilder(TagRegistry.Blocks.SINGLE_YIELD_CROPS)
                 .add(Blocks.WHEAT)
                 .add(Blocks.MELON_STEM)
@@ -68,7 +71,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(TagRegistry.Blocks.FRUIT_CROPS)
                 .add(Blocks.MELON_STEM)
                 .add(Blocks.PUMPKIN_STEM)
-                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM);
+                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
+                .add(BlockRegistry.DRAGONFRUIT_TREE);
         getOrCreateTagBuilder(TagRegistry.Blocks.VEGETABLE_CROPS)
                 .add(Blocks.POTATOES)
                 .add(Blocks.CARROTS)

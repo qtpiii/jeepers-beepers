@@ -32,6 +32,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         planksFromLog(consumer, BlockRegistry.MIGNONETTE_PLANKS, TagRegistry.Items.MIGNONETTE_LOGS, 4);
         generateRecipes(consumer, BlockRegistry.MIGNONETTE_FAMILY);
 
+        oneToOneConversionRecipe(consumer, ItemRegistry.DRAGONFRUIT_SEEDS, ItemRegistry.DRAGONFRUIT, "dragonfruit_seeds", 4);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.BUTTERDEW_LANTERN, 1)
                 .pattern("B")
                 .pattern("T")

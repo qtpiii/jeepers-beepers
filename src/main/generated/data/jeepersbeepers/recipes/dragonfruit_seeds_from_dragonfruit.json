@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "dragonfruit_seeds",
+  "ingredients": [
+    {
+      "item": "jeepersbeepers:dragonfruit"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "jeepersbeepers:dragonfruit_seeds"
+  }
+}
