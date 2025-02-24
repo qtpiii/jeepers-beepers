@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "jeepersbeepers:block/flowering_mignonette_sapling"
+  }
+}

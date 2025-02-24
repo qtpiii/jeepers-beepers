@@ -19,13 +19,15 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.block.*;
+import net.qtpi.jeepersbeepers.world.tree.FloweringMignonetteTreeGrower;
 import net.qtpi.jeepersbeepers.world.tree.MignonetteTreeGrower;
 
 import java.util.function.Supplier;
 
 public class BlockRegistry {
 
-    public static final Block BEEPER_HIVE = registerBlock("beeper_hive", new BeeperHiveBlock(FabricBlockSettings.copyOf(Blocks.BEEHIVE)), true);
+    public static final Block BEEPER_HIVE = registerBlock("beeper_hive", new BeeperHiveBlock(FabricBlockSettings.copyOf(Blocks.BEEHIVE).mapColor(MapColor.GLOW_LICHEN)), true);
+    public static final Block BEEPER_NEST = registerBlock("beeper_nest", new BeeperHiveBlock(FabricBlockSettings.copyOf(Blocks.BEE_NEST).mapColor(MapColor.STONE)), true);
 
     public static final Block BEEPER_FLUFF_BLOCK = registerBlock("beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
             .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.GLOW_LICHEN).strength(0.6f).sound(SoundType.WOOL)), true);
@@ -113,6 +115,8 @@ public class BlockRegistry {
 
     public static final Block MIGNONETTE_SAPLING = registerBlock("mignonette_sapling",
             new SaplingBlock(new MignonetteTreeGrower(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), true);
+    public static final Block FLOWERING_MIGNONETTE_SAPLING = registerBlock("flowering_mignonette_sapling",
+            new SaplingBlock(new FloweringMignonetteTreeGrower(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), true);
 
     public static final Block MIGNONETTE_FLOWER = registerBlock("mignonette_flower",
             new WallFlowerBlock(MobEffects.REGENERATION, 30,

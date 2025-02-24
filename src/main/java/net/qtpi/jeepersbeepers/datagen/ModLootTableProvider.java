@@ -15,6 +15,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         dropSelf(BlockRegistry.BEEPER_FLUFF_BLOCK);
         dropSelf(BlockRegistry.BEEPER_HIVE);
+        dropWhenSilkTouch(BlockRegistry.BEEPER_NEST);
 
         dropSelf(BlockRegistry.MIGNONETTE_LOG);
         dropSelf(BlockRegistry.MIGNONETTE_WOOD);
@@ -22,6 +23,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(BlockRegistry.STRIPPED_MIGNONETTE_WOOD);
         dropSelf(BlockRegistry.MIGNONETTE_PLANKS);
         dropSelf(BlockRegistry.MIGNONETTE_SAPLING);
+        dropSelf(BlockRegistry.FLOWERING_MIGNONETTE_SAPLING);
 
         dropSelf(BlockRegistry.MIGNONETTE_STAIRS);
         dropSelf(BlockRegistry.MIGNONETTE_BUTTON);

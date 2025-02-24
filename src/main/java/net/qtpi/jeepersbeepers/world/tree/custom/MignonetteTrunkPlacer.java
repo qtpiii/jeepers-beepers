@@ -13,9 +13,10 @@ import net.minecraft.world.level.levelgen.feature.configurations.TreeConfigurati
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
-import net.qtpi.jeepersbeepers.registry.TrunkPlacerRegistry;
+import net.minecraft.world.phys.Vec2;
+import net.qtpi.jeepersbeepers.registry.WorldGenRegistry;
 
-import java.util.List;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
@@ -29,7 +30,7 @@ public class MignonetteTrunkPlacer extends TrunkPlacer {
 
     @Override
     protected TrunkPlacerType<?> type() {
-        return TrunkPlacerRegistry.MIGNONETTE_TRUNK_PLACER;
+        return WorldGenRegistry.MIGNONETTE_TRUNK_PLACER;
     }
 
     @Override
@@ -39,33 +40,45 @@ public class MignonetteTrunkPlacer extends TrunkPlacer {
         int initialHeight_ = baseHeight;
         int height_ = baseHeight + random.nextIntBetweenInclusive(heightRandA, heightRandB);
 
-        list.add(new FoliagePlacer.FoliageAttachment(pos.above(height_), 1, false));
+        list.add(new FoliagePlacer.FoliageAttachment(pos.above(height_ - 1), 1, false));
 
         for (int i = 0; i < height_; i++) {
             placeLog(level, blockSetter, random, pos.above(i), config);
         }
-
+        HashMap<Vec2, Boolean> directionsChosen = new HashMap<>();
+        List<Vec2> directions = new ArrayList<>();
+        directions.add(new Vec2(1, 1));
+        directions.add(new Vec2(-1, 1));
+        directions.add(new Vec2(1, -1));
+        directions.add(new Vec2(-1, -1));
+        for (Vec2 direction : directions) {
+            directionsChosen.put(direction, false);
+        }
+        Collections.shuffle(directions);
         for (int i = 0; i < initialHeight_; i++) {
-            if (i > 2 && i % 2 == 1) {
-                if (random.nextFloat() > 0.25) {
-                    int offsetA = random.nextBoolean() ? 1 : -1;
-                    int offsetB = random.nextBoolean() ? 1 : -1;
-                    int j = random.nextInt(2);
-                    for (int k = 0; k <= j; k++) {
-                        int offsetAddA = offsetA < 0 ? k * -1 : k;
-                        int offsetAddB = offsetB < 0 ? k * -1 : k;
-                        blockSetter.accept(pos.above(i).offset(offsetA + offsetAddA, k, offsetB + offsetAddB),
-                                (BlockState) Function.identity().apply(config.trunkProvider
-                                        .getState(random, pos.above(i).offset(offsetA + offsetAddA, k, offsetB + offsetAddB))
-                                        .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y)));
-                        if (k == j) {
-                            list.add(new FoliagePlacer.FoliageAttachment(pos.above(i).offset(offsetA + offsetAddA, k, offsetB + offsetAddB), 0, false));
-                        }
+            if (i < 2) continue;
+            if (random.nextFloat() > 0.25) {
+                Vec2 offset = Vec2.ZERO;
+                for (Vec2 direction : directions) {
+                    if (!directionsChosen.get(direction)) {
+                        offset = direction;
+                        directionsChosen.put(direction, true);
+                        break;
+                    }
+                }
+                for (int k = 0; k <= 1; k++) {
+                    int offsetAddX = offset.x < 0 ? k * -1 : k;
+                    int offsetAddY = offset.y < 0 ? k * -1 : k;
+                    blockSetter.accept(pos.above(i).offset((int) (offset.x + offsetAddX), k, (int) (offset.y + offsetAddY)),
+                            (BlockState) Function.identity().apply(config.trunkProvider
+                                    .getState(random, pos.above(i).offset((int) (offset.x + offsetAddX), k, (int) (offset.y + offsetAddY)))
+                                    .setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y)));
+                    if (k == 1) {
+                        list.add(new FoliagePlacer.FoliageAttachment(pos.above(i).offset((int) (offset.x + offsetAddX), k, (int) (offset.y + offsetAddY)), 0, false));
                     }
                 }
             }
         }
-
         return list;
     }
 }

@@ -52,6 +52,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createOrientableTrapdoor(BlockRegistry.MIGNONETTE_TRAPDOOR);
 
         blockModelGenerators.createCrossBlockWithDefaultItem(BlockRegistry.MIGNONETTE_SAPLING, BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlockWithDefaultItem(BlockRegistry.FLOWERING_MIGNONETTE_SAPLING, BlockModelGenerators.TintState.NOT_TINTED);
     }
 
 

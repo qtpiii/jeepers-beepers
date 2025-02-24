@@ -1,12 +1,12 @@
 package net.qtpi.jeepersbeepers.world;
 
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -14,33 +14,57 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AlterGroundDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
+import net.qtpi.jeepersbeepers.block.WallFlowerBlock;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
+import net.qtpi.jeepersbeepers.world.tree.custom.BeeperNestDecorator;
 import net.qtpi.jeepersbeepers.world.tree.custom.MignonetteFoliagePlacer;
 import net.qtpi.jeepersbeepers.world.tree.custom.MignonetteTrunkPlacer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> MIGNONETTE_KEY = registerKey("mignonette");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOWERING_MIGNONETTE_KEY = registerKey("flowering_mignonette");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<Block> holderGetter = context.lookup(Registries.BLOCK);
         register(context, MIGNONETTE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(BlockRegistry.MIGNONETTE_LOG),
-                new MignonetteTrunkPlacer(6, 1, 2),
+                new MignonetteTrunkPlacer(5, 2, 3),
 
                 BlockStateProvider.simple(BlockRegistry.MIGNONETTE_LEAVES),
-                new MignonetteFoliagePlacer(UniformInt.of(1, 2), ConstantInt.of(0)),
+                new MignonetteFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
 
                 new TwoLayersFeatureSize(1, 0, 2))
                 .decorators(List.of(new AlterGroundDecorator(BlockStateProvider.simple(Blocks.DIRT)))).build());
+
+        register(context, FLOWERING_MIGNONETTE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(BlockRegistry.MIGNONETTE_LOG),
+                new MignonetteTrunkPlacer(5, 2, 3),
+
+                BlockStateProvider.simple(BlockRegistry.MIGNONETTE_LEAVES),
+                new MignonetteFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
+
+                new TwoLayersFeatureSize(1, 0, 2))
+                .decorators(List.of(new AlterGroundDecorator(BlockStateProvider.simple(Blocks.DIRT)),
+                        new AttachedToLeavesDecorator(0.25F, 1, 1,
+                                BlockStateProvider.simple(BlockRegistry.MIGNONETTE_FLOWER.defaultBlockState().setValue(WallFlowerBlock.FACING, Direction.EAST)),
+                                5, List.of(Direction.EAST)),
+                        new AttachedToLeavesDecorator(0.25F, 1, 1,
+                                BlockStateProvider.simple(BlockRegistry.MIGNONETTE_FLOWER.defaultBlockState().setValue(WallFlowerBlock.FACING, Direction.WEST)),
+                                5, List.of(Direction.WEST)),
+                        new AttachedToLeavesDecorator(0.25F, 1, 1,
+                                BlockStateProvider.simple(BlockRegistry.MIGNONETTE_FLOWER.defaultBlockState().setValue(WallFlowerBlock.FACING, Direction.SOUTH)),
+                                5, List.of(Direction.SOUTH)),
+                        new AttachedToLeavesDecorator(0.25F, 1, 1,
+                                BlockStateProvider.simple(BlockRegistry.MIGNONETTE_FLOWER.defaultBlockState().setValue(WallFlowerBlock.FACING, Direction.NORTH)),
+                                5, List.of(Direction.NORTH)),
+                        new BeeperNestDecorator(0.04F))).build());
 
     }
 

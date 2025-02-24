@@ -22,6 +22,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     protected void addTags(HolderLookup.Provider provider) {
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
                 .add(BlockRegistry.BEEPER_HIVE)
+                .add(BlockRegistry.BEEPER_NEST)
                 .add(BlockRegistry.BUTTERDEW_SQUASH)
                 .add(BlockRegistry.CARVED_BUTTERDEW_SQUASH)
                 .add(BlockRegistry.BUTTERDEW_LANTERN)

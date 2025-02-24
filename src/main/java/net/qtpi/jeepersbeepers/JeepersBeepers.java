@@ -4,7 +4,7 @@ import net.fabricmc.api.ModInitializer;
 
 import net.qtpi.jeepersbeepers.registry.*;
 import net.qtpi.jeepersbeepers.world.gen.ModWorldGeneration;
-import net.qtpi.jeepersbeepers.registry.TrunkPlacerRegistry;
+import net.qtpi.jeepersbeepers.registry.WorldGenRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,8 +24,7 @@ public class JeepersBeepers implements ModInitializer {
 		CompatibilityTagRegistry.registerCompatibilityTags();
 		SoundRegistry.registerModSounds();
 		MiscRegistry.registerMisc();
-		TrunkPlacerRegistry.register();
-		FoliagePlacerRegistry.register();
+		WorldGenRegistry.register();
 
 		ModWorldGeneration.generateModWorldGen();
 	}

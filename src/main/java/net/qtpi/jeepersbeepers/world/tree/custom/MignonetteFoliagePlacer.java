@@ -2,14 +2,15 @@ package net.qtpi.jeepersbeepers.world.tree.custom;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
-import net.qtpi.jeepersbeepers.registry.FoliagePlacerRegistry;
+import net.qtpi.jeepersbeepers.registry.WorldGenRegistry;
 
 public class MignonetteFoliagePlacer extends FoliagePlacer {
     public static final Codec<MignonetteFoliagePlacer> CODEC = RecordCodecBuilder.create(mignonetteFoliagePlacerInstance ->
@@ -20,23 +21,38 @@ public class MignonetteFoliagePlacer extends FoliagePlacer {
 
     @Override
     protected FoliagePlacerType<?> type() {
-        return FoliagePlacerRegistry.MIGNONETTE_FOLIAGE_PLACER;
+        return WorldGenRegistry.MIGNONETTE_FOLIAGE_PLACER;
     }
 
     @Override
     protected void createFoliage(LevelSimulatedReader level, FoliageSetter blockSetter, RandomSource random, TreeConfiguration config, int maxFreeTreeHeight, FoliageAttachment attachment, int foliageHeight, int foliageRadius, int offset) {
-        int radius_sample = radius.sample(random);
-        int height_ = radius_sample * 2 + attachment.radiusOffset();
-        int radius_ = radius_sample + attachment.radiusOffset();
-        for (int i = 0; i <= height_ ; i++) {
-            if (i == 0) {
-                placeLeavesRow(level, blockSetter, random, config, attachment.pos().above(i), radius_ - 1, offset - 1, attachment.doubleTrunk());
-            } else if (i == height_) {
-                placeLeavesRow(level, blockSetter, random, config, attachment.pos().above(i), radius_ - 1, offset - 1, attachment.doubleTrunk());
-            } else {
-                placeLeavesRow(level, blockSetter, random, config, attachment.pos().above(i), radius_, offset - 1, attachment.doubleTrunk());
-            }
+        int radius_ = radius.sample(random) + attachment.radiusOffset();
+        placeLeafSphere(level, blockSetter, random, config, attachment.pos(), radius_, attachment.doubleTrunk());
+    }
 
+    protected void placeLeafSphere(
+            LevelSimulatedReader level,
+            FoliagePlacer.FoliageSetter foliageSetter,
+            RandomSource random,
+            TreeConfiguration treeConfiguration,
+            BlockPos pos,
+            int range,
+            boolean large
+    ) {
+        int i = large ? 1 : 0;
+        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
+
+        for (int j = -range; j <= range + i; j++) {
+            for (int k = -range; k <= range + i; k++) {
+                for (int l = -range; l <= range + i; l++) {
+                    if (!this.shouldSkipLocationSigned(random, j, k, l, range, large)) {
+                        mutableBlockPos.setWithOffset(pos, j, k, l);
+                        if (mutableBlockPos.distManhattan(new Vec3i(pos.getX(), pos.getY(), pos.getZ())) <= range + 1) {
+                            tryPlaceLeaf(level, foliageSetter, random, treeConfiguration, mutableBlockPos);
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -47,6 +63,6 @@ public class MignonetteFoliagePlacer extends FoliagePlacer {
 
     @Override
     protected boolean shouldSkipLocation(RandomSource random, int localX, int localY, int localZ, int range, boolean large) {
-        return localX == range && localZ == range && range > 0;
+        return false;
     }
 }

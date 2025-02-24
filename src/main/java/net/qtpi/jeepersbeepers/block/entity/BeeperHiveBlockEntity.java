@@ -150,7 +150,7 @@ public class BeeperHiveBlockEntity extends BlockEntity {
     }
 
     public void storeBeeper(CompoundTag entityData, int ticksInHive, boolean hasNectar, boolean isNaked) {
-        this.stored.add(new BeeperHiveBlockEntity.BeeperData(entityData, ticksInHive, hasNectar ? 2400 : (isNaked ? 200 : 600), isNaked));
+        this.stored.add(new BeeperHiveBlockEntity.BeeperData(entityData, ticksInHive, hasNectar ? 2400 : (isNaked ? 1200 : 600), isNaked));
     }
 
     private static boolean releaseOccupant(Level level, BlockPos pos, BlockState state, BeeperHiveBlockEntity.BeeperData data, @Nullable List<Entity> storedInHives, BeeperHiveBlockEntity.BeeperReleaseStatus releaseStatus, @Nullable BlockPos savedFlowerPos) {

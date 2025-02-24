@@ -14,7 +14,7 @@ import net.qtpi.jeepersbeepers.entity.BeeperEntity;
 public class MiscRegistry {
 
     public static final ResourceKey<PoiType> BEEPER_HIVE_POI_KEY = ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, ResourceLocation.tryBuild(JeepersBeepers.MOD_ID, "beeper_hive"));
-    public static final PoiType BEEPER_HIVE_POI = PointOfInterestHelper.register(ResourceLocation.tryBuild(JeepersBeepers.MOD_ID, "beeper_hive"), 0, 1, BlockRegistry.BEEPER_HIVE);
+    public static final PoiType BEEPER_HIVE_POI = PointOfInterestHelper.register(ResourceLocation.tryBuild(JeepersBeepers.MOD_ID, "beeper_hive"), 0, 1, BlockRegistry.BEEPER_HIVE, BlockRegistry.BEEPER_NEST);
 
     public static void registerMisc() {
         JeepersBeepers.LOGGER.info("Registering Misc for " + JeepersBeepers.MOD_ID);

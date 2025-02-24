@@ -8,6 +8,7 @@
     "DigSpeedMixins",
     "FoliagePlacerTypeInvoker",
     "HeartMixins",
+    "TreeDecoratorTypeInvoker",
     "TrunkPlacerTypeInvoker"
   ],
   "injectors": {

@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-23T19:07:57.9918457	Jeepers Beepers!/Block Loot Tables
+// 1.20.1	2025-02-23T23:31:03.0464871	Jeepers Beepers!/Block Loot Tables
 8a66fd5cda9e6b70c45076d84bcbb68c9e533be3 data\jeepersbeepers\loot_tables\blocks\mignonette_sapling.json
 0ef4d7ac59a68fe4f70c36bb844ce5c605ae8826 data\jeepersbeepers\loot_tables\blocks\mignonette_planks.json
 b49e72a1784bb6e694332cb0cd20a9e0b1359e58 data\jeepersbeepers\loot_tables\blocks\mignonette_button.json
@@ -10,6 +10,8 @@ e915794d1e90aba28ac13c90c71deabfca20e99d data\jeepersbeepers\loot_tables\blocks\
 4bed39906928d29592a81cc17e8d6a2f95a113c0 data\jeepersbeepers\loot_tables\blocks\carved_butterdew_squash.json
 52b754a68e7283e30f38232867e4b79452727c28 data\jeepersbeepers\loot_tables\blocks\mignonette_stairs.json
 d3c60737be95d81912fb55a9699de6f3c71d6b57 data\jeepersbeepers\loot_tables\blocks\stripped_mignonette_wood.json
+84df19c80419a81596a98c0b11a64e105f7a4541 data\jeepersbeepers\loot_tables\blocks\beeper_nest.json
+08b42133c61fd335003428ab75e5afd051632cf4 data\jeepersbeepers\loot_tables\blocks\flowering_mignonette_sapling.json
 6dcfb2715511c7ecede315b455dac798683185af data\jeepersbeepers\loot_tables\blocks\butterdew_lantern.json
 e8549a72cb76c8810a2fa4faad5cbcfa56a2c01d data\jeepersbeepers\loot_tables\blocks\beeper_hive.json
 bfdfc8a43e839ffb35cd770836d5c238ac62cd88 data\jeepersbeepers\loot_tables\blocks\stripped_mignonette_log.json

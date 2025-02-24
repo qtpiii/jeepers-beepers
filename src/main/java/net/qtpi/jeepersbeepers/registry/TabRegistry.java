@@ -36,6 +36,7 @@ public class TabRegistry {
                         entries.accept(BlockRegistry.MAGENTA_BEEPER_FLUFF_BLOCK);
                         entries.accept(BlockRegistry.PINK_BEEPER_FLUFF_BLOCK);
                         entries.accept(BlockRegistry.BEEPER_HIVE);
+                        entries.accept(BlockRegistry.BEEPER_NEST);
                         entries.accept(BlockRegistry.MIGNONETTE_LOG);
                         entries.accept(BlockRegistry.MIGNONETTE_WOOD);
                         entries.accept(BlockRegistry.STRIPPED_MIGNONETTE_LOG);
@@ -58,6 +59,7 @@ public class TabRegistry {
                         entries.accept(ItemRegistry.BUTTERDEW_SQUASH_SEEDS);
                         entries.accept(ItemRegistry.DRAGONFRUIT_SEEDS);
                         entries.accept(BlockRegistry.MIGNONETTE_SAPLING);
+                        entries.accept(BlockRegistry.FLOWERING_MIGNONETTE_SAPLING);
                         entries.accept(BlockRegistry.BUTTERDEW_SQUASH);
                         entries.accept(BlockRegistry.CARVED_BUTTERDEW_SQUASH);
                         entries.accept(BlockRegistry.BUTTERDEW_LANTERN);
