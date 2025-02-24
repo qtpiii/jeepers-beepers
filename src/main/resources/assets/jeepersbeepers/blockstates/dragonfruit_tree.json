@@ -21,10 +21,7 @@
     "age=6": {
       "model": "jeepersbeepers:block/dragonfruit_tree"
     },
-	"age=7,has_fruit=false": {
-	  "model": "jeepersbeepers:block/dragonfruit_tree"
-	},
-    "age=7,has_fruit=true": {
+    "age=7": {
 	  "model": "jeepersbeepers:block/dragonfruit_tree_fruit"
 	}
   }

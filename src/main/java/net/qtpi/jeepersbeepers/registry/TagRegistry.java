@@ -22,6 +22,7 @@ public class TagRegistry {
         public static final TagKey<Block> VEGETABLE_CROPS = createTag("vegetable_crops");
         public static final TagKey<Block> ANCIENT_CROPS = createTag("ancient_crops");
         public static final TagKey<Block> GRAIN_CROPS = createTag("grain_crops");
+        public static final TagKey<Block> CROSSBRED_CROPS = createTag("crossbred_crops");
 
         public static final TagKey<Block> BEEPER_HIVES = createTag("beeper_hives");
 

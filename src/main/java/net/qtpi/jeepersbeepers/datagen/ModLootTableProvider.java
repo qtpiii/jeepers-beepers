@@ -21,6 +21,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(BlockRegistry.STRIPPED_MIGNONETTE_LOG);
         dropSelf(BlockRegistry.STRIPPED_MIGNONETTE_WOOD);
         dropSelf(BlockRegistry.MIGNONETTE_PLANKS);
+        dropSelf(BlockRegistry.MIGNONETTE_SAPLING);
 
         dropSelf(BlockRegistry.MIGNONETTE_STAIRS);
         dropSelf(BlockRegistry.MIGNONETTE_BUTTON);
@@ -38,7 +39,5 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(BlockRegistry.BUTTEWDEW_LANTEWN);
 
         dropSelf(BlockRegistry.MIGNONETTE_FLOWER);
-
-        createLeavesDrops(BlockRegistry.MIGNONETTE_LEAVES, BlockRegistry.MIGNONETTE_WOOD, 0.05f);
     }
 }

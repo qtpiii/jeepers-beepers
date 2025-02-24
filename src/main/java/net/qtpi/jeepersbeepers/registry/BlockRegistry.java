@@ -19,6 +19,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.block.*;
+import net.qtpi.jeepersbeepers.world.tree.MignonetteTreeGrower;
 
 import java.util.function.Supplier;
 
@@ -110,6 +111,9 @@ public class BlockRegistry {
             new TrapDoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR)
             .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK), true);
 
+    public static final Block MIGNONETTE_SAPLING = registerBlock("mignonette_sapling",
+            new SaplingBlock(new MignonetteTreeGrower(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), true);
+
     public static final Block MIGNONETTE_FLOWER = registerBlock("mignonette_flower",
             new WallFlowerBlock(MobEffects.REGENERATION, 30,
                     FabricBlockSettings.copyOf(Blocks.LILY_OF_THE_VALLEY).offsetType(BlockBehaviour.OffsetType.NONE)), true);
@@ -133,8 +137,7 @@ public class BlockRegistry {
             new CarvedButterdewSquashBlock(FabricBlockSettings.copyOf(Blocks.JACK_O_LANTERN)), true);
 
     public static final Block DRAGONFRUIT_TREE = registerBlock("dragonfruit_tree",
-            new DragonFruitTreeBlock(() -> ItemRegistry.DRAGONFRUIT_SEEDS,
-                    FabricBlockSettings.create().mapColor(MapColor.PLANT).sound(SoundType.AZALEA)
+            new DragonFruitTreeBlock(FabricBlockSettings.create().mapColor(MapColor.PLANT).sound(SoundType.AZALEA)
                             .requiresCorrectToolForDrops().strength(0.2F).pushReaction(PushReaction.DESTROY).forceSolidOff()), true);
 
     public static final BlockFamily MIGNONETTE_FAMILY = new BlockFamily.Builder(MIGNONETTE_PLANKS)

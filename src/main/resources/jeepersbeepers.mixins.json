@@ -6,7 +6,9 @@
     "BeekeeperSuitMixins",
     "BeeperDyeMixins",
     "DigSpeedMixins",
-    "HeartMixins"
+    "FoliagePlacerTypeInvoker",
+    "HeartMixins",
+    "TrunkPlacerTypeInvoker"
   ],
   "injectors": {
     "defaultRequire": 1

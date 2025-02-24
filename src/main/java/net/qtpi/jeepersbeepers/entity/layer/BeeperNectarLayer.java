@@ -20,7 +20,7 @@ public class BeeperNectarLayer extends GeoRenderLayer<BeeperEntity> {
     @Override
     public void render(PoseStack poseStack, BeeperEntity entity, BakedGeoModel bakedModel, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
         if (!entity.isNaked() && entity.hasNectar()) {
-            RenderType nectarLayer = RenderType.entityCutoutNoCull(TEXTURE);
+            RenderType nectarLayer = RenderType.entityTranslucentCull(TEXTURE);
             getRenderer().reRender(getDefaultBakedModel(entity), poseStack, bufferSource, entity, nectarLayer,
                     bufferSource.getBuffer(nectarLayer), partialTick, packedLight, packedOverlay, 1, 1, 1, 1);
         }

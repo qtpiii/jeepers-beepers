@@ -2,9 +2,11 @@ package net.qtpi.jeepersbeepers.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.DyeColor;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.entity.BeeperEntity;
 import net.qtpi.jeepersbeepers.entity.layer.BeeperFluffLayer;
@@ -27,8 +29,12 @@ public class BeeperRenderer extends GeoEntityRenderer<BeeperEntity> {
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(@NotNull BeeperEntity entity) {
-        if (angry) { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_angry.png"); }
-        else { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper.png"); }
+        String string = ChatFormatting.stripFormatting(entity.getName().getString());
+        if ("Glommer".equals(string) && entity.hasColor() && entity.getColor() == DyeColor.PURPLE) {
+            return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_glommer.png");
+        } else if (angry) {
+            return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_angry.png");
+        } else { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper.png"); }
     }
 
     @Override

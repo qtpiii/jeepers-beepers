@@ -82,6 +82,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.PITCHER_CROP);
         getOrCreateTagBuilder(TagRegistry.Blocks.GRAIN_CROPS)
                 .add(Blocks.WHEAT);
+        getOrCreateTagBuilder(TagRegistry.Blocks.CROSSBRED_CROPS)
+                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
+                .add(BlockRegistry.DRAGONFRUIT_TREE);
 
         getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_WHITE)
                 .add(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);
@@ -128,7 +131,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.MIGNONETTE_FENCE_GATE);
 
         getOrCreateTagBuilder(BlockTags.CROPS)
-                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM);
+                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
+                .add(BlockRegistry.DRAGONFRUIT_TREE);
 
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(BlockRegistry.MIGNONETTE_LEAVES);

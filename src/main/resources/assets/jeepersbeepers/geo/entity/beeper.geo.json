@@ -90,17 +90,17 @@
 				{
 					"name": "wingL",
 					"parent": "main",
-					"pivot": [4, 9, 0],
+					"pivot": [3, 9, 0],
 					"cubes": [
-						{"origin": [4, 9, -2], "size": [6, 0, 4], "uv": [42, 33]}
+						{"origin": [3, 9, -2], "size": [8, 0, 4], "uv": [42, 33]}
 					]
 				},
 				{
 					"name": "wingR",
 					"parent": "main",
-					"pivot": [-4, 9, 0],
+					"pivot": [-3, 9, 0],
 					"cubes": [
-						{"origin": [-10, 9, -2], "size": [6, 0, 4], "uv": [42, 33], "mirror": true}
+						{"origin": [-11, 9, -2], "size": [8, 0, 4], "uv": [42, 33], "mirror": true}
 					]
 				}
 			]

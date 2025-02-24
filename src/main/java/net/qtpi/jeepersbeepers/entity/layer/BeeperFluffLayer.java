@@ -22,7 +22,7 @@ public class BeeperFluffLayer extends GeoRenderLayer<BeeperEntity> {
 
     @Override
     public void render(PoseStack poseStack, BeeperEntity entity, BakedGeoModel bakedModel, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
-        if (!entity.isNaked() && !entity.hasNectar()) {
+        if (!entity.isNaked()) {
             if (!entity.hasColor()) {
                 RenderType fluffLayer = RenderType.entityCutoutNoCull(TEXTURE);
                 getRenderer().reRender(getDefaultBakedModel(entity), poseStack, bufferSource, entity, fluffLayer,
