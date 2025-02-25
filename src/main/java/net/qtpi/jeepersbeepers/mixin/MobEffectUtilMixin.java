@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MobEffectUtil.class)
-public class DigSpeedMixins {
+public class MobEffectUtilMixin {
 
     @Inject(at = @At("HEAD"), method = "hasDigSpeed", cancellable = true)
     private static void hasDigSpeed(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {

@@ -24,6 +24,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.qtpi.jeepersbeepers.registry.ItemRegistry;
 
+@SuppressWarnings({"NullableProblems", "deprecation", "RedundantArrayCreation"})
 public class DragonFruitTreeBlock extends CropBlock {
     public static final IntegerProperty AGE;
     protected static final VoxelShape[] SHAPE_BY_AGE;
@@ -32,11 +33,7 @@ public class DragonFruitTreeBlock extends CropBlock {
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return SHAPE_BY_AGE[(Integer)state.getValue(AGE)];
-    }
-
-    protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.is(Blocks.FARMLAND);
+        return SHAPE_BY_AGE[state.getValue(AGE)];
     }
 
     @Override
@@ -85,11 +82,6 @@ public class DragonFruitTreeBlock extends CropBlock {
     @Override
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
         return state.getValue(AGE) < 6;
-    }
-
-    @Override
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-        return true;
     }
 
     @Override

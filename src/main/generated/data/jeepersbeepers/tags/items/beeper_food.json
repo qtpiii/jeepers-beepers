@@ -4,6 +4,9 @@
     "minecraft:wheat",
     "minecraft:potato",
     "minecraft:beetroot",
-    "minecraft:carrot"
+    "minecraft:carrot",
+    "minecraft:pitcher_plant",
+    "minecraft:torchflower",
+    "jeepersbeepers:dragonfruit"
   ]
 }

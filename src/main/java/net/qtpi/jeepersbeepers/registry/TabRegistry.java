@@ -64,6 +64,8 @@ public class TabRegistry {
                         entries.accept(BlockRegistry.CARVED_BUTTERDEW_SQUASH);
                         entries.accept(BlockRegistry.BUTTERDEW_LANTERN);
                         entries.accept(ItemRegistry.DRAGONFRUIT);
+                        entries.accept(BlockRegistry.LOAM);
+                        entries.accept(BlockRegistry.LOAM_FARMLAND);
                     }).build());
 
     public static void registerCreativeModeTabs() {

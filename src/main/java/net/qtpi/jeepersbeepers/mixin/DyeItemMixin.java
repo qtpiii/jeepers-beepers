@@ -19,9 +19,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(DyeItem.class)
-public abstract class BeeperDyeMixins {
+public abstract class DyeItemMixin {
 
-    @Shadow @Final private DyeColor dyeColor;
+    @Shadow @Final
+    public DyeColor dyeColor;
 
     @Inject(at = @At("HEAD"), method = "interactLivingEntity", cancellable = true)
     private void interactLivingEntity(ItemStack stack, Player player, LivingEntity interactionTarget, InteractionHand usedHand, CallbackInfoReturnable<InteractionResult> cir) {

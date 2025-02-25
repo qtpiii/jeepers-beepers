@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_farmland",
+  "textures": {
+    "dirt": "jeepersbeepers:block/loam",
+    "top": "jeepersbeepers:block/loam_farmland_moist"
+  }
+}

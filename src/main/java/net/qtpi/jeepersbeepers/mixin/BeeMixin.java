@@ -23,9 +23,9 @@ import java.util.Set;
 import java.util.UUID;
 
 @Mixin(Bee.class)
-public abstract class BeekeeperSuitMixins extends Mob {
+public abstract class BeeMixin extends Mob {
 
-    protected BeekeeperSuitMixins(EntityType<? extends Mob> entityType, Level level) {
+    protected BeeMixin(EntityType<? extends Mob> entityType, Level level) {
         super(entityType, level);
     }
 

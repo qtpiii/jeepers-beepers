@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "jeepersbeepers:beeper_fluff_block",
+    "jeepersbeepers:white_beeper_fluff_block",
+    "jeepersbeepers:light_gray_beeper_fluff_block",
+    "jeepersbeepers:gray_beeper_fluff_block",
+    "jeepersbeepers:black_beeper_fluff_block",
+    "jeepersbeepers:brown_beeper_fluff_block",
+    "jeepersbeepers:red_beeper_fluff_block",
+    "jeepersbeepers:orange_beeper_fluff_block",
+    "jeepersbeepers:yellow_beeper_fluff_block",
+    "jeepersbeepers:lime_beeper_fluff_block",
+    "jeepersbeepers:green_beeper_fluff_block",
+    "jeepersbeepers:cyan_beeper_fluff_block",
+    "jeepersbeepers:light_blue_beeper_fluff_block",
+    "jeepersbeepers:blue_beeper_fluff_block",
+    "jeepersbeepers:purple_beeper_fluff_block",
+    "jeepersbeepers:magenta_beeper_fluff_block",
+    "jeepersbeepers:pink_beeper_fluff_block"
+  ]
+}

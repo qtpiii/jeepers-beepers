@@ -40,10 +40,28 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.MIGNONETTE_DOOR)
                 .add(BlockRegistry.MIGNONETTE_TRAPDOOR)
                 .add(BlockRegistry.DRAGONFRUIT_TREE);
-        getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
-                .add(BlockRegistry.BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(BlockTags.DAMPENS_VIBRATIONS)
-                .add(BlockRegistry.BEEPER_FLUFF_BLOCK);
+//        getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
+//                .addTag(TagRegistry.Blocks.BEEPER_FLUFF_BLOCKS);
+//        getOrCreateTagBuilder(BlockTags.DAMPENS_VIBRATIONS)
+//                .addTag(TagRegistry.Blocks.BEEPER_FLUFF_BLOCKS);
+
+        getOrCreateTagBuilder(BlockTags.DIRT)
+                .add(BlockRegistry.LOAM);
+
+        getOrCreateTagBuilder(CompatibilityTagRegistry.FARMLAND)
+                .add(BlockRegistry.LOAM_FARMLAND);
+
+//        getOrCreateTagBuilder(TagRegistry.Blocks.BEEPER_LIKED_CROPS)
+//                .add(Blocks.WHEAT)
+//                .add(Blocks.BEETROOTS)
+//                .add(Blocks.POTATOES)
+//                .add(Blocks.CARROTS)
+//                .add(Blocks.MELON_STEM)
+//                .add(Blocks.PUMPKIN_STEM)
+//                .add(Blocks.TORCHFLOWER_CROP)
+//                .add(Blocks.PITCHER_CROP)
+//                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
+//                .add(BlockRegistry.DRAGONFRUIT_TREE);
 
         getOrCreateTagBuilder(TagRegistry.Blocks.SEED_CROPS)
                 .add(Blocks.WHEAT)
@@ -85,9 +103,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.PITCHER_CROP);
         getOrCreateTagBuilder(TagRegistry.Blocks.GRAIN_CROPS)
                 .add(Blocks.WHEAT);
-        getOrCreateTagBuilder(TagRegistry.Blocks.CROSSBRED_CROPS)
-                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
-                .add(BlockRegistry.DRAGONFRUIT_TREE);
+//        getOrCreateTagBuilder(TagRegistry.Blocks.HYBRID_CROPS)
+//                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
+//                .add(BlockRegistry.DRAGONFRUIT_TREE);
 
         getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_WHITE)
                 .add(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);
@@ -121,6 +139,25 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.MAGENTA_BEEPER_FLUFF_BLOCK);
         getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_PINK)
                 .add(BlockRegistry.PINK_BEEPER_FLUFF_BLOCK);
+
+//        getOrCreateTagBuilder(TagRegistry.Blocks.BEEPER_FLUFF_BLOCKS)
+//                .add(BlockRegistry.BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.LIGHT_GRAY_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.GRAY_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.BLACK_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.BROWN_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.RED_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.ORANGE_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.YELLOW_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.LIME_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.GREEN_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.CYAN_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.LIGHT_BLUE_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.BLUE_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.PURPLE_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.MAGENTA_BEEPER_FLUFF_BLOCK)
+//                .add(BlockRegistry.PINK_BEEPER_FLUFF_BLOCK);
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
                 .add(BlockRegistry.MIGNONETTE_LOG)

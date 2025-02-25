@@ -3,7 +3,6 @@ package net.qtpi.jeepersbeepers.mixin;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.qtpi.jeepersbeepers.registry.EffectRegistry;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Gui.class)
-public abstract class HeartMixins {
+public abstract class GuiMixin {
 
 	@Shadow protected abstract Player getCameraPlayer();
 
