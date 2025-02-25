@@ -7,11 +7,12 @@
     "BlockMixin",
     "BushBlockMixin",
     "CropBlockMixin",
-    "MobEffectUtilMixin",
     "DyeItemMixin",
     "FoliagePlacerTypeInvoker",
     "GuiMixin",
+    "MobEffectUtilMixin",
     "PitcherCropBlockMixin",
+    "StemBlockMixin",
     "TreeDecoratorTypeInvoker",
     "TrunkPlacerTypeInvoker"
   ],

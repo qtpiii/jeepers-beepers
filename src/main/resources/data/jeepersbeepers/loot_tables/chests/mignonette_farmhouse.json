@@ -26,23 +26,11 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:beetroot_seeds"
+          "name": "minecraft:melon_seeds"
         },
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 7.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "jeepersbeepers:loam",
-          "weight": 10
+          "name": "minecraft:beetroot_seeds"
         },
         {
           "type": "minecraft:item",
@@ -57,8 +45,24 @@
               "function": "minecraft:set_count"
             }
           ],
+          "name": "jeepersbeepers:loam",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
           "name": "jeepersbeepers:beeper_fluff",
-          "weight": 8
+          "weight": 6
         },
         {
           "type": "minecraft:item",
@@ -83,6 +87,14 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:feather"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:beetroot"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:pumpkin"
         },
         {
           "type": "minecraft:item",
