@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-23T23:31:03.0438198	Jeepers Beepers!/Tags for minecraft:block
+// 1.20.1	2025-02-24T20:49:04.5976839	Jeepers Beepers!/Tags for minecraft:block
 f90d4cc220d6c8cb6fd9f141c14f47ca5254f8e1 data\minecraft\tags\blocks\dampens_vibrations.json
 2969e37aecb0dbd03f6e5305035f6fc0f5957a18 data\c\tags\blocks\dyed\purple.json
 2cf5e5bf5b02f83d09c768fc240f0dbbc44dbf43 data\minecraft\tags\blocks\flowers.json
@@ -7,6 +7,7 @@ d58abc95d6284d7058e401d3691bd1242da45e04 data\minecraft\tags\blocks\leaves.json
 9f0f894efb80040472b945448979ff4c9f85afac data\c\tags\blocks\dyed\brown.json
 fa216f10b1fd4e83433eb1d77a3b07cd751db840 data\jeepersbeepers\tags\blocks\grain_crops.json
 bd2137fde9b237649ed06c7c6fdf8d300f3ad3b6 data\minecraft\tags\blocks\logs_that_burn.json
+f2f3fcd3917c6cbf6f4b4ea1dbc95271b2b0f0bc data\minecraft\tags\blocks\mineable\shovel.json
 b46452c287e3695f783aceed476804df6b3883b7 data\c\tags\blocks\dyed\lime.json
 c4998530668912edd412e28ac7a885bedb38dd8a data\jeepersbeepers\tags\blocks\multi_yield_crops.json
 f90d4cc220d6c8cb6fd9f141c14f47ca5254f8e1 data\minecraft\tags\blocks\occludes_vibration_signals.json

@@ -20,6 +20,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL)
+                .add(BlockRegistry.LOAM);
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
                 .add(BlockRegistry.BEEPER_HIVE)
                 .add(BlockRegistry.BEEPER_NEST)

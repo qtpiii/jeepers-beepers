@@ -34,6 +34,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(BlockRegistry.MAGENTA_BEEPER_FLUFF_BLOCK);
         blockModelGenerators.createTrivialCube(BlockRegistry.PINK_BEEPER_FLUFF_BLOCK);
 
+        blockModelGenerators.createTrivialCube(BlockRegistry.LOAM);
+
         blockModelGenerators.woodProvider(BlockRegistry.MIGNONETTE_LOG)
                 .log(BlockRegistry.MIGNONETTE_LOG).wood(BlockRegistry.MIGNONETTE_WOOD);
         blockModelGenerators.woodProvider(BlockRegistry.STRIPPED_MIGNONETTE_LOG)

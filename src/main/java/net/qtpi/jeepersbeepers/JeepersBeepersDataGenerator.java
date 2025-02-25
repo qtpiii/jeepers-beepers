@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.qtpi.jeepersbeepers.datagen.*;
 import net.qtpi.jeepersbeepers.world.ModConfiguredFeatures;
 import net.qtpi.jeepersbeepers.world.ModPlacedFeatures;
+import net.qtpi.jeepersbeepers.world.biome.ModBiomes;
 
 public class JeepersBeepersDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -25,5 +26,6 @@ public class JeepersBeepersDataGenerator implements DataGeneratorEntrypoint {
 	public void buildRegistry(RegistrySetBuilder registryBuilder) {
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
+		registryBuilder.add(Registries.BIOME, ModBiomes::bootstrap);
 	}
 }

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jeepersbeepers:loam"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "loam": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jeepersbeepers:loam"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "loam",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jeepersbeepers:loam"
+    ]
+  },
+  "sends_telemetry_event": false
+}

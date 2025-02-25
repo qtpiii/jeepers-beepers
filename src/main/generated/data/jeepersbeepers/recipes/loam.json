@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "C": {
+      "item": "minecraft:clay"
+    },
+    "S": {
+      "item": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    "SC",
+    "CS"
+  ],
+  "result": {
+    "count": 4,
+    "item": "jeepersbeepers:loam"
+  },
+  "show_notification": true
+}

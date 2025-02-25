@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
@@ -17,6 +16,7 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AlterGroundDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.block.WallFlowerBlock;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
@@ -30,6 +30,7 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> MIGNONETTE_KEY = registerKey("mignonette");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FLOWERING_MIGNONETTE_KEY = registerKey("flowering_mignonette");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_MIGNONETTE_KEY = registerKey("small_mignonette");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<Block> holderGetter = context.lookup(Registries.BLOCK);
@@ -41,7 +42,7 @@ public class ModConfiguredFeatures {
                 new MignonetteFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
 
                 new TwoLayersFeatureSize(1, 0, 2))
-                .decorators(List.of(new AlterGroundDecorator(BlockStateProvider.simple(Blocks.DIRT)))).build());
+                .build());
 
         register(context, FLOWERING_MIGNONETTE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(BlockRegistry.MIGNONETTE_LOG),
@@ -51,7 +52,7 @@ public class ModConfiguredFeatures {
                 new MignonetteFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
 
                 new TwoLayersFeatureSize(1, 0, 2))
-                .decorators(List.of(new AlterGroundDecorator(BlockStateProvider.simple(Blocks.DIRT)),
+                .decorators(List.of(
                         new AttachedToLeavesDecorator(0.25F, 1, 1,
                                 BlockStateProvider.simple(BlockRegistry.MIGNONETTE_FLOWER.defaultBlockState().setValue(WallFlowerBlock.FACING, Direction.EAST)),
                                 5, List.of(Direction.EAST)),
@@ -66,6 +67,15 @@ public class ModConfiguredFeatures {
                                 5, List.of(Direction.NORTH)),
                         new BeeperNestDecorator(0.04F))).build());
 
+        register(context, SMALL_MIGNONETTE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(BlockRegistry.MIGNONETTE_LOG),
+                new ForkingTrunkPlacer(4, 1, 2),
+
+                BlockStateProvider.simple(BlockRegistry.MIGNONETTE_LEAVES),
+                new MignonetteFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
+
+                new TwoLayersFeatureSize(1, 0, 2))
+                .decorators(List.of(new AlterGroundDecorator(BlockStateProvider.simple(BlockRegistry.LOAM)))).build());
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {

@@ -113,10 +113,10 @@ public class DragonFruitTreeBlock extends CropBlock {
                 Block.box(6.0D, -1.0D, 6.0D, 10.0D, 3.0D, 10.0D),
                 Block.box(4.0D, -1.0D, 4.0D, 12.0D, 11.0D, 12.0D),
                 Block.box(4.0D, -1.0D, 4.0D, 12.0D, 11.0D, 12.0D),
-                Block.box(6.0D, -1.0D, 6.0D, 10.0D, 19.0D, 10.0D),
-                Block.box(6.0D, -1.0D, 6.0D, 10.0D, 19.0D, 10.0D),
-                Block.box(4.0D, -1.0D, 4.0D, 12.0D, 21.0D, 12.0D),
-                Block.box(4.0D, -1.0D, 4.0D, 12.0D, 21.0D, 12.0D)
+                Block.box(6.0D, -1.0D, 6.0D, 10.0D, 17.0D, 10.0D),
+                Block.box(6.0D, -1.0D, 6.0D, 10.0D, 17.0D, 10.0D),
+                Block.box(4.0D, -1.0D, 4.0D, 12.0D, 17.0D, 12.0D),
+                Block.box(4.0D, -1.0D, 4.0D, 12.0D, 17.0D, 12.0D)
         };
     }
 }

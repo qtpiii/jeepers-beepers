@@ -29,6 +29,8 @@ public class BlockRegistry {
     public static final Block BEEPER_HIVE = registerBlock("beeper_hive", new BeeperHiveBlock(FabricBlockSettings.copyOf(Blocks.BEEHIVE).mapColor(MapColor.GLOW_LICHEN)), true);
     public static final Block BEEPER_NEST = registerBlock("beeper_nest", new BeeperHiveBlock(FabricBlockSettings.copyOf(Blocks.BEE_NEST).mapColor(MapColor.STONE)), true);
 
+    public static final Block LOAM = registerBlock("loam", new Block(FabricBlockSettings.copyOf(Blocks.DIRT).mapColor(MapColor.STONE)), true);
+
     public static final Block BEEPER_FLUFF_BLOCK = registerBlock("beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
             .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.GLOW_LICHEN).strength(0.6f).sound(SoundType.WOOL)), true);
     public static final Block WHITE_BEEPER_FLUFF_BLOCK = registerBlock("white_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()

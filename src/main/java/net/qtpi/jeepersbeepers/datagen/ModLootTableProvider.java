@@ -17,6 +17,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(BlockRegistry.BEEPER_HIVE);
         dropWhenSilkTouch(BlockRegistry.BEEPER_NEST);
 
+        dropSelf(BlockRegistry.LOAM);
+
         dropSelf(BlockRegistry.MIGNONETTE_LOG);
         dropSelf(BlockRegistry.MIGNONETTE_WOOD);
         dropSelf(BlockRegistry.STRIPPED_MIGNONETTE_LOG);

@@ -12,6 +12,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.registry.CompatibilityTagRegistry;
 import net.qtpi.jeepersbeepers.registry.ItemRegistry;
@@ -33,6 +34,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         generateRecipes(consumer, BlockRegistry.MIGNONETTE_FAMILY);
 
         oneToOneConversionRecipe(consumer, ItemRegistry.DRAGONFRUIT_SEEDS, ItemRegistry.DRAGONFRUIT, "dragonfruit_seeds", 4);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.LOAM, 4)
+                .pattern("SC")
+                .pattern("CS")
+                .define('S', Blocks.SAND)
+                .define('C', Blocks.CLAY)
+                .unlockedBy("loam", has(BlockRegistry.LOAM))
+                .save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.BUTTERDEW_LANTERN, 1)
                 .pattern("B")

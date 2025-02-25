@@ -10,6 +10,9 @@ import org.jetbrains.annotations.Nullable;
 public class MignonetteTreeGrower extends AbstractTreeGrower {
     @Override
     protected @Nullable ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean hasFlowers) {
+        if (random.nextFloat() < 0.1) {
+            return ModConfiguredFeatures.SMALL_MIGNONETTE_KEY;
+        }
         return ModConfiguredFeatures.MIGNONETTE_KEY;
     }
 }

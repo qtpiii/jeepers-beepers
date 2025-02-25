@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-23T23:31:03.0464871	Jeepers Beepers!/Block Loot Tables
+// 1.20.1	2025-02-24T20:49:04.600713	Jeepers Beepers!/Block Loot Tables
 8a66fd5cda9e6b70c45076d84bcbb68c9e533be3 data\jeepersbeepers\loot_tables\blocks\mignonette_sapling.json
 0ef4d7ac59a68fe4f70c36bb844ce5c605ae8826 data\jeepersbeepers\loot_tables\blocks\mignonette_planks.json
 b49e72a1784bb6e694332cb0cd20a9e0b1359e58 data\jeepersbeepers\loot_tables\blocks\mignonette_button.json
@@ -21,3 +21,4 @@ ef7de5ea7e3b55dfba7a322f99d7cc6f24ea4102 data\jeepersbeepers\loot_tables\blocks\
 124bef1112f8aec599f6ae6371812e2f6e64f520 data\jeepersbeepers\loot_tables\blocks\mignonette_flower.json
 82ced50005797e60fe6b730c386ca23dd73e83cc data\jeepersbeepers\loot_tables\blocks\cawved_buttewdew_squash.json
 b50b3b6bbc1ddaef6612708e6c6127aec40f37ab data\jeepersbeepers\loot_tables\blocks\mignonette_fence.json
+83001758c1c6d4bd464bd8acced5351bb892f0ce data\jeepersbeepers\loot_tables\blocks\loam.json
