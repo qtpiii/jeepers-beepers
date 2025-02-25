@@ -22,8 +22,6 @@ import net.qtpi.jeepersbeepers.block.*;
 import net.qtpi.jeepersbeepers.world.tree.FloweringMignonetteTreeGrower;
 import net.qtpi.jeepersbeepers.world.tree.MignonetteTreeGrower;
 
-import java.util.function.Supplier;
-
 public class BlockRegistry {
 
     public static final Block BEEPER_HIVE = registerBlock("beeper_hive", new BeeperHiveBlock(FabricBlockSettings.copyOf(Blocks.BEEHIVE).mapColor(MapColor.GLOW_LICHEN)), true);
@@ -31,6 +29,11 @@ public class BlockRegistry {
 
     public static final Block LOAM = registerBlock("loam", new Block(FabricBlockSettings.copyOf(Blocks.DIRT)), true);
     public static final Block LOAM_FARMLAND = registerBlock("loam_farmland", new LoamFarmlandBlock(FabricBlockSettings.copyOf(Blocks.FARMLAND)), true);
+    public static final Block LOAM_BRICKS = registerBlock("loam_bricks", new Block(FabricBlockSettings.copyOf(Blocks.MUD_BRICKS)), true);
+    public static final Block LOAM_BRICK_STAIRS = registerBlock("loam_brick_stairs", new StairBlock(BlockRegistry.LOAM_BRICKS.defaultBlockState(),
+            FabricBlockSettings.copyOf(Blocks.MUD_BRICK_STAIRS)), true);
+    public static final Block LOAM_BRICK_SLAB = registerBlock("loam_brick_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.MUD_BRICK_SLAB)), true);
+    public static final Block LOAM_BRICK_WALL = registerBlock("loam_brick_wall", new WallBlock(FabricBlockSettings.copyOf(Blocks.MUD_BRICK_WALL)), true);
 
     public static final Block BEEPER_FLUFF_BLOCK = registerBlock("beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
             .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.GLOW_LICHEN).strength(0.6f).sound(SoundType.WOOL)), true);
@@ -156,6 +159,12 @@ public class BlockRegistry {
             .fenceGate(MIGNONETTE_FENCE_GATE)
             .door(MIGNONETTE_DOOR)
             .trapdoor(MIGNONETTE_TRAPDOOR)
+            .getFamily();
+
+    public static final BlockFamily LOAM_BRICK_FAMILY = new BlockFamily.Builder(LOAM_BRICKS)
+            .stairs(LOAM_BRICK_STAIRS)
+            .slab(LOAM_BRICK_SLAB)
+            .wall(LOAM_BRICK_WALL)
             .getFamily();
 
     private static Block registerBlock(String name, Block block, Boolean registerItem) {

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "jeepersbeepers:block/loam_bricks"
+  }
+}

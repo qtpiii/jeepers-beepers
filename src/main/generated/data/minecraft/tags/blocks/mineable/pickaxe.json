@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "jeepersbeepers:loam_bricks",
+    "jeepersbeepers:loam_brick_stairs",
+    "jeepersbeepers:loam_brick_slab",
+    "jeepersbeepers:loam_brick_wall"
+  ]
+}

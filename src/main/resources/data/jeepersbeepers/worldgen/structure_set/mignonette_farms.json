@@ -1,0 +1,13 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 19011220,
+    "separation": 1,
+    "spacing": 6,
+    "spread_type": "triangular"
+  },
+  "structures": [{
+    "structure": "jeepersbeepers:mignonette_farm",
+    "weight": 1
+  }]
+}

@@ -66,6 +66,10 @@ public class TabRegistry {
                         entries.accept(ItemRegistry.DRAGONFRUIT);
                         entries.accept(BlockRegistry.LOAM);
                         entries.accept(BlockRegistry.LOAM_FARMLAND);
+                        entries.accept(BlockRegistry.LOAM_BRICKS);
+                        entries.accept(BlockRegistry.LOAM_BRICK_STAIRS);
+                        entries.accept(BlockRegistry.LOAM_BRICK_SLAB);
+                        entries.accept(BlockRegistry.LOAM_BRICK_WALL);
                     }).build());
 
     public static void registerCreativeModeTabs() {

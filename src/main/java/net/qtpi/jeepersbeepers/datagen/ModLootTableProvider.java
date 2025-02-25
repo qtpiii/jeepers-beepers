@@ -18,6 +18,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         dropWhenSilkTouch(BlockRegistry.BEEPER_NEST);
 
         dropSelf(BlockRegistry.LOAM);
+        dropSelf(BlockRegistry.LOAM_BRICKS);
+        dropSelf(BlockRegistry.LOAM_BRICK_STAIRS);
+        dropSelf(BlockRegistry.LOAM_BRICK_WALL);
+        createSlabItemTable(BlockRegistry.LOAM_BRICK_SLAB);
 
         dropSelf(BlockRegistry.MIGNONETTE_LOG);
         dropSelf(BlockRegistry.MIGNONETTE_WOOD);
@@ -33,7 +37,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(BlockRegistry.MIGNONETTE_FENCE);
         dropSelf(BlockRegistry.MIGNONETTE_FENCE_GATE);
         dropSelf(BlockRegistry.MIGNONETTE_TRAPDOOR);
-
         createSlabItemTable(BlockRegistry.MIGNONETTE_SLAB);
 
         dropSelf(BlockRegistry.BUTTERDEW_SQUASH);

@@ -32,8 +32,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         planksFromLog(consumer, BlockRegistry.MIGNONETTE_PLANKS, TagRegistry.Items.MIGNONETTE_LOGS, 4);
         generateRecipes(consumer, BlockRegistry.MIGNONETTE_FAMILY);
+        generateRecipes(consumer, BlockRegistry.LOAM_BRICK_FAMILY);
 
         oneToOneConversionRecipe(consumer, ItemRegistry.DRAGONFRUIT_SEEDS, ItemRegistry.DRAGONFRUIT, "dragonfruit_seeds", 4);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.LOAM_BRICKS, 4)
+                .pattern("LL")
+                .pattern("LL")
+                .define('L', BlockRegistry.LOAM)
+                .unlockedBy("loam", has(BlockRegistry.LOAM))
+                .save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.LOAM, 4)
                 .pattern("SC")

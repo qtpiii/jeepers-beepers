@@ -74,6 +74,10 @@ public class ItemRegistry {
         entries.accept(BlockRegistry.MIGNONETTE_TRAPDOOR);
         entries.accept(BlockRegistry.MIGNONETTE_PRESSURE_PLATE);
         entries.accept(BlockRegistry.MIGNONETTE_BUTTON);
+        entries.accept(BlockRegistry.LOAM_BRICKS);
+        entries.accept(BlockRegistry.LOAM_BRICK_STAIRS);
+        entries.accept(BlockRegistry.LOAM_BRICK_SLAB);
+        entries.accept(BlockRegistry.LOAM_BRICK_WALL);
     }
 
     private static void addItemsToSpawnEggsTab(FabricItemGroupEntries entries) {
@@ -82,6 +86,7 @@ public class ItemRegistry {
 
     private static void addItemsToFoodAndDrinksTab(FabricItemGroupEntries entries) {
         entries.accept(ItemRegistry.SPICY_HONEY_BOTTLE);
+        entries.accept(ItemRegistry.DRAGONFRUIT);
     }
 
     private static void addItemsToIngredientsTab(FabricItemGroupEntries entries) {
@@ -94,6 +99,7 @@ public class ItemRegistry {
     }
 
     private static void addItemsToNaturalBlocksTab(FabricItemGroupEntries entries) {
+        entries.accept(BlockRegistry.LOAM);
         entries.accept(BlockRegistry.MIGNONETTE_LEAVES);
         entries.accept(ItemRegistry.BUTTERDEW_SQUASH_SEEDS);
         entries.accept(BlockRegistry.BUTTERDEW_SQUASH);
@@ -101,6 +107,7 @@ public class ItemRegistry {
         entries.accept(BlockRegistry.BUTTERDEW_LANTERN);
         entries.accept(BlockRegistry.CAWVED_BUTTEWDEW_SQUASH);
         entries.accept(BlockRegistry.BUTTEWDEW_LANTEWN);
+        entries.accept(ItemRegistry.DRAGONFRUIT_SEEDS);
     }
 
     private static Item registerItem(String name, Item item) {

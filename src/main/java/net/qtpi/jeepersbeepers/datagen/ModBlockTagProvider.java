@@ -20,6 +20,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(BlockRegistry.LOAM_BRICKS)
+                .add(BlockRegistry.LOAM_BRICK_STAIRS)
+                .add(BlockRegistry.LOAM_BRICK_SLAB)
+                .add(BlockRegistry.LOAM_BRICK_WALL);
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(BlockRegistry.LOAM);
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
@@ -50,18 +55,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(CompatibilityTagRegistry.FARMLAND)
                 .add(BlockRegistry.LOAM_FARMLAND);
-
-//        getOrCreateTagBuilder(TagRegistry.Blocks.BEEPER_LIKED_CROPS)
-//                .add(Blocks.WHEAT)
-//                .add(Blocks.BEETROOTS)
-//                .add(Blocks.POTATOES)
-//                .add(Blocks.CARROTS)
-//                .add(Blocks.MELON_STEM)
-//                .add(Blocks.PUMPKIN_STEM)
-//                .add(Blocks.TORCHFLOWER_CROP)
-//                .add(Blocks.PITCHER_CROP)
-//                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
-//                .add(BlockRegistry.DRAGONFRUIT_TREE);
 
         getOrCreateTagBuilder(TagRegistry.Blocks.SEED_CROPS)
                 .add(Blocks.WHEAT)
@@ -169,6 +162,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.MIGNONETTE_FENCE);
         getOrCreateTagBuilder(BlockTags.FENCE_GATES)
                 .add(BlockRegistry.MIGNONETTE_FENCE_GATE);
+
+        getOrCreateTagBuilder(BlockTags.WALLS)
+                .add(BlockRegistry.LOAM_BRICK_WALL);
 
         getOrCreateTagBuilder(BlockTags.CROPS)
                 .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)

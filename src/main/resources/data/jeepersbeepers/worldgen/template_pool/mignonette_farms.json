@@ -1,11 +1,20 @@
 {
-  "name": "jeepersbeepers:/mignonette_farmhouses",
+  "name": "jeepersbeepers:/mignonette_farms",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
-        "location": "jeepersbeepers:/mignonette_farmhouses/farmhouse_1",
+        "location": "jeepersbeepers:/mignonette_farms/farm_1",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "jeepersbeepers:/mignonette_farms/farm_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -14,16 +23,16 @@
     {
       "weight": 1,
       "element": {
-        "location": "jeepersbeepers:/mignonette_farmhouses/farmhouse_2",
+        "location": "jeepersbeepers:/mignonette_farms/farm_3",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     },
     {
-      "weight": 1,
+      "weight": 2,
       "element": {
-        "location": "jeepersbeepers:/mignonette_farmhouses/farmhouse_3",
+        "location": "jeepersbeepers:/mignonette_farms/farm_4",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

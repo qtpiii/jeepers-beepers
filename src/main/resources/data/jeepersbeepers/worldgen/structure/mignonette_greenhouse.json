@@ -3,8 +3,8 @@
   "adapt_noise": "false",
   "spawn_overrides": {},
   "type": "minecraft:jigsaw",
-  "start_pool": "jeepersbeepers:mignonette_farmhouses",
-  "size": 6,
+  "start_pool": "jeepersbeepers:mignonette_greenhouses",
+  "size": 7,
   "step": "surface_structures",
   "start_height": {
     "absolute": 0

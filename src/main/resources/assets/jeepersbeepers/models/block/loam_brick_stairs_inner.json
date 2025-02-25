@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "jeepersbeepers:block/loam_bricks_bottom",
+    "side": "jeepersbeepers:block/loam_bricks",
+    "top": "jeepersbeepers:block/loam_bricks_top"
+  }
+}
