@@ -3,6 +3,7 @@ package net.qtpi.jeepersbeepers;
 import net.fabricmc.api.ModInitializer;
 
 import net.qtpi.jeepersbeepers.registry.*;
+import net.qtpi.jeepersbeepers.world.biome.ModBiolithGeneration;
 import net.qtpi.jeepersbeepers.world.gen.ModWorldGeneration;
 import net.qtpi.jeepersbeepers.registry.WorldGenRegistry;
 import org.slf4j.Logger;
@@ -27,5 +28,7 @@ public class JeepersBeepers implements ModInitializer {
 		WorldGenRegistry.register();
 
 		ModWorldGeneration.generateModWorldGen();
+
+		ModBiolithGeneration.init();
 	}
 }

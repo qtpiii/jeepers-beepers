@@ -23,9 +23,6 @@
 		],
 		"fabric-datagen": [
 			"net.qtpi.jeepersbeepers.JeepersBeepersDataGenerator"
-		],
-		"terrablender": [
-			"net.qtpi.jeepersbeepers.world.biome.ModTerrablenderAPI"
 		]
 	},
 	"mixins": [

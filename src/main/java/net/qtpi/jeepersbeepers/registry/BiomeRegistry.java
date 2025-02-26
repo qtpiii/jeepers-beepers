@@ -1,4 +1,4 @@
-package net.qtpi.jeepersbeepers.world.biome;
+package net.qtpi.jeepersbeepers.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -13,7 +13,7 @@ import net.qtpi.jeepersbeepers.JeepersBeepers;
 
 import static net.minecraft.data.worldgen.biome.OverworldBiomes.calculateSkyColor;
 
-public class ModBiomes {
+public class BiomeRegistry {
     public static final ResourceKey<Biome> MIGNONETTE_FOREST = ResourceKey.create(Registries.BIOME,
             new ResourceLocation(JeepersBeepers.MOD_ID, "mignonette_forest"));
 
