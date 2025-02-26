@@ -20,6 +20,6 @@ cassava
 sunchoke
 chard
 okra
-broccoli
+broccoli + radish
 corn
 
