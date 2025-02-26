@@ -65,6 +65,17 @@
 
   "block.jeepersbeepers.loam": "Loam",
   "block.jeepersbeepers.loam_farmland": "Loam Farmland",
+  "block.jeepersbeepers.loam_bricks": "Loam Bricks",
+  "block.jeepersbeepers.loam_tiles": "Loam Tiles",
+  "block.jeepersbeepers.loam_brick_stairs": "Loam Brick Stairs",
+  "block.jeepersbeepers.loam_brick_slab": "Loam Brick Slab",
+  "block.jeepersbeepers.loam_brick_wall": "Loam Brick Wall",
+
+  "block.jeepersbeepers.spicy_honey_block": "Spicy Honey Block",
+  "block.jeepersbeepers.spicy_honeycomb_block": "Spicy Honeycomb Block",
+
+  "block.jeepersbeepers.honey_lamp": "Honey Lamp",
+  "block.jeepersbeepers.spicy_honey_lamp": "Spicy Honey Lamp",
 
   "itemtab.jeepersbeepers": "Jeepers Beepers!",
 

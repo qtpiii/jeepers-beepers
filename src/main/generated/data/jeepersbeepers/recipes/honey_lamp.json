@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "B": {
+      "item": "minecraft:honey_bottle"
+    },
+    "H": {
+      "item": "minecraft:honeycomb"
+    },
+    "N": {
+      "item": "minecraft:iron_nugget"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    }
+  },
+  "pattern": [
+    "HHH",
+    "HBH",
+    "NTN"
+  ],
+  "result": {
+    "item": "jeepersbeepers:honey_lamp"
+  },
+  "show_notification": true
+}

@@ -36,6 +36,42 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         oneToOneConversionRecipe(consumer, ItemRegistry.DRAGONFRUIT_SEEDS, ItemRegistry.DRAGONFRUIT, "dragonfruit_seeds", 4);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.SPICY_HONEY_LAMP, 1)
+                .pattern("HHH")
+                .pattern("HBH")
+                .pattern("NTN")
+                .define('H', ItemRegistry.SPICY_HONEYCOMB)
+                .define('B', ItemRegistry.SPICY_HONEY_BOTTLE)
+                .define('T', Items.TORCH)
+                .define('N', Items.IRON_NUGGET)
+                .unlockedBy("spicy_honey_bottle", has(ItemRegistry.SPICY_HONEY_BOTTLE))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.HONEY_LAMP, 1)
+                .pattern("HHH")
+                .pattern("HBH")
+                .pattern("NTN")
+                .define('H', Items.HONEYCOMB)
+                .define('B', Items.HONEY_BOTTLE)
+                .define('T', Items.TORCH)
+                .define('N', Items.IRON_NUGGET)
+                .unlockedBy("honey_bottle", has(Items.HONEY_BOTTLE))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.SPICY_HONEY_BLOCK, 4)
+                .pattern("HH")
+                .pattern("HH")
+                .define('H', ItemRegistry.SPICY_HONEY_BOTTLE)
+                .unlockedBy("spicy_honey_bottle", has(ItemRegistry.SPICY_HONEY_BOTTLE))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.SPICY_HONEYCOMB_BLOCK, 4)
+                .pattern("HH")
+                .pattern("HH")
+                .define('H', ItemRegistry.SPICY_HONEYCOMB)
+                .unlockedBy("spicy_honeycomb", has(ItemRegistry.SPICY_HONEYCOMB))
+                .save(consumer);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.LOAM_BRICKS, 4)
                 .pattern("LL")
                 .pattern("LL")

@@ -30,6 +30,7 @@ public class BlockRegistry {
     public static final Block LOAM = registerBlock("loam", new Block(FabricBlockSettings.copyOf(Blocks.DIRT)), true);
     public static final Block LOAM_FARMLAND = registerBlock("loam_farmland", new LoamFarmlandBlock(FabricBlockSettings.copyOf(Blocks.FARMLAND)), true);
     public static final Block LOAM_BRICKS = registerBlock("loam_bricks", new Block(FabricBlockSettings.copyOf(Blocks.MUD_BRICKS)), true);
+    public static final Block LOAM_TILES = registerBlock("loam_tiles", new Block(FabricBlockSettings.copyOf(Blocks.MUD_BRICKS)), true);
     public static final Block LOAM_BRICK_STAIRS = registerBlock("loam_brick_stairs", new StairBlock(BlockRegistry.LOAM_BRICKS.defaultBlockState(),
             FabricBlockSettings.copyOf(Blocks.MUD_BRICK_STAIRS)), true);
     public static final Block LOAM_BRICK_SLAB = registerBlock("loam_brick_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.MUD_BRICK_SLAB)), true);
@@ -150,6 +151,18 @@ public class BlockRegistry {
             new DragonFruitTreeBlock(FabricBlockSettings.create().mapColor(MapColor.PLANT).sound(SoundType.AZALEA)
                             .requiresCorrectToolForDrops().strength(0.2F).pushReaction(PushReaction.DESTROY).forceSolidOff()), true);
 
+    public static final Block SPICY_HONEY_BLOCK = registerBlock("spicy_honey_block",
+            new HoneyBlock(FabricBlockSettings.copyOf(Blocks.HONEY_BLOCK).mapColor(MapColor.FIRE)), true);
+    public static final Block SPICY_HONEYCOMB_BLOCK = registerBlock("spicy_honeycomb_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.HONEYCOMB_BLOCK).mapColor(MapColor.FIRE)), true);
+
+    public static final Block HONEY_LAMP = registerBlock("honey_lamp",
+            new HoneyLampBlock(FabricBlockSettings.create().forceSolidOn().sound(SoundType.LANTERN)
+                    .lightLevel(blockState -> 15).noOcclusion().pushReaction(PushReaction.DESTROY)), true);
+    public static final Block SPICY_HONEY_LAMP = registerBlock("spicy_honey_lamp",
+            new HoneyLampBlock(FabricBlockSettings.create().forceSolidOn().sound(SoundType.LANTERN)
+                    .lightLevel(blockState -> 12).noOcclusion().pushReaction(PushReaction.DESTROY)), true);
+
     public static final BlockFamily MIGNONETTE_FAMILY = new BlockFamily.Builder(MIGNONETTE_PLANKS)
             .stairs(MIGNONETTE_STAIRS)
             .slab(MIGNONETTE_SLAB)
@@ -162,6 +175,7 @@ public class BlockRegistry {
             .getFamily();
 
     public static final BlockFamily LOAM_BRICK_FAMILY = new BlockFamily.Builder(LOAM_BRICKS)
+            .cut(LOAM_TILES)
             .stairs(LOAM_BRICK_STAIRS)
             .slab(LOAM_BRICK_SLAB)
             .wall(LOAM_BRICK_WALL)

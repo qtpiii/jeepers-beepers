@@ -12,6 +12,7 @@
     "FoliagePlacerTypeInvoker",
     "GuiMixin",
     "MobEffectUtilMixin",
+    "PistonStructureResolverMixin",
     "PitcherCropBlockMixin",
     "StemBlockMixin",
     "TreeDecoratorTypeInvoker",

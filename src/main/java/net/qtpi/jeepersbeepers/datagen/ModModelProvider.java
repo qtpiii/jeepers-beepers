@@ -36,6 +36,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockModelGenerators.createTrivialCube(BlockRegistry.LOAM);
 
+        blockModelGenerators.createTrivialCube(BlockRegistry.SPICY_HONEYCOMB_BLOCK);
+
         blockModelGenerators.woodProvider(BlockRegistry.MIGNONETTE_LOG)
                 .log(BlockRegistry.MIGNONETTE_LOG).wood(BlockRegistry.MIGNONETTE_WOOD);
         blockModelGenerators.woodProvider(BlockRegistry.STRIPPED_MIGNONETTE_LOG)
