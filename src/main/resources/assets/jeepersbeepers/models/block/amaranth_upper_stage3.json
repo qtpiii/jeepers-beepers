@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/crop",
+	"textures": {
+		"crop": "jeepersbeepers:block/amaranth_top_stage3"
+	}
+}
