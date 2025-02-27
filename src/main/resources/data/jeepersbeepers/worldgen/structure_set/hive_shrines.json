@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jeepersbeepers:hive_shrine",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 10,
+    "separation": 2,
+    "salt": 1646207470
+  }
+}
