@@ -2,7 +2,9 @@
   "replace": false,
   "values": [
     "minecraft:melon_stem",
+    "minecraft:attached_melon_stem",
     "minecraft:pumpkin_stem",
+    "minecraft:attached_pumpkin_stem",
     "jeepersbeepers:butterdew_squash_stem"
   ]
 }

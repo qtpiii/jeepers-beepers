@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "#jeepersbeepers:seed_crops",
+    "#jeepersbeepers:seedless_crops",
+    "#jeepersbeepers:block_crops",
+    "#jeepersbeepers:multi_yield_crops",
+    "#jeepersbeepers:single_yield_crops",
+    "#jeepersbeepers:fruit_crops",
+    "#jeepersbeepers:vegetable_crops",
+    "#jeepersbeepers:ancient_crops",
+    "#jeepersbeepers:grain_crops",
+    "#jeepersbeepers:hybrid_crops"
+  ]
+}

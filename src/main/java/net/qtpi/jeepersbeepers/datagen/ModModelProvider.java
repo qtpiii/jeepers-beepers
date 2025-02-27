@@ -72,5 +72,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(BlockRegistry.MIGNONETTE_FLOWER.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ItemRegistry.DRAGONFRUIT_SEEDS, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ItemRegistry.DRAGONFRUIT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ItemRegistry.POLLEN_PUFF, ModelTemplates.FLAT_ITEM);
     }
 }

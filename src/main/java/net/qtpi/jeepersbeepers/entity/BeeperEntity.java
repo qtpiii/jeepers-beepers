@@ -5,11 +5,13 @@ import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -47,7 +49,6 @@ import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiRecord;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.FlyingAnimal;
-import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -78,6 +79,7 @@ import software.bernie.geckolib.util.ClientUtils;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -88,6 +90,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     private static final EnumMap<DyeColor, Object> COLORARRAY_BY_COLOR;
     private static final EntityDataAccessor<Byte> DATA_FLAGS_ID;
     private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME;
+    private static final EntityDataAccessor<BlockPos> DATA_SAVED_CROP_POS;
     private static final UniformInt PERSISTENT_ANGER_TIME;
     @Nullable
     private UUID persistentAngerTarget;
@@ -186,6 +189,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         this.entityData.define(DATA_FLAGS_ID, (byte) 0);
         this.entityData.define(DATA_REMAINING_ANGER_TIME, 0);
         this.entityData.define(DATA_WOOL_ID, (byte) 0);
+        this.entityData.define(DATA_SAVED_CROP_POS, new BlockPos(0, 0, 0));
     }
 
     public float getWalkTargetValue(@NotNull BlockPos pos, LevelReader level) {
@@ -232,6 +236,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         compound.putInt("TicksSincePollination", this.ticksWithoutNectarSinceExitingHive);
         compound.putInt("CannotEnterHiveTicks", this.stayOutOfHiveCountdown);
         compound.putInt("CropsGrownSincePollination", this.numCropsGrownSincePollination);
+
         this.addPersistentAngerSaveData(compound);
     }
 
@@ -245,6 +250,8 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         this.savedCropPos = null;
         if (compound.contains("FlowerPos")) {
             this.savedCropPos = NbtUtils.readBlockPos(compound.getCompound("FlowerPos"));
+            savedCrop = level().getBlockState(savedCropPos).getBlock();
+            entityData.set(DATA_SAVED_CROP_POS, savedCropPos);
         }
 
         if (compound.contains("Color")) {
@@ -362,18 +369,34 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             int i = 1 + this.random.nextInt(2);
 
             for(int j = 0; j < i; ++j) {
-                ItemEntity itemEntity = this.spawnAtLocation(Items.GUNPOWDER, 1);
-                if (itemEntity != null) {
-                    itemEntity.setDeltaMovement(itemEntity.getDeltaMovement().add(((this.random.nextFloat() - this.random.nextFloat()) * 0.1F), (this.random.nextFloat() * 0.05F), ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F)));
+                ItemEntity puffItem = this.spawnAtLocation(ItemRegistry.POLLEN_PUFF, 1);
+                if (puffItem != null) {
+                    CompoundTag tag = new CompoundTag();
+                    if (savedCrop == Blocks.ATTACHED_MELON_STEM) {
+                        tag.putString("pollenPlantName", Blocks.MELON_STEM.defaultBlockState().getBlock().asItem().getDescriptionId());
+                    }
+                    else if (savedCrop == Blocks.ATTACHED_PUMPKIN_STEM) {
+                        tag.putString("pollenPlantName", Blocks.PUMPKIN_STEM.defaultBlockState().getBlock().asItem().getDescriptionId());
+                    }
+                    else {
+                        tag.putString("pollenPlantName", savedCrop.defaultBlockState().getBlock().asItem().getDescriptionId());
+                    }
+
+                    ArrayList<TagKey<Block>> tags = savedCrop.defaultBlockState().getTags().collect(Collectors.toCollection(ArrayList::new)); // i have the java ecosystem so much this sucks balls
+                    JeepersBeepers.LOGGER.info(tags.toString());
+                    tag.putIntArray("cropTags", TagRegistry.Blocks.cropTagListToIntegerList(tags));
+                    tag.put("cropPos", NbtUtils.writeBlockPos(savedCropPos));
+                    puffItem.getItem().setTag(tag);
+                    puffItem.setDeltaMovement(puffItem.getDeltaMovement().add(((this.random.nextFloat() - this.random.nextFloat()) * 0.1F), (this.random.nextFloat() * 0.05F), ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F)));
                 }
             }
 
             this.setHasNectar(false);
+            return;
         }
         int i = 1 + this.random.nextInt(2);
 
         for(int j = 0; j < i; ++j) {
-
             if (hasColor()) {
                 ItemEntity itemEntity = this.spawnAtLocation((ItemLike)ITEM_BY_DYE.get(this.getColor()), 1);
                 if (itemEntity != null) {
@@ -693,7 +716,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     }
 
     boolean isCropValid(BlockPos pos) {
-        return this.level().isLoaded(pos) && this.level().getBlockState(pos).is(BlockTags.CROPS);
+        return this.level().isLoaded(pos) && this.level().getBlockState(pos).is(TagRegistry.Blocks.BEEPER_CAN_POLLINATE);
     }
 
     private void setSavedCrop(BlockPos pos) {
@@ -813,6 +836,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             enumMap.put(DyeColor.RED, 12802130);
             enumMap.put(DyeColor.BLACK, 657930);
         }));
+        DATA_SAVED_CROP_POS = SynchedEntityData.defineId(BeeperEntity.class, EntityDataSerializers.BLOCK_POS);
     }
 
     class BeeperHurtByOtherGoal extends HurtByTargetGoal {
@@ -1101,7 +1125,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         private final Predicate<BlockState> VALID_POLLINATION_BLOCKS = (blockState) -> {
             if (blockState.hasProperty(BlockStateProperties.WATERLOGGED) && (Boolean)blockState.getValue(BlockStateProperties.WATERLOGGED)) {
                 return false;
-            } else return blockState.is(BlockTags.CROPS);
+            } else return blockState.is(TagRegistry.Blocks.BEEPER_CAN_POLLINATE);
         };
         private static final double ARRIVAL_THRESHOLD = 0.1;
         private static final int POSITION_CHANGE_CHANCE = 25;
@@ -1386,6 +1410,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
         @Override
         public boolean canBeeperUse() {
+            if (BeeperEntity.this.savedCrop == null) return false;
             if (BeeperEntity.this.getCropsGrownSincePollination() >= 30) {
                 return false;
             } else if (BeeperEntity.this.random.nextFloat() < 0.7F) {
@@ -1421,6 +1446,17 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             if (BeeperEntity.this.readyToSneeze) {
                 triggerAnim("sneezeController", "sneeze");
 
+                new Thread(() -> {
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(2100);
+                    } catch (InterruptedException ignore) {
+                    }
+                    PollenCloud cloud = new PollenCloud(null, level());
+                    cloud.setPos(BeeperEntity.this.position());
+                    cloud.sourceCropTags = level().getBlockState(entityData.get(DATA_SAVED_CROP_POS)).getTags().collect(Collectors.toCollection(ArrayList::new));
+                    cloud.sourceCropPos = savedCropPos;
+                    level().addFreshEntity(cloud);
+                }).start();
             }
         }
     }

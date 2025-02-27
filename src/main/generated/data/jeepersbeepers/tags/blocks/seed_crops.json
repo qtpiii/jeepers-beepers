@@ -4,7 +4,9 @@
     "minecraft:wheat",
     "minecraft:beetroots",
     "minecraft:melon_stem",
+    "minecraft:attached_melon_stem",
     "minecraft:pumpkin_stem",
+    "minecraft:attached_pumpkin_stem",
     "minecraft:torchflower_crop",
     "minecraft:pitcher_crop",
     "jeepersbeepers:dragonfruit_tree"

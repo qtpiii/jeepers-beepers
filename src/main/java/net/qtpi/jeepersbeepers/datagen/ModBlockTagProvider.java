@@ -3,9 +3,7 @@ package net.qtpi.jeepersbeepers.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.registry.CompatibilityTagRegistry;
@@ -56,49 +54,62 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(CompatibilityTagRegistry.FARMLAND)
                 .add(BlockRegistry.LOAM_FARMLAND);
 
-        getOrCreateTagBuilder(TagRegistry.Blocks.SEED_CROPS)
+        getOrCreateTagBuilder(TagRegistry.Blocks.SEED_CROPS) // 4
                 .add(Blocks.WHEAT)
                 .add(Blocks.BEETROOTS)
                 .add(Blocks.MELON_STEM)
+                .add(Blocks.ATTACHED_MELON_STEM)
                 .add(Blocks.PUMPKIN_STEM)
+                .add(Blocks.ATTACHED_PUMPKIN_STEM)
                 .add(Blocks.TORCHFLOWER_CROP)
                 .add(Blocks.PITCHER_CROP)
                 .add(BlockRegistry.DRAGONFRUIT_TREE);
-        getOrCreateTagBuilder(TagRegistry.Blocks.SEEDLESS_CROPS)
+        getOrCreateTagBuilder(TagRegistry.Blocks.SEEDLESS_CROPS) // 8
                 .add(Blocks.POTATOES)
                 .add(Blocks.CARROTS);
-        getOrCreateTagBuilder(TagRegistry.Blocks.BLOCK_CROPS)
+        getOrCreateTagBuilder(TagRegistry.Blocks.BLOCK_CROPS) // 8
                 .add(Blocks.MELON_STEM)
+                .add(Blocks.ATTACHED_MELON_STEM)
                 .add(Blocks.PUMPKIN_STEM)
+                .add(Blocks.ATTACHED_PUMPKIN_STEM)
                 .add(BlockRegistry.BUTTERDEW_SQUASH_STEM);
-        getOrCreateTagBuilder(TagRegistry.Blocks.MULTI_YIELD_CROPS)
+        getOrCreateTagBuilder(TagRegistry.Blocks.MULTI_YIELD_CROPS) // 6
                 .add(Blocks.POTATOES)
                 .add(Blocks.CARROTS)
                 .add(Blocks.BEETROOTS)
                 .add(BlockRegistry.DRAGONFRUIT_TREE);
-        getOrCreateTagBuilder(TagRegistry.Blocks.SINGLE_YIELD_CROPS)
+        getOrCreateTagBuilder(TagRegistry.Blocks.SINGLE_YIELD_CROPS) // 4
                 .add(Blocks.WHEAT)
                 .add(Blocks.MELON_STEM)
+                .add(Blocks.ATTACHED_MELON_STEM)
                 .add(Blocks.PUMPKIN_STEM)
+                .add(Blocks.ATTACHED_PUMPKIN_STEM)
                 .add(Blocks.TORCHFLOWER_CROP)
                 .add(Blocks.PITCHER_CROP);
-        getOrCreateTagBuilder(TagRegistry.Blocks.FRUIT_CROPS)
+        getOrCreateTagBuilder(TagRegistry.Blocks.FRUIT_CROPS) // 8
                 .add(Blocks.MELON_STEM)
+                .add(Blocks.ATTACHED_MELON_STEM)
                 .add(Blocks.PUMPKIN_STEM)
+                .add(Blocks.ATTACHED_PUMPKIN_STEM)
                 .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
                 .add(BlockRegistry.DRAGONFRUIT_TREE);
-        getOrCreateTagBuilder(TagRegistry.Blocks.VEGETABLE_CROPS)
+        getOrCreateTagBuilder(TagRegistry.Blocks.VEGETABLE_CROPS) // 4
                 .add(Blocks.POTATOES)
                 .add(Blocks.CARROTS)
                 .add(Blocks.BEETROOTS);
-        getOrCreateTagBuilder(TagRegistry.Blocks.ANCIENT_CROPS)
+        getOrCreateTagBuilder(TagRegistry.Blocks.ANCIENT_CROPS) // 6
                 .add(Blocks.TORCHFLOWER_CROP)
                 .add(Blocks.PITCHER_CROP);
-        getOrCreateTagBuilder(TagRegistry.Blocks.GRAIN_CROPS)
+        getOrCreateTagBuilder(TagRegistry.Blocks.GRAIN_CROPS) // 8
                 .add(Blocks.WHEAT);
-//        getOrCreateTagBuilder(TagRegistry.Blocks.HYBRID_CROPS)
-//                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
-//                .add(BlockRegistry.DRAGONFRUIT_TREE);
+        getOrCreateTagBuilder(TagRegistry.Blocks.HYBRID_CROPS) // 2
+                .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
+                .add(BlockRegistry.DRAGONFRUIT_TREE);
+
+        FabricTagBuilder beeperCanPollinateBuilder = getOrCreateTagBuilder(TagRegistry.Blocks.BEEPER_CAN_POLLINATE);
+        for (var tag : TagRegistry.Blocks.ALL_CROP_TAGS) {
+            beeperCanPollinateBuilder.addTag(tag);
+        }
 
         getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_WHITE)
                 .add(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);

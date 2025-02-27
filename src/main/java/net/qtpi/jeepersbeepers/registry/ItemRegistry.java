@@ -12,6 +12,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.item.BeekeeperArmorItem;
+import net.qtpi.jeepersbeepers.item.PollenPuff;
 import net.qtpi.jeepersbeepers.item.SpicyHoneyBottleItem;
 
 public class ItemRegistry {
@@ -22,6 +23,7 @@ public class ItemRegistry {
     public static final Item BEEPER_SPAWN_EGG = registerItem("beeper_spawn_egg", new SpawnEggItem(EntityRegistry.BEEPER,
             6651479, 12567454, new FabricItemSettings()));
     public static final Item BEEPER_FLUFF = registerItem("beeper_fluff", new Item(new FabricItemSettings()));
+    public static final Item POLLEN_PUFF = registerItem("pollen_puff", new PollenPuff(new FabricItemSettings()));
 
     public static final Item BEEKEEPER_HAT = registerItem("beekeeper_hat", new BeekeeperArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new FabricItemSettings()));
     public static final Item BEEKEEPER_TUNIC = registerItem("beekeeper_tunic", new BeekeeperArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
