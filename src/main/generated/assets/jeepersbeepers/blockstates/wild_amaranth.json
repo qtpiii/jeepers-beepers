@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "jeepersbeepers:block/wild_amaranth_bottom"
+    },
+    "half=upper": {
+      "model": "jeepersbeepers:block/wild_amaranth_top"
+    }
+  }
+}

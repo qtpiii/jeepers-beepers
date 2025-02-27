@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
+import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.registry.EntityRegistry;
 import net.qtpi.jeepersbeepers.registry.ParticleRegistry;
 import net.qtpi.jeepersbeepers.registry.TagRegistry;
@@ -21,7 +22,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
-// handles pollenation
+// handles pollination
 public class PollenCloud extends Entity {
     public ArrayList<TagKey<Block>> sourceCropTags;
     public BlockPos sourceCropPos;
@@ -46,7 +47,7 @@ public class PollenCloud extends Entity {
     @Override
     public void tick() {
         super.tick();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 24; i++) {
             level().addParticle(ParticleRegistry.BEEPER_SNEEZE_POOF, getX(), getY(), getZ(), (random.nextDouble() * 2 - 1) * 0.5, (random.nextDouble() * 2 - 1) * 0.2, (random.nextDouble() * 2 - 1) * 0.5);
         }
 
@@ -55,7 +56,7 @@ public class PollenCloud extends Entity {
             return;
         }
 
-        // pollenation algo begins here
+        // pollination algo begins here
         ArrayList<BlockPos> viableBlockPositions = new ArrayList<>();
         ArrayList<ArrayList<TagKey<Block>>> viableBlockMatchingTags = new ArrayList<>();
         final int size = 5;
@@ -114,12 +115,18 @@ public class PollenCloud extends Entity {
         if (sourceCrop.is(Blocks.ATTACHED_PUMPKIN_STEM)) {
             sourceCrop = Blocks.PUMPKIN_STEM.defaultBlockState();
         }
+        if (sourceCrop.is(BlockRegistry.WILD_AMARANTH)) {
+            sourceCrop = BlockRegistry.AMARANTH.defaultBlockState();
+        }
         BlockState viableCrop = level().getBlockState(viableBlockPos).getBlock().defaultBlockState();
         if (viableCrop.is(Blocks.ATTACHED_MELON_STEM)) {
             viableCrop = Blocks.MELON_STEM.defaultBlockState();
         }
         if (viableCrop.is(Blocks.ATTACHED_PUMPKIN_STEM)) {
             viableCrop = Blocks.PUMPKIN_STEM.defaultBlockState();
+        }
+        if (viableCrop.is(BlockRegistry.WILD_AMARANTH)) {
+            viableCrop = BlockRegistry.AMARANTH.defaultBlockState();
         }
 
         BlockState cropToPlace;
@@ -138,7 +145,9 @@ public class PollenCloud extends Entity {
 
             if (level().getBlockState(viableBlockPosOffset).getBlock() != Blocks.AIR) continue;
 
-            if (level().getBlockState(viableBlockPosOffset.below()).getBlock() == Blocks.FARMLAND && random.nextDouble() < chance) {
+            Block blockBelow = level().getBlockState(viableBlockPosOffset.below()).getBlock();
+
+            if ((blockBelow == Blocks.FARMLAND || blockBelow == BlockRegistry.LOAM_FARMLAND) && random.nextDouble() < chance) {
                 getServer().getLevel(level().dimension()).setBlockAndUpdate(viableBlockPosOffset, cropToPlace);
                 break;
             }

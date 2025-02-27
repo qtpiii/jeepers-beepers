@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.model.ModelTemplates;
+import net.minecraft.resources.ResourceLocation;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.registry.ItemRegistry;
 
@@ -57,6 +58,9 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockModelGenerators.createCrossBlockWithDefaultItem(BlockRegistry.MIGNONETTE_SAPLING, BlockModelGenerators.TintState.NOT_TINTED);
         blockModelGenerators.createCrossBlockWithDefaultItem(BlockRegistry.FLOWERING_MIGNONETTE_SAPLING, BlockModelGenerators.TintState.NOT_TINTED);
+
+        blockModelGenerators.createDoublePlant(BlockRegistry.WILD_AMARANTH, BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createDoubleBlock(BlockRegistry.AMARANTH, new ResourceLocation("minecraft", "block/crop"), new ResourceLocation("minecraft", "block/crop"));
     }
 
 
@@ -72,6 +76,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(BlockRegistry.MIGNONETTE_FLOWER.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ItemRegistry.DRAGONFRUIT_SEEDS, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ItemRegistry.DRAGONFRUIT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ItemRegistry.AMARANTH_SEEDS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ItemRegistry.AMARANTH, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ItemRegistry.POLLEN_PUFF, ModelTemplates.FLAT_ITEM);
     }
 }

@@ -2,6 +2,7 @@ package net.qtpi.jeepersbeepers.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
@@ -43,10 +44,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.MIGNONETTE_DOOR)
                 .add(BlockRegistry.MIGNONETTE_TRAPDOOR)
                 .add(BlockRegistry.DRAGONFRUIT_TREE);
-//        getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
-//                .addTag(TagRegistry.Blocks.BEEPER_FLUFF_BLOCKS);
-//        getOrCreateTagBuilder(BlockTags.DAMPENS_VIBRATIONS)
-//                .addTag(TagRegistry.Blocks.BEEPER_FLUFF_BLOCKS);
+        getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
+                .addTag(TagRegistry.Blocks.BEEPER_FLUFF_BLOCKS);
+        getOrCreateTagBuilder(BlockTags.DAMPENS_VIBRATIONS)
+                .addTag(TagRegistry.Blocks.BEEPER_FLUFF_BLOCKS);
 
         getOrCreateTagBuilder(BlockTags.DIRT)
                 .add(BlockRegistry.LOAM);
@@ -101,7 +102,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.TORCHFLOWER_CROP)
                 .add(Blocks.PITCHER_CROP);
         getOrCreateTagBuilder(TagRegistry.Blocks.GRAIN_CROPS) // 8
-                .add(Blocks.WHEAT);
+                .add(Blocks.WHEAT)
+                .add(BlockRegistry.AMARANTH)
+                .add(BlockRegistry.WILD_AMARANTH);
         getOrCreateTagBuilder(TagRegistry.Blocks.HYBRID_CROPS) // 2
                 .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
                 .add(BlockRegistry.DRAGONFRUIT_TREE);
@@ -111,57 +114,24 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
             beeperCanPollinateBuilder.addTag(tag);
         }
 
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_WHITE)
-                .add(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_LIGHT_GRAY)
-                .add(BlockRegistry.LIGHT_GRAY_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_GRAY)
-                .add(BlockRegistry.GRAY_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_BLACK)
-                .add(BlockRegistry.BLACK_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_BROWN)
-                .add(BlockRegistry.BROWN_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_RED)
-                .add(BlockRegistry.RED_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_ORANGE)
-                .add(BlockRegistry.ORANGE_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_YELLOW)
-                .add(BlockRegistry.YELLOW_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_LIME)
-                .add(BlockRegistry.LIME_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_GREEN)
-                .add(BlockRegistry.GREEN_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_CYAN)
-                .add(BlockRegistry.CYAN_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_LIGHT_BLUE)
-                .add(BlockRegistry.LIGHT_BLUE_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_BLUE)
-                .add(BlockRegistry.BLUE_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_PURPLE)
-                .add(BlockRegistry.PURPLE_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_MAGENTA)
-                .add(BlockRegistry.MAGENTA_BEEPER_FLUFF_BLOCK);
-        getOrCreateTagBuilder(CompatibilityTagRegistry.DYED_PINK)
+        getOrCreateTagBuilder(TagRegistry.Blocks.BEEPER_FLUFF_BLOCKS)
+                .add(BlockRegistry.BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.LIGHT_GRAY_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.GRAY_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.BLACK_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.BROWN_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.RED_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.ORANGE_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.YELLOW_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.LIME_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.GREEN_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.CYAN_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.LIGHT_BLUE_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.BLUE_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.PURPLE_BEEPER_FLUFF_BLOCK)
+                .add(BlockRegistry.MAGENTA_BEEPER_FLUFF_BLOCK)
                 .add(BlockRegistry.PINK_BEEPER_FLUFF_BLOCK);
-
-//        getOrCreateTagBuilder(TagRegistry.Blocks.BEEPER_FLUFF_BLOCKS)
-//                .add(BlockRegistry.BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.LIGHT_GRAY_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.GRAY_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.BLACK_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.BROWN_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.RED_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.ORANGE_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.YELLOW_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.LIME_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.GREEN_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.CYAN_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.LIGHT_BLUE_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.BLUE_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.PURPLE_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.MAGENTA_BEEPER_FLUFF_BLOCK)
-//                .add(BlockRegistry.PINK_BEEPER_FLUFF_BLOCK);
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
                 .add(BlockRegistry.MIGNONETTE_LOG)

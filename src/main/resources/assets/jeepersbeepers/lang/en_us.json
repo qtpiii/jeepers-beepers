@@ -16,6 +16,9 @@
   "item.jeepersbeepers.dragonfruit_seeds": "Dragon Fruit Seeds",
   "item.jeepersbeepers.dragonfruit": "Dragon Fruit",
 
+  "item.jeepersbeepers.amaranth_seeds": "Amaranth Seeds",
+  "item.jeepersbeepers.amaranth": "Amaranth",
+
   "block.jeepersbeepers.beeper_hive": "Beeper Hive",
   "block.jeepersbeepers.beeper_nest": "Beeper Nest",
   "block.jeepersbeepers.beeper_fluff_block": "Beeper Fluff Block",
@@ -64,6 +67,8 @@
   "block.jeepersbeepers.buttewdew_lantewn": "Buttewdew Lantewn :3",
 
   "block.jeepersbeepers.dragonfruit_tree": "Dragon Fruit Tree",
+
+  "block.jeepersbeepers.wild_amaranth": "Wild Amaranth",
 
   "block.jeepersbeepers.loam": "Loam",
   "block.jeepersbeepers.loam_farmland": "Loam Farmland",

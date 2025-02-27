@@ -102,6 +102,8 @@ public class TagRegistry {
 
         public static final TagKey<Block> BEEPER_CAN_POLLINATE = createTag("beeper_can_pollinate", false);
 
+        public static final TagKey<Block> BEEPER_FLUFF_BLOCKS = createTag("beeper_fluff_blocks", false);
+
         private static TagKey<Block> createTag(String name, boolean cropTag) {
             return createTag(name, cropTag, net.minecraft.world.level.block.Blocks.AIR, 0.0);
         }

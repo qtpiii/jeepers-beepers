@@ -24,18 +24,22 @@ import net.qtpi.jeepersbeepers.world.tree.MignonetteTreeGrower;
 
 public class BlockRegistry {
 
+    //functional blocks
+
     public static final Block BEEPER_HIVE = registerBlock("beeper_hive", new BeeperHiveBlock(FabricBlockSettings.copyOf(Blocks.BEEHIVE).mapColor(MapColor.GLOW_LICHEN)), true);
     public static final Block BEEPER_NEST = registerBlock("beeper_nest", new BeeperHiveBlock(FabricBlockSettings.copyOf(Blocks.BEE_NEST).mapColor(MapColor.STONE)), true);
-
     public static final Block LOAM = registerBlock("loam", new Block(FabricBlockSettings.copyOf(Blocks.DIRT)), true);
     public static final Block LOAM_FARMLAND = registerBlock("loam_farmland", new LoamFarmlandBlock(FabricBlockSettings.copyOf(Blocks.FARMLAND)), true);
+    public static final Block SPICY_HONEY_BLOCK = registerBlock("spicy_honey_block", new HoneyBlock(FabricBlockSettings.copyOf(Blocks.HONEY_BLOCK).mapColor(MapColor.FIRE)), true);
+
+    //decorative blocks
+
     public static final Block LOAM_BRICKS = registerBlock("loam_bricks", new Block(FabricBlockSettings.copyOf(Blocks.MUD_BRICKS)), true);
     public static final Block LOAM_TILES = registerBlock("loam_tiles", new Block(FabricBlockSettings.copyOf(Blocks.MUD_BRICKS)), true);
     public static final Block LOAM_BRICK_STAIRS = registerBlock("loam_brick_stairs", new StairBlock(BlockRegistry.LOAM_BRICKS.defaultBlockState(),
             FabricBlockSettings.copyOf(Blocks.MUD_BRICK_STAIRS)), true);
     public static final Block LOAM_BRICK_SLAB = registerBlock("loam_brick_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.MUD_BRICK_SLAB)), true);
     public static final Block LOAM_BRICK_WALL = registerBlock("loam_brick_wall", new WallBlock(FabricBlockSettings.copyOf(Blocks.MUD_BRICK_WALL)), true);
-
     public static final Block BEEPER_FLUFF_BLOCK = registerBlock("beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
             .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.GLOW_LICHEN).strength(0.6f).sound(SoundType.WOOL)), true);
     public static final Block WHITE_BEEPER_FLUFF_BLOCK = registerBlock("white_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
@@ -70,6 +74,19 @@ public class BlockRegistry {
             .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_MAGENTA).strength(0.6f).sound(SoundType.WOOL)), true);
     public static final Block PINK_BEEPER_FLUFF_BLOCK = registerBlock("pink_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
             .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.COLOR_PINK).strength(0.6f).sound(SoundType.WOOL)), true);
+    public static final Block SPICY_HONEYCOMB_BLOCK = registerBlock("spicy_honeycomb_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.HONEYCOMB_BLOCK).mapColor(MapColor.FIRE)), true);
+    public static final Block HONEY_LAMP = registerBlock("honey_lamp",
+            new HoneyLampBlock(FabricBlockSettings.create().forceSolidOn().sound(SoundType.LANTERN)
+                    .lightLevel(blockState -> 15).noOcclusion().pushReaction(PushReaction.DESTROY)), true);
+    public static final Block SPICY_HONEY_LAMP = registerBlock("spicy_honey_lamp",
+            new HoneyLampBlock(FabricBlockSettings.create().forceSolidOn().sound(SoundType.LANTERN)
+                    .lightLevel(blockState -> 12).noOcclusion().pushReaction(PushReaction.DESTROY)), true);
+    public static final Block MIGNONETTE_FLOWER = registerBlock("mignonette_flower",
+            new WallFlowerBlock(MobEffects.REGENERATION, 30,
+                    FabricBlockSettings.copyOf(Blocks.LILY_OF_THE_VALLEY).offsetType(BlockBehaviour.OffsetType.NONE)), true);
+
+    //wood blocks
 
     public static final Block MIGNONETTE_LOG = registerBlock("mignonette_log",
             new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)
@@ -125,9 +142,7 @@ public class BlockRegistry {
     public static final Block FLOWERING_MIGNONETTE_SAPLING = registerBlock("flowering_mignonette_sapling",
             new SaplingBlock(new FloweringMignonetteTreeGrower(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), true);
 
-    public static final Block MIGNONETTE_FLOWER = registerBlock("mignonette_flower",
-            new WallFlowerBlock(MobEffects.REGENERATION, 30,
-                    FabricBlockSettings.copyOf(Blocks.LILY_OF_THE_VALLEY).offsetType(BlockBehaviour.OffsetType.NONE)), true);
+    //crops
 
     public static final Block BUTTERDEW_SQUASH = registerBlock("butterdew_squash",
             new ButterdewSquashBlock(FabricBlockSettings.copyOf(Blocks.PUMPKIN)), true);
@@ -151,17 +166,10 @@ public class BlockRegistry {
             new DragonFruitTreeBlock(FabricBlockSettings.create().mapColor(MapColor.PLANT).sound(SoundType.AZALEA)
                             .requiresCorrectToolForDrops().strength(0.2F).pushReaction(PushReaction.DESTROY).forceSolidOff()), true);
 
-    public static final Block SPICY_HONEY_BLOCK = registerBlock("spicy_honey_block",
-            new HoneyBlock(FabricBlockSettings.copyOf(Blocks.HONEY_BLOCK).mapColor(MapColor.FIRE)), true);
-    public static final Block SPICY_HONEYCOMB_BLOCK = registerBlock("spicy_honeycomb_block",
-            new Block(FabricBlockSettings.copyOf(Blocks.HONEYCOMB_BLOCK).mapColor(MapColor.FIRE)), true);
-
-    public static final Block HONEY_LAMP = registerBlock("honey_lamp",
-            new HoneyLampBlock(FabricBlockSettings.create().forceSolidOn().sound(SoundType.LANTERN)
-                    .lightLevel(blockState -> 15).noOcclusion().pushReaction(PushReaction.DESTROY)), true);
-    public static final Block SPICY_HONEY_LAMP = registerBlock("spicy_honey_lamp",
-            new HoneyLampBlock(FabricBlockSettings.create().forceSolidOn().sound(SoundType.LANTERN)
-                    .lightLevel(blockState -> 12).noOcclusion().pushReaction(PushReaction.DESTROY)), true);
+    public static final Block WILD_AMARANTH = registerBlock("wild_amaranth",
+            new TallFlowerBlock(FabricBlockSettings.copyOf(Blocks.PEONY).noCollision().forceSolidOff()), true);
+    public static final Block AMARANTH = registerBlock("amaranth",
+            new DoubleCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT).noCollision().forceSolidOff()), false);
 
     public static final BlockFamily MIGNONETTE_FAMILY = new BlockFamily.Builder(MIGNONETTE_PLANKS)
             .stairs(MIGNONETTE_STAIRS)

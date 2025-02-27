@@ -33,8 +33,9 @@ public class ItemRegistry {
     public static final Item BUTTERDEW_SQUASH_SEEDS = registerItem("butterdew_squash_seeds", new ItemNameBlockItem(BlockRegistry.BUTTERDEW_SQUASH_STEM, new FabricItemSettings()));
 
     public static final Item DRAGONFRUIT_SEEDS = registerItem("dragonfruit_seeds", new ItemNameBlockItem(BlockRegistry.DRAGONFRUIT_TREE, new FabricItemSettings()));
-
     public static final Item DRAGONFRUIT = registerItem("dragonfruit", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(0.2f).build())));
+    public static final Item AMARANTH_SEEDS = registerItem("amaranth_seeds", new ItemNameBlockItem(BlockRegistry.AMARANTH, new FabricItemSettings()));
+    public static final Item AMARANTH = registerItem("amaranth", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(0.2f).build())));
 
     private static void addItemsToColoredBlocksTab(FabricItemGroupEntries entries) {
         entries.accept(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);

@@ -3,7 +3,9 @@ package net.qtpi.jeepersbeepers.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
+import net.qtpi.jeepersbeepers.registry.ItemRegistry;
 
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
@@ -38,6 +40,11 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(BlockRegistry.MIGNONETTE_FENCE_GATE);
         dropSelf(BlockRegistry.MIGNONETTE_TRAPDOOR);
         createSlabItemTable(BlockRegistry.MIGNONETTE_SLAB);
+
+        createStemDrops(BlockRegistry.BUTTERDEW_SQUASH_STEM, ItemRegistry.BUTTERDEW_SQUASH_SEEDS);
+        createAttachedStemDrops(BlockRegistry.ATTACHED_BUTTERDEW_SQUASH_STEM, ItemRegistry.BUTTERDEW_SQUASH_SEEDS);
+
+        dropOther(BlockRegistry.DRAGONFRUIT_TREE, ItemRegistry.DRAGONFRUIT_SEEDS);
 
         dropSelf(BlockRegistry.BUTTERDEW_SQUASH);
         dropSelf(BlockRegistry.CARVED_BUTTERDEW_SQUASH);

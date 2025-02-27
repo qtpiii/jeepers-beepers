@@ -154,7 +154,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
                     for (int i = 0; i < random.nextInt(5) + 4; ++i) {
                         level().addParticle(ParticleTypes.POOF, getX(), getY(), getZ(), random.nextGaussian() * 0.05, random.nextGaussian() * 0.025, random.nextGaussian() * 0.05);
                     }
-                    for (int i = 0; i < random.nextInt(3) + 16; ++i) {
+                    for (int i = 0; i < random.nextInt(3) + 6; ++i) {
                         level().addParticle(ParticleRegistry.BEEPER_SNEEZE_POOF, getX(), getY(), getZ(), random.nextGaussian() * 0.15, random.nextGaussian() * 0.15, random.nextGaussian() * 0.15);
                     }
                 }).setSoundKeyframeHandler(soundKeyframeEvent -> {
@@ -357,8 +357,33 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             } else {
                 return InteractionResult.CONSUME;
             }
+        } else if (itemStack.is(Items.FEATHER)) {
+            if (!this.level().isClientSide && this.hasNectar()) {
+                this.sneeze();
+                return InteractionResult.SUCCESS;
+            } else {
+                return InteractionResult.CONSUME;
+            }
         } else {
             return super.mobInteract(player, hand);
+        }
+    }
+
+    public void sneeze() {
+        triggerAnim("sneezeController", "sneeze");
+        if (BeeperEntity.this.savedCrop != null) {
+            this.remainingCooldownBeforeNextSneeze = 100;
+            new Thread(() -> {
+                try {
+                    TimeUnit.MILLISECONDS.sleep(2100);
+                } catch (InterruptedException ignore) {
+                }
+                PollenCloud cloud = new PollenCloud(null, level());
+                cloud.setPos(BeeperEntity.this.position());
+                cloud.sourceCropTags = level().getBlockState(entityData.get(DATA_SAVED_CROP_POS)).getTags().collect(Collectors.toCollection(ArrayList::new));
+                cloud.sourceCropPos = savedCropPos;
+                level().addFreshEntity(cloud);
+            }).start();
         }
     }
 
@@ -452,16 +477,6 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
     public void setSavedCropPos(@Nullable BlockPos savedCropPos) {
         this.savedCropPos = savedCropPos;
-    }
-
-    @VisibleForDebug
-    public int getTravellingTicks() {
-        return Math.max(this.goToHiveGoal.travellingTicks, this.goToKnownFlowerGoal.travellingTicks);
-    }
-
-    @VisibleForDebug
-    public List<BlockPos> getBlacklistedHives() {
-        return this.goToHiveGoal.blacklistedTargets;
     }
 
     private boolean isTiredOfLookingForNectar() {
@@ -784,15 +799,15 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     }
 
     protected void jumpInLiquid(@NotNull TagKey<Fluid> fluidTag) {
-        this.setDeltaMovement(this.getDeltaMovement().add((double)0.0F, 0.01, (double)0.0F));
+        this.setDeltaMovement(this.getDeltaMovement().add(0.0D, 0.01D, 0.0D));
     }
 
     public @NotNull Vec3 getLeashOffset() {
-        return new Vec3((double)0.0F, (double)(0.5F * this.getEyeHeight()), (double)(this.getBbWidth() * 0.2F));
+        return new Vec3(0.0D, (0.5D * this.getEyeHeight()), (this.getBbWidth() * 0.2D));
     }
 
     boolean closerThan(BlockPos pos, int distance) {
-        return pos.closerThan(this.blockPosition(), (double)distance);
+        return pos.closerThan(this.blockPosition(), distance);
     }
 
     static {
@@ -1119,26 +1134,17 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     }
 
     class BeeperPollinateGoal extends BeeperEntity.BaseBeeperGoal {
-        private static final int MIN_POLLINATION_TICKS = 400;
-        private static final int MIN_FIND_FLOWER_RETRY_COOLDOWN = 20;
-        private static final int MAX_FIND_FLOWER_RETRY_COOLDOWN = 60;
         private final Predicate<BlockState> VALID_POLLINATION_BLOCKS = (blockState) -> {
             if (blockState.hasProperty(BlockStateProperties.WATERLOGGED) && (Boolean)blockState.getValue(BlockStateProperties.WATERLOGGED)) {
                 return false;
             } else return blockState.is(TagRegistry.Blocks.BEEPER_CAN_POLLINATE);
         };
-        private static final double ARRIVAL_THRESHOLD = 0.1;
-        private static final int POSITION_CHANGE_CHANCE = 25;
-        private static final float SPEED_MODIFIER = 0.35F;
-        private static final float HOVER_HEIGHT_WITHIN_FLOWER = 0.6F;
-        private static final float HOVER_POS_OFFSET = 0.33333334F;
         private int successfulPollinatingTicks;
         private int lastSoundPlayedTick;
         private boolean pollinating;
         @Nullable
         private Vec3 hoverPos;
         private int pollinatingTicks;
-        private static final int MAX_POLLINATING_TICKS = 600;
 
         BeeperPollinateGoal(BeeperEntity bee) {
             super(bee);
@@ -1444,19 +1450,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         @Override
         public void tick() {
             if (BeeperEntity.this.readyToSneeze) {
-                triggerAnim("sneezeController", "sneeze");
-
-                new Thread(() -> {
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(2100);
-                    } catch (InterruptedException ignore) {
-                    }
-                    PollenCloud cloud = new PollenCloud(null, level());
-                    cloud.setPos(BeeperEntity.this.position());
-                    cloud.sourceCropTags = level().getBlockState(entityData.get(DATA_SAVED_CROP_POS)).getTags().collect(Collectors.toCollection(ArrayList::new));
-                    cloud.sourceCropPos = savedCropPos;
-                    level().addFreshEntity(cloud);
-                }).start();
+                BeeperEntity.this.sneeze();
             }
         }
     }
