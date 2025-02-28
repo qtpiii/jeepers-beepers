@@ -191,6 +191,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         this.entityData.define(DATA_REMAINING_ANGER_TIME, 0);
         this.entityData.define(DATA_WOOL_ID, (byte) 0);
         this.entityData.define(DATA_SAVED_CROP_POS, new BlockPos(0, 0, 0));
+        this.entityData.define(DATA_TAME, true);
     }
 
     public float getWalkTargetValue(@NotNull BlockPos pos, LevelReader level) {
@@ -265,8 +266,12 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         this.setHasStung(compound.getBoolean("HasStung"));
         this.setIsNaked(compound.getBoolean("IsNaked"));
         this.setHasColor(compound.getBoolean("HasColor"));
-        this.setIsWild(compound.getBoolean("IsWild"));
-        this.setIsTame(compound.getBoolean("IsTame"));
+        if (compound.contains("IsWild")) {
+            this.setIsWild(compound.getBoolean("IsWild"));
+        }
+        if (compound.contains("IsTame")) {
+            this.setIsTame(compound.getBoolean("IsTame"));
+        }
         this.ticksWithoutNectarSinceExitingHive = compound.getInt("TicksSincePollination");
         this.stayOutOfHiveCountdown = compound.getInt("CannotEnterHiveTicks");
         this.numCropsGrownSincePollination = compound.getInt("CropsGrownSincePollination");

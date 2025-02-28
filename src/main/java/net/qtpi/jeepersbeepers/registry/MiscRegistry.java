@@ -12,6 +12,7 @@ import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.item.HoeItem;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.entity.BeeperEntity;
+import net.qtpi.jeepersbeepers.entity.SkeletonBeekeeperEntity;
 
 public class MiscRegistry {
 
@@ -22,6 +23,7 @@ public class MiscRegistry {
         JeepersBeepers.LOGGER.info("Registering Misc for " + JeepersBeepers.MOD_ID);
 
         FabricDefaultAttributeRegistry.register(EntityRegistry.BEEPER, BeeperEntity.setAttributes());
+        FabricDefaultAttributeRegistry.register(EntityRegistry.SKELETON_BEEKEEPER, SkeletonBeekeeperEntity.setAttributes());
 
         StrippableBlockRegistry.register(BlockRegistry.MIGNONETTE_LOG, BlockRegistry.STRIPPED_MIGNONETTE_LOG);
         StrippableBlockRegistry.register(BlockRegistry.MIGNONETTE_WOOD, BlockRegistry.STRIPPED_MIGNONETTE_WOOD);

@@ -22,6 +22,8 @@ public class ItemRegistry {
     public static final Item SPICY_HONEYCOMB = registerItem("spicy_honeycomb", new Item(new FabricItemSettings()));
     public static final Item BEEPER_SPAWN_EGG = registerItem("beeper_spawn_egg", new SpawnEggItem(EntityRegistry.BEEPER,
             6651479, 12567454, new FabricItemSettings()));
+    public static final Item SKELETON_BEEKEEPER_SPAWN_EGG = registerItem("skeleton_beekeeper_spawn_egg", new SpawnEggItem(EntityRegistry.SKELETON_BEEKEEPER,
+            0x1f201c, 0x835b41, new FabricItemSettings()));
     public static final Item BEEPER_FLUFF = registerItem("beeper_fluff", new Item(new FabricItemSettings()));
     public static final Item POLLEN_PUFF = registerItem("pollen_puff", new PollenPuff(new FabricItemSettings()));
 
@@ -85,6 +87,7 @@ public class ItemRegistry {
 
     private static void addItemsToSpawnEggsTab(FabricItemGroupEntries entries) {
         entries.accept(ItemRegistry.BEEPER_SPAWN_EGG);
+        entries.accept(ItemRegistry.SKELETON_BEEKEEPER_SPAWN_EGG);
     }
 
     private static void addItemsToFoodAndDrinksTab(FabricItemGroupEntries entries) {

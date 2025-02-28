@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.qtpi.jeepersbeepers.entity.ThrownPollenPuff;
 import net.qtpi.jeepersbeepers.entity.client.BeeperRenderer;
 import net.qtpi.jeepersbeepers.entity.client.PollenCloudRenderer;
+import net.qtpi.jeepersbeepers.entity.client.SkeletonBeekeeperRenderer;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.registry.EntityRegistry;
 import net.qtpi.jeepersbeepers.registry.ParticleRegistry;
@@ -19,6 +20,7 @@ public class JeepersBeepersClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         EntityRendererRegistry.register(EntityRegistry.BEEPER, BeeperRenderer::new);
+        EntityRendererRegistry.register(EntityRegistry.SKELETON_BEEKEEPER, SkeletonBeekeeperRenderer::new);
         EntityRendererRegistry.register(EntityRegistry.THROWN_POLLEN_PUFF, (context) -> new ThrownItemRenderer<>(context, 1, true));
         EntityRendererRegistry.register(EntityRegistry.POLLEN_CLOUD, PollenCloudRenderer::new);
 

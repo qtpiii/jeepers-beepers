@@ -21,6 +21,7 @@ import net.minecraft.world.phys.Vec2;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
 import net.qtpi.jeepersbeepers.entity.BeeperEntity;
 import net.qtpi.jeepersbeepers.entity.PollenCloud;
+import net.qtpi.jeepersbeepers.entity.SkeletonBeekeeperEntity;
 import net.qtpi.jeepersbeepers.entity.ThrownPollenPuff;
 
 import java.util.*;
@@ -38,11 +39,18 @@ public class EntityRegistry {
             new ResourceLocation(JeepersBeepers.MOD_ID, "pollen_puff"),
             FabricEntityTypeBuilder.<ThrownPollenPuff>create(MobCategory.MISC, ThrownPollenPuff::new).build()
     );
-
     public static final EntityType<PollenCloud> POLLEN_CLOUD = Registry.register(
             BuiltInRegistries.ENTITY_TYPE,
             new ResourceLocation(JeepersBeepers.MOD_ID, "pollen_cloud"),
             FabricEntityTypeBuilder.create(MobCategory.MISC, PollenCloud::new).build()
+    );
+
+    public static final EntityType<SkeletonBeekeeperEntity> SKELETON_BEEKEEPER = Registry.register(
+            BuiltInRegistries.ENTITY_TYPE,
+            new ResourceLocation(JeepersBeepers.MOD_ID, "skeleton_beekeeper"),
+            FabricEntityTypeBuilder.create(MobCategory.MONSTER, SkeletonBeekeeperEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.6f, 2))
+                    .build()
     );
 
     public static void registerModEntities() {
