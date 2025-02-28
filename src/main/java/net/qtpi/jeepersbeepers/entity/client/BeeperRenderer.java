@@ -18,8 +18,6 @@ import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class BeeperRenderer extends GeoEntityRenderer<BeeperEntity> {
-    public boolean angry = false;
-    public boolean wild = false;
     public BeeperRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new DefaultedEntityGeoModel<>(new ResourceLocation(JeepersBeepers.MOD_ID, "beeper")));
 
@@ -33,11 +31,11 @@ public class BeeperRenderer extends GeoEntityRenderer<BeeperEntity> {
         String string = ChatFormatting.stripFormatting(entity.getName().getString());
         if ("Glommer".equals(string) && entity.hasColor() && entity.getColor() == DyeColor.PURPLE) {
             return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_glommer.png");
-        } else if (angry) {
-            if (wild) { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/wild_beeper_angry.png"); }
+        } else if (entity.isAngry()) {
+            if (entity.isWild()) { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/wild_beeper_angry.png"); }
             else { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_angry.png"); }
         } else {
-            if (wild) { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/wild_beeper.png"); }
+            if (entity.isWild()) { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/wild_beeper.png"); }
             else { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper.png"); }
         }
     }
@@ -51,8 +49,6 @@ public class BeeperRenderer extends GeoEntityRenderer<BeeperEntity> {
                 poseStack.scale(1.0f, 1.0f, 1.0f);
             }
         }
-        angry = entity.isAngry();
-        wild = entity.isWild();
         super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
     }
 }

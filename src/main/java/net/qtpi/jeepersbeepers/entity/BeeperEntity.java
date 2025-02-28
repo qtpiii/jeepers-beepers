@@ -92,6 +92,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME;
     private static final EntityDataAccessor<BlockPos> DATA_SAVED_CROP_POS;
     private static final EntityDataAccessor<Boolean> DATA_TAME;
+    private static final EntityDataAccessor<Boolean> DATA_WILD;
     private static final UniformInt PERSISTENT_ANGER_TIME;
     @Nullable
     private UUID persistentAngerTarget;
@@ -192,6 +193,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         this.entityData.define(DATA_WOOL_ID, (byte) 0);
         this.entityData.define(DATA_SAVED_CROP_POS, new BlockPos(0, 0, 0));
         this.entityData.define(DATA_TAME, true);
+        this.entityData.define(DATA_WILD, false);
     }
 
     public float getWalkTargetValue(@NotNull BlockPos pos, LevelReader level) {
@@ -679,10 +681,10 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     private void setHasColor(boolean isWild) { this.setFlag(32, isWild); }
 
     public boolean isWild() {
-        return this.getFlag(64);
+        return entityData.get(DATA_WILD);
     }
 
-    private void setIsWild(boolean isWild) { this.setFlag(64, isWild); }
+    private void setIsWild(boolean isWild) { entityData.set(DATA_WILD, isWild); }
 
 
     public boolean isTame() {
@@ -894,6 +896,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         }));
         DATA_SAVED_CROP_POS = SynchedEntityData.defineId(BeeperEntity.class, EntityDataSerializers.BLOCK_POS);
         DATA_TAME = SynchedEntityData.defineId(BeeperEntity.class, EntityDataSerializers.BOOLEAN);
+        DATA_WILD = SynchedEntityData.defineId(BeeperEntity.class, EntityDataSerializers.BOOLEAN);
     }
 
     class BeeperHurtByOtherGoal extends HurtByTargetGoal {
