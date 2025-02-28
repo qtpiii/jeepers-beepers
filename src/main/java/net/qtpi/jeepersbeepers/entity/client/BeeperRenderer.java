@@ -19,6 +19,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class BeeperRenderer extends GeoEntityRenderer<BeeperEntity> {
     public boolean angry = false;
+    public boolean wild = false;
     public BeeperRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new DefaultedEntityGeoModel<>(new ResourceLocation(JeepersBeepers.MOD_ID, "beeper")));
 
@@ -33,8 +34,12 @@ public class BeeperRenderer extends GeoEntityRenderer<BeeperEntity> {
         if ("Glommer".equals(string) && entity.hasColor() && entity.getColor() == DyeColor.PURPLE) {
             return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_glommer.png");
         } else if (angry) {
-            return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_angry.png");
-        } else { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper.png"); }
+            if (wild) { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/wild_beeper_angry.png"); }
+            else { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_angry.png"); }
+        } else {
+            if (wild) { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/wild_beeper.png"); }
+            else { return new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper.png"); }
+        }
     }
 
     @Override
@@ -47,6 +52,7 @@ public class BeeperRenderer extends GeoEntityRenderer<BeeperEntity> {
             }
         }
         angry = entity.isAngry();
+        wild = entity.isWild();
         super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
     }
 }

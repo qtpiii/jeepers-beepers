@@ -233,6 +233,8 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         compound.putBoolean("HasStung", this.hasStung());
         compound.putBoolean("IsNaked", this.isNaked());
         compound.putBoolean("HasColor", this.hasColor());
+        compound.putBoolean("IsWild", this.isWild());
+        compound.putBoolean("IsTame", this.isTame());
         compound.putInt("TicksSincePollination", this.ticksWithoutNectarSinceExitingHive);
         compound.putInt("CannotEnterHiveTicks", this.stayOutOfHiveCountdown);
         compound.putInt("CropsGrownSincePollination", this.numCropsGrownSincePollination);
@@ -262,6 +264,8 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         this.setHasStung(compound.getBoolean("HasStung"));
         this.setIsNaked(compound.getBoolean("IsNaked"));
         this.setHasColor(compound.getBoolean("HasColor"));
+        this.setIsWild(compound.getBoolean("IsWild"));
+        this.setIsTame(compound.getBoolean("IsTame"));
         this.ticksWithoutNectarSinceExitingHive = compound.getInt("TicksSincePollination");
         this.stayOutOfHiveCountdown = compound.getInt("CannotEnterHiveTicks");
         this.numCropsGrownSincePollination = compound.getInt("CropsGrownSincePollination");
@@ -364,8 +368,15 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             } else {
                 return InteractionResult.CONSUME;
             }
+        } else if (itemStack.is(Items.GUNPOWDER)) {
+            if (!this.level().isClientSide) {
+                this.setIsWild(true);
+                return InteractionResult.SUCCESS;
+            } else {
+                return InteractionResult.CONSUME;
+            }
         } else {
-            return super.mobInteract(player, hand);
+                return super.mobInteract(player, hand);
         }
     }
 
@@ -659,7 +670,20 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         return this.getFlag(32);
     }
 
-    private void setHasColor(boolean hasColor) { this.setFlag(32, hasColor); }
+    private void setHasColor(boolean isWild) { this.setFlag(32, isWild); }
+
+    public boolean isWild() {
+        return this.getFlag(64);
+    }
+
+    private void setIsWild(boolean isWild) { this.setFlag(64, isWild); }
+
+
+    public boolean isTame() {
+        return this.getFlag(128);
+    }
+
+    private void setIsTame(boolean isTame) { this.setFlag(128, isTame); }
 
 
     public boolean hasNectar() {
@@ -759,7 +783,18 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
     @Nullable
     public BeeperEntity getBreedOffspring(@NotNull ServerLevel level, @NotNull AgeableMob otherParent) {
-        return EntityRegistry.BEEPER.create(level);
+        BeeperEntity beeper = EntityRegistry.BEEPER.create(level);
+        if (beeper != null && otherParent instanceof BeeperEntity beeper2) {
+            if (!this.isWild() || !beeper2.isWild()) {
+                beeper.setIsWild(false);
+            } else if (level.random.nextFloat() > 0.9) {
+                beeper.setIsWild(false);
+            } else {
+                beeper.setIsWild(true);
+            }
+            beeper.setIsTame(true);
+        }
+        return beeper;
     }
 
     protected float getStandingEyeHeight(@NotNull Pose pose, EntityDimensions dimensions) {

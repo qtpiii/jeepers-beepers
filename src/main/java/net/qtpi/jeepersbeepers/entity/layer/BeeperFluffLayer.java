@@ -15,6 +15,7 @@ import java.awt.*;
 
 public class BeeperFluffLayer extends GeoRenderLayer<BeeperEntity> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_fluff.png");
+    private static final ResourceLocation WILD_TEXTURE = new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/wild_beeper_fluff.png");
     private static final ResourceLocation COLORABLE_TEXTURE = new ResourceLocation(JeepersBeepers.MOD_ID, "textures/entity/beeper/beeper_fluff_white.png");
     public BeeperFluffLayer(GeoRenderer<BeeperEntity> entityRendererIn) {
         super(entityRendererIn);
@@ -24,7 +25,12 @@ public class BeeperFluffLayer extends GeoRenderLayer<BeeperEntity> {
     public void render(PoseStack poseStack, BeeperEntity entity, BakedGeoModel bakedModel, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
         if (!entity.isNaked()) {
             if (!entity.hasColor()) {
-                RenderType fluffLayer = RenderType.entityCutoutNoCull(TEXTURE);
+                RenderType fluffLayer;
+                if (entity.isWild()) {
+                    fluffLayer = RenderType.entityCutoutNoCull(WILD_TEXTURE);
+                } else {
+                    fluffLayer = RenderType.entityCutoutNoCull(TEXTURE);
+                }
                 getRenderer().reRender(getDefaultBakedModel(entity), poseStack, bufferSource, entity, fluffLayer,
                         bufferSource.getBuffer(fluffLayer), partialTick, packedLight, packedOverlay, 1, 1, 1, 1);
             } else {
