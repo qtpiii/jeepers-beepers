@@ -60,7 +60,6 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createCrossBlockWithDefaultItem(BlockRegistry.FLOWERING_MIGNONETTE_SAPLING, BlockModelGenerators.TintState.NOT_TINTED);
 
         blockModelGenerators.createDoublePlant(BlockRegistry.WILD_AMARANTH, BlockModelGenerators.TintState.NOT_TINTED);
-        blockModelGenerators.createDoubleBlock(BlockRegistry.AMARANTH, new ResourceLocation("minecraft", "block/crop"), new ResourceLocation("minecraft", "block/crop"));
     }
 
 

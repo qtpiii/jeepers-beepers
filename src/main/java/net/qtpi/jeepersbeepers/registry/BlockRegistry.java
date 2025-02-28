@@ -40,6 +40,7 @@ public class BlockRegistry {
             FabricBlockSettings.copyOf(Blocks.MUD_BRICK_STAIRS)), true);
     public static final Block LOAM_BRICK_SLAB = registerBlock("loam_brick_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.MUD_BRICK_SLAB)), true);
     public static final Block LOAM_BRICK_WALL = registerBlock("loam_brick_wall", new WallBlock(FabricBlockSettings.copyOf(Blocks.MUD_BRICK_WALL)), true);
+
     public static final Block BEEPER_FLUFF_BLOCK = registerBlock("beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
             .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.GLOW_LICHEN).strength(0.6f).sound(SoundType.WOOL)), true);
     public static final Block WHITE_BEEPER_FLUFF_BLOCK = registerBlock("white_beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()

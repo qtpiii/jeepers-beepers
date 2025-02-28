@@ -1,14 +1,14 @@
 {
   "structures": [
     {
-      "structure": "jeepersbeepers:hive_shrine",
+      "structure": "jeepersbeepers:mignonette_well",
       "weight": 1
     }
   ],
   "placement": {
     "type": "minecraft:random_spread",
-    "spacing": 16,
-    "separation": 4,
+    "spacing": 20,
+    "separation": 8,
     "salt": 1646207470
   }
 }

@@ -90,6 +90,7 @@ public class ItemRegistry {
     private static void addItemsToFoodAndDrinksTab(FabricItemGroupEntries entries) {
         entries.accept(ItemRegistry.SPICY_HONEY_BOTTLE);
         entries.accept(ItemRegistry.DRAGONFRUIT);
+        entries.accept(ItemRegistry.AMARANTH);
     }
 
     private static void addItemsToIngredientsTab(FabricItemGroupEntries entries) {

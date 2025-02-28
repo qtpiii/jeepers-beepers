@@ -27,13 +27,13 @@ public class DoubleCropBlock extends DoublePlantBlock implements BonemealableBlo
     public static final int MAX_AGE = 3;
     public static final int DOUBLE_PLANT_AGE_INTERSECTION = 2;
     private static final VoxelShape[] UPPER_SHAPE_BY_AGE = new VoxelShape[]{
-            Block.box(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-            Block.box(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)};
+            Block.box(1.0, 0.0, 1.0, 15.0, 6.0, 15.0),
+            Block.box(1.0, 0.0, 1.0, 15.0, 14.0, 15.0)};
     private static final VoxelShape[] LOWER_SHAPE_BY_AGE = new VoxelShape[]{
-            Block.box(0.0, -1.0, 0.0, 16.0, 4.0, 16.0),
-            Block.box(0.0, -1.0, 0.0, 16.0, 10.0, 16.0),
-            Block.box(0.0, -1.0, 0.0, 16.0, 16.0, 16.0),
-            Block.box(0.0, -1.0, 0.0, 16.0, 16.0, 16.0)
+            Block.box(1.0, -1.0, 1.0, 15.0, 4.0, 15.0),
+            Block.box(1.0, -1.0, 1.0, 15.0, 12.0, 15.0),
+            Block.box(1.0, -1.0, 1.0, 15.0, 16.0, 15.0),
+            Block.box(1.0, -1.0, 1.0, 15.0, 16.0, 15.0)
     };
     public DoubleCropBlock(Properties properties) {
         super(properties);
@@ -46,7 +46,7 @@ public class DoubleCropBlock extends DoublePlantBlock implements BonemealableBlo
 
     @Override
     public boolean isRandomlyTicking(BlockState state) {
-        return !isMaxAge(state);
+        return state.getValue(HALF) == DoubleBlockHalf.LOWER && !this.isMaxAge(state);
     }
 
     @Override
@@ -81,13 +81,13 @@ public class DoubleCropBlock extends DoublePlantBlock implements BonemealableBlo
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return state.getValue(HALF) == DoubleBlockHalf.LOWER ? LOWER_SHAPE_BY_AGE[state.getValue(AGE)] : super.getCollisionShape(state, level, pos, context);
+        return super.getCollisionShape(state, level, pos, context);
     }
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return state.getValue(HALF) == DoubleBlockHalf.UPPER
-                ? UPPER_SHAPE_BY_AGE[Math.min(Math.abs(4 - (state.getValue(AGE) + 1)), UPPER_SHAPE_BY_AGE.length - 1)]
+                ? UPPER_SHAPE_BY_AGE[Math.max(state.getValue(AGE) - 2, 0)]
                 : LOWER_SHAPE_BY_AGE[state.getValue(AGE)];
     }
 
@@ -111,11 +111,7 @@ public class DoubleCropBlock extends DoublePlantBlock implements BonemealableBlo
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return !isLower(state)
-                ? super.canSurvive(state, level, pos)
-                : this.mayPlaceOn(level.getBlockState(pos.below()), level, pos.below())
-                && sufficientLight(level, pos)
-                && state.getValue(AGE) < DOUBLE_PLANT_AGE_INTERSECTION || isUpper(level.getBlockState(pos.above()));
+        return super.canSurvive(state, level, pos);
     }
 
     private static boolean sufficientLight(LevelReader level, BlockPos pos) {
@@ -123,26 +119,23 @@ public class DoubleCropBlock extends DoublePlantBlock implements BonemealableBlo
     }
 
     private boolean isLower(BlockState state) {
-        Block block = this.asBlock();
-        return state.is(block) && state.getValue(HALF) == DoubleBlockHalf.LOWER;
+        return state.is(this) && state.getValue(HALF) == DoubleBlockHalf.LOWER;
     }
 
     private boolean isUpper(BlockState state) {
-        Block block = this.asBlock();
-        return state.is(block) && state.getValue(HALF) == DoubleBlockHalf.UPPER;
+        return state.is(this) && state.getValue(HALF) == DoubleBlockHalf.UPPER;
     }
 
     private boolean canGrowInto(LevelReader level, BlockPos pos) {
         BlockState blockState = level.getBlockState(pos);
-        Block block = this.asBlock();
-        return blockState.isAir() || blockState.is(block);
+        return blockState.isAir() || blockState.is(this);
     }
 
     private void grow(ServerLevel level, BlockState state, BlockPos pos, int ageIncrement) {
         int i = Math.min(state.getValue(AGE) + ageIncrement, MAX_AGE);
         if (this.canGrow(level, pos, state, i)) {
             level.setBlock(pos, state.setValue(AGE, i), 2);
-            if (i == MAX_AGE) {
+            if (i >= DOUBLE_PLANT_AGE_INTERSECTION) {
                 BlockPos blockPos = pos.above();
                 level.setBlock(
                         blockPos, copyWaterloggedFrom(level, pos, this.defaultBlockState().setValue(AGE, i).setValue(HALF, DoubleBlockHalf.UPPER)), 3

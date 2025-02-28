@@ -4,6 +4,11 @@
     "jeepersbeepers:loam_bricks",
     "jeepersbeepers:loam_brick_stairs",
     "jeepersbeepers:loam_brick_slab",
-    "jeepersbeepers:loam_brick_wall"
+    "jeepersbeepers:loam_brick_wall",
+    "jeepersbeepers:rose_gold_block",
+    "jeepersbeepers:rose_gold_pillar",
+    "jeepersbeepers:rose_gold_tiles",
+    "jeepersbeepers:rose_gold_tile_stairs",
+    "jeepersbeepers:rose_gold_tile_slab"
   ]
 }

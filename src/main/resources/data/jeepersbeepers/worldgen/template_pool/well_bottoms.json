@@ -1,0 +1,15 @@
+{
+  "name": "jeepersbeepers:well_bottoms",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 3,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/bottom_1",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

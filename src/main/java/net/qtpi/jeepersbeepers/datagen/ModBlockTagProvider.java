@@ -64,7 +64,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.ATTACHED_PUMPKIN_STEM)
                 .add(Blocks.TORCHFLOWER_CROP)
                 .add(Blocks.PITCHER_CROP)
-                .add(BlockRegistry.DRAGONFRUIT_TREE);
+                .add(BlockRegistry.DRAGONFRUIT_TREE)
+                .add(BlockRegistry.AMARANTH)
+                .add(BlockRegistry.WILD_AMARANTH);
         getOrCreateTagBuilder(TagRegistry.Blocks.SEEDLESS_CROPS) // 8
                 .add(Blocks.POTATOES)
                 .add(Blocks.CARROTS);
@@ -86,7 +88,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.PUMPKIN_STEM)
                 .add(Blocks.ATTACHED_PUMPKIN_STEM)
                 .add(Blocks.TORCHFLOWER_CROP)
-                .add(Blocks.PITCHER_CROP);
+                .add(Blocks.PITCHER_CROP)
+                .add(BlockRegistry.AMARANTH)
+                .add(BlockRegistry.WILD_AMARANTH);
         getOrCreateTagBuilder(TagRegistry.Blocks.FRUIT_CROPS) // 8
                 .add(Blocks.MELON_STEM)
                 .add(Blocks.ATTACHED_MELON_STEM)
@@ -138,6 +142,30 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.MIGNONETTE_WOOD)
                 .add(BlockRegistry.STRIPPED_MIGNONETTE_LOG)
                 .add(BlockRegistry.STRIPPED_MIGNONETTE_WOOD);
+
+        getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(BlockRegistry.MIGNONETTE_PRESSURE_PLATE);
+
+        getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS)
+                .add(BlockRegistry.MIGNONETTE_BUTTON);
+
+        getOrCreateTagBuilder(BlockTags.WOODEN_DOORS)
+                .add(BlockRegistry.MIGNONETTE_DOOR);
+
+        getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS)
+                .add(BlockRegistry.MIGNONETTE_TRAPDOOR);
+
+        getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS)
+                .add(BlockRegistry.MIGNONETTE_STAIRS);
+
+        getOrCreateTagBuilder(BlockTags.WOODEN_SLABS)
+                .add(BlockRegistry.MIGNONETTE_SLAB);
+
+        getOrCreateTagBuilder(BlockTags.STAIRS)
+                .add(BlockRegistry.LOAM_BRICK_STAIRS);
+
+        getOrCreateTagBuilder(BlockTags.SLABS)
+                .add(BlockRegistry.LOAM_BRICK_SLAB);
 
         getOrCreateTagBuilder(BlockTags.FENCES)
                 .add(BlockRegistry.MIGNONETTE_FENCE);
