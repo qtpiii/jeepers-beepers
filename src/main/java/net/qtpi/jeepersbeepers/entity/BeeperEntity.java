@@ -91,6 +91,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     private static final EntityDataAccessor<Byte> DATA_FLAGS_ID;
     private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME;
     private static final EntityDataAccessor<BlockPos> DATA_SAVED_CROP_POS;
+    private static final EntityDataAccessor<Boolean> DATA_TAME;
     private static final UniformInt PERSISTENT_ANGER_TIME;
     @Nullable
     private UUID persistentAngerTarget;
@@ -680,10 +681,10 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
 
     public boolean isTame() {
-        return this.getFlag(128);
+        return entityData.get(DATA_TAME);
     }
 
-    private void setIsTame(boolean isTame) { this.setFlag(128, isTame); }
+    private void setIsTame(boolean isTame) { entityData.set(DATA_TAME, isTame); }
 
 
     public boolean hasNectar() {
@@ -887,6 +888,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             enumMap.put(DyeColor.BLACK, 657930);
         }));
         DATA_SAVED_CROP_POS = SynchedEntityData.defineId(BeeperEntity.class, EntityDataSerializers.BLOCK_POS);
+        DATA_TAME = SynchedEntityData.defineId(BeeperEntity.class, EntityDataSerializers.BOOLEAN);
     }
 
     class BeeperHurtByOtherGoal extends HurtByTargetGoal {
