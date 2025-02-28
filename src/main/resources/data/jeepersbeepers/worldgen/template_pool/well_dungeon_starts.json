@@ -1,0 +1,15 @@
+{
+  "name": "jeepersbeepers:well_dungeon_starts",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/bottom_2",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    }
+  ]
+}
