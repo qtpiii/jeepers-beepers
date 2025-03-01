@@ -1,28 +1,52 @@
 {
   "variants": {
-    "age=0": {
+    "age=0,half=lower": {
       "model": "jeepersbeepers:block/dragonfruit_sprout"
     },
-    "age=1": {
+    "age=0,half=upper": {
+      "model": "jeepersbeepers:block/dragonfruit_tree_empty_upper"
+    },
+    "age=1,half=lower": {
       "model": "jeepersbeepers:block/dragonfruit_sprout"
     },
-    "age=2": {
+    "age=1,half=upper": {
+      "model": "jeepersbeepers:block/dragonfruit_tree_empty_upper"
+    },
+    "age=2,half=lower": {
       "model": "jeepersbeepers:block/dragonfruit_seedling"
     },
-    "age=3": {
+    "age=2,half=upper": {
+      "model": "jeepersbeepers:block/dragonfruit_tree_empty_upper"
+    },
+    "age=3,half=lower": {
       "model": "jeepersbeepers:block/dragonfruit_seedling"
     },
-    "age=4": {
-      "model": "jeepersbeepers:block/dragonfruit_tree_young"
+    "age=3,half=upper": {
+      "model": "jeepersbeepers:block/dragonfruit_tree_empty_upper"
     },
-    "age=5": {
-      "model": "jeepersbeepers:block/dragonfruit_tree_young"
+    "age=4,half=lower": {
+      "model": "jeepersbeepers:block/dragonfruit_tree_young_lower"
     },
-    "age=6": {
-      "model": "jeepersbeepers:block/dragonfruit_tree"
+    "age=4,half=upper": {
+      "model": "jeepersbeepers:block/dragonfruit_tree_young_upper"
     },
-    "age=7": {
-	  "model": "jeepersbeepers:block/dragonfruit_tree_fruit"
+    "age=5,half=lower": {
+      "model": "jeepersbeepers:block/dragonfruit_tree_young_lower"
+    },
+    "age=5,half=upper": {
+      "model": "jeepersbeepers:block/dragonfruit_tree_young_upper"
+    },
+    "age=6,half=lower": {
+      "model": "jeepersbeepers:block/dragonfruit_tree_lower"
+    },
+    "age=6,half=upper": {
+      "model": "jeepersbeepers:block/dragonfruit_tree_upper"
+    },
+    "age=7,half=lower": {
+	  "model": "jeepersbeepers:block/dragonfruit_tree_lower"
+	},
+    "age=7,half=upper": {
+	  "model": "jeepersbeepers:block/dragonfruit_tree_fruiting_upper"
 	}
   }
 }

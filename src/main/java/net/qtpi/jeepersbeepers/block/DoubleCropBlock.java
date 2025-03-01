@@ -23,15 +23,22 @@ import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import org.jetbrains.annotations.Nullable;
 
 public class DoubleCropBlock extends DoublePlantBlock implements BonemealableBlock {
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-    public static final int MAX_AGE = 3;
-    public static final int DOUBLE_PLANT_AGE_INTERSECTION = 2;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
+    public static final int MAX_AGE = 7;
+    public static final int DOUBLE_PLANT_AGE_INTERSECTION = 4;
     private static final VoxelShape[] UPPER_SHAPE_BY_AGE = new VoxelShape[]{
             Block.box(1.0, 0.0, 1.0, 15.0, 6.0, 15.0),
-            Block.box(1.0, 0.0, 1.0, 15.0, 14.0, 15.0)};
+            Block.box(1.0, 0.0, 1.0, 15.0, 6.0, 15.0),
+            Block.box(1.0, 0.0, 1.0, 15.0, 14.0, 15.0),
+            Block.box(1.0, 0.0, 1.0, 15.0, 14.0, 15.0)
+    };
     private static final VoxelShape[] LOWER_SHAPE_BY_AGE = new VoxelShape[]{
             Block.box(1.0, -1.0, 1.0, 15.0, 4.0, 15.0),
+            Block.box(1.0, -1.0, 1.0, 15.0, 4.0, 15.0),
             Block.box(1.0, -1.0, 1.0, 15.0, 12.0, 15.0),
+            Block.box(1.0, -1.0, 1.0, 15.0, 12.0, 15.0),
+            Block.box(1.0, -1.0, 1.0, 15.0, 16.0, 15.0),
+            Block.box(1.0, -1.0, 1.0, 15.0, 16.0, 15.0),
             Block.box(1.0, -1.0, 1.0, 15.0, 16.0, 15.0),
             Block.box(1.0, -1.0, 1.0, 15.0, 16.0, 15.0)
     };
@@ -42,6 +49,18 @@ public class DoubleCropBlock extends DoublePlantBlock implements BonemealableBlo
 
     private boolean isMaxAge(BlockState state) {
         return state.getValue(AGE) >= MAX_AGE;
+    }
+
+    public int getMaxAge() {
+        return MAX_AGE;
+    }
+
+    public int getAge(BlockState state) {
+        return state.getValue(this.getAgeProperty());
+    }
+
+    protected IntegerProperty getAgeProperty() {
+        return AGE;
     }
 
     @Override
@@ -87,7 +106,7 @@ public class DoubleCropBlock extends DoublePlantBlock implements BonemealableBlo
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return state.getValue(HALF) == DoubleBlockHalf.UPPER
-                ? UPPER_SHAPE_BY_AGE[Math.max(state.getValue(AGE) - 2, 0)]
+                ? UPPER_SHAPE_BY_AGE[Math.max(state.getValue(AGE) - 4, 0)]
                 : LOWER_SHAPE_BY_AGE[state.getValue(AGE)];
     }
 
