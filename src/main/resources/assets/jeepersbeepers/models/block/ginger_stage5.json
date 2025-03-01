@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "jeepersbeepers:block/ginger_stage5"
+  }
+}
