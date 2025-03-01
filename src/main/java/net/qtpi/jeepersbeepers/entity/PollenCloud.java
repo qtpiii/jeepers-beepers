@@ -89,8 +89,9 @@ public class PollenCloud extends Entity {
         for (int i = 0; i < viableBlockPositions.size(); i++) {
             tryPlaceHybrid(viableBlockMatchingTags.get(i), viableBlockPositions.get(i));
         }
-
-        discard();
+        if (!level().isClientSide()) {
+            discard();
+        }
     }
 
     private void tryPlaceHybrid(ArrayList<TagKey<Block>> matchingTags, BlockPos viableBlockPos) {

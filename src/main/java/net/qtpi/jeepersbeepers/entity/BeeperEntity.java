@@ -356,6 +356,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
                 this.shear(SoundSource.PLAYERS);
                 if (this.isWild()) {
                     this.setTarget(player);
+                    this.setIsTame(false);
                 }
                 this.gameEvent(GameEvent.SHEAR, player);
                 itemStack.hurtAndBreak(1, player, (playerx) -> playerx.broadcastBreakEvent(hand));
@@ -394,9 +395,9 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         } else if (itemStack.is(ItemRegistry.SPICY_HONEYCOMB)) {
             if (!this.level().isClientSide) {
                 if (this.isWild() && !this.isTame()) {
-                    this.setIsTame(true);
                     this.setPersistentAngerTarget(null);
                     this.setRemainingPersistentAngerTime(0);
+                    this.setIsTame(true);
                     return InteractionResult.SUCCESS;
                 } else {
                     return InteractionResult.CONSUME;
