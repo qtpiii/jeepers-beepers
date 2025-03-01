@@ -192,7 +192,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         this.entityData.define(DATA_REMAINING_ANGER_TIME, 0);
         this.entityData.define(DATA_WOOL_ID, (byte) 0);
         this.entityData.define(DATA_SAVED_CROP_POS, new BlockPos(0, 0, 0));
-        this.entityData.define(DATA_TAME, true);
+        this.entityData.define(DATA_TAME, false);
         this.entityData.define(DATA_WILD, false);
     }
 
@@ -202,6 +202,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new BeeperEntity.BeeperAttackGoal(this, this, (double) 1.4F, true));
+        this.goalSelector.addGoal(0, new BeeperEntity.WildBeeperNearestAttackableTargetGoal(this, Player.class, true));
         this.goalSelector.addGoal(1, new BeeperEntity.BeeperEnterHiveGoal(this));
         this.goalSelector.addGoal(2, new BreedGoal(this, (double) 1.0F));
         this.goalSelector.addGoal(3, new TemptGoal(this, (double) 1.25F, Ingredient.of(TagRegistry.Items.BEEPER_FOOD), false));
@@ -292,14 +293,18 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
     public boolean doHurtTarget(Entity target) {
         Set<Item> entityWornArmor = new ObjectOpenHashSet<>();
+        boolean bypassArmor = false;
         for (ItemStack stack : target.getArmorSlots()) {
             entityWornArmor.add(stack.getItem());
+        }
+        if (this.isWild() && level().random.nextFloat() > 0.75) {
+            bypassArmor = true;
         }
         if (entityWornArmor.containsAll(ObjectArrayList.of(
                 ItemRegistry.BEEKEEPER_BOOTS,
                 ItemRegistry.BEEKEEPER_PANTS,
                 ItemRegistry.BEEKEEPER_TUNIC,
-                ItemRegistry.BEEKEEPER_HAT))) {
+                ItemRegistry.BEEKEEPER_HAT)) && !bypassArmor) {
             return false;
         } else {
             boolean bl = target.hurt(this.damageSources().sting(this), (float) ((int) this.getAttributeValue(Attributes.ATTACK_DAMAGE)));
@@ -349,6 +354,9 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         if (itemStack.is(Items.SHEARS)) {
             if (!this.level().isClientSide && this.readyForShearing()) {
                 this.shear(SoundSource.PLAYERS);
+                if (this.isWild()) {
+                    this.setTarget(player);
+                }
                 this.gameEvent(GameEvent.SHEAR, player);
                 itemStack.hurtAndBreak(1, player, (playerx) -> playerx.broadcastBreakEvent(hand));
                 return InteractionResult.SUCCESS;
@@ -380,6 +388,19 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             if (!this.level().isClientSide) {
                 this.setIsWild(true);
                 return InteractionResult.SUCCESS;
+            } else {
+                return InteractionResult.CONSUME;
+            }
+        } else if (itemStack.is(ItemRegistry.SPICY_HONEYCOMB)) {
+            if (!this.level().isClientSide) {
+                if (this.isWild() && !this.isTame()) {
+                    this.setIsTame(true);
+                    this.setPersistentAngerTarget(null);
+                    this.setRemainingPersistentAngerTime(0);
+                    return InteractionResult.SUCCESS;
+                } else {
+                    return InteractionResult.CONSUME;
+                }
             } else {
                 return InteractionResult.CONSUME;
             }
@@ -897,6 +918,22 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         DATA_SAVED_CROP_POS = SynchedEntityData.defineId(BeeperEntity.class, EntityDataSerializers.BLOCK_POS);
         DATA_TAME = SynchedEntityData.defineId(BeeperEntity.class, EntityDataSerializers.BOOLEAN);
         DATA_WILD = SynchedEntityData.defineId(BeeperEntity.class, EntityDataSerializers.BOOLEAN);
+    }
+
+    class WildBeeperNearestAttackableTargetGoal extends NearestAttackableTargetGoal {
+
+        public WildBeeperNearestAttackableTargetGoal(Mob mob, Class targetType, boolean mustSee) {
+            super(mob, targetType, mustSee);
+        }
+
+        @Override
+        public boolean canUse() {
+            if (BeeperEntity.this.isWild()) {
+                if (BeeperEntity.this.isTame()) return false;
+                else return super.canUse();
+            }
+            else return false;
+        }
     }
 
     class BeeperHurtByOtherGoal extends HurtByTargetGoal {
@@ -1461,6 +1498,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
         @Override
         public boolean canBeeperUse() {
+            if (BeeperEntity.this.isWild()) return false;
             if (BeeperEntity.this.savedCrop == null) return false;
             if (BeeperEntity.this.getCropsGrownSincePollination() >= 30) {
                 return false;

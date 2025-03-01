@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "jeepersbeepers:beeper_hive",
-    "jeepersbeepers:beeper_nest"
+    "jeepersbeepers:beeper_nest",
+    "jeepersbeepers:beeper_hive"
   ]
 }
