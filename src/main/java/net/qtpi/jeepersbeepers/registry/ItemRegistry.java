@@ -40,6 +40,7 @@ public class ItemRegistry {
     public static final Item AMARANTH = registerItem("amaranth", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(5).saturationMod(0.6f).build())));
     public static final Item BRADDISH_SEEDS = registerItem("braddish_seeds", new ItemNameBlockItem(BlockRegistry.BRADDISH, new FabricItemSettings()));
     public static final Item BRADDISH = registerItem("braddish", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(7).saturationMod(0.4f).build())));
+    public static final Item GINGER = registerItem("ginger", new ItemNameBlockItem(BlockRegistry.GINGER, new FabricItemSettings().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.2f).build())));
 
     private static void addItemsToColoredBlocksTab(FabricItemGroupEntries entries) {
         entries.accept(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);
