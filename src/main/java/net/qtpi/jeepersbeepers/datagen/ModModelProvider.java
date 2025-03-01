@@ -63,8 +63,6 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createCrossBlockWithDefaultItem(BlockRegistry.FLOWERING_MIGNONETTE_SAPLING, BlockModelGenerators.TintState.NOT_TINTED);
 
         blockModelGenerators.createDoublePlant(BlockRegistry.WILD_AMARANTH, BlockModelGenerators.TintState.NOT_TINTED);
-
-        blockModelGenerators.createCropBlock(BlockRegistry.GINGER, BlockStateProperties.AGE_7, 0, 1, 2, 3, 4, 5, 6, 7);
     }
 
 
