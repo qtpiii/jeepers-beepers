@@ -102,6 +102,7 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
     int ticksWithoutNectarSinceExitingHive;
     private int stayOutOfHiveCountdown;
     private int numCropsGrownSincePollination;
+    private int spawnPollenCloudTimer;
     int remainingCooldownBeforeLocatingNewHive;
     int remainingCooldownBeforeLocatingNewFlower;
     int remainingCooldownBeforeNextSneeze;
@@ -413,17 +414,8 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
         triggerAnim("sneezeController", "sneeze");
         if (BeeperEntity.this.savedCrop != null) {
             this.remainingCooldownBeforeNextSneeze = 100;
-            new Thread(() -> {
-                try {
-                    TimeUnit.MILLISECONDS.sleep(2100);
-                } catch (InterruptedException ignore) {
-                }
-                PollenCloud cloud = new PollenCloud(null, level());
-                cloud.setPos(BeeperEntity.this.position());
-                cloud.sourceCropTags = level().getBlockState(entityData.get(DATA_SAVED_CROP_POS)).getTags().collect(Collectors.toCollection(ArrayList::new));
-                cloud.sourceCropPos = savedCropPos;
-                level().addFreshEntity(cloud);
-            }).start();
+
+            this.spawnPollenCloudTimer = 84; // 2.1 seconds
         }
     }
 
@@ -1101,6 +1093,17 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
 
                     }
                 }
+            }
+
+            if (spawnPollenCloudTimer > 0) {
+                spawnPollenCloudTimer--;
+            }
+            if (spawnPollenCloudTimer == 1) {
+                PollenCloud cloud = new PollenCloud(null, level());
+                cloud.setPos(BeeperEntity.this.position());
+                cloud.sourceCropTags = level().getBlockState(entityData.get(DATA_SAVED_CROP_POS)).getTags().collect(Collectors.toCollection(ArrayList::new));
+                cloud.sourceCropPos = savedCropPos;
+                level().addFreshEntity(cloud);
             }
         }
 
