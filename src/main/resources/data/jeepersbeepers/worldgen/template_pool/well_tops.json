@@ -6,7 +6,7 @@
       "weight": 3,
       "element":{
         "element_type": "minecraft:single_pool_element",
-        "location": "jeepersbeepers:well_parts/top_1",
+        "location": "jeepersbeepers:well_parts/tops/top_1",
         "processors": "minecraft:empty",
         "projection": "rigid"
       }
