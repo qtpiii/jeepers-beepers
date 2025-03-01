@@ -35,9 +35,11 @@ public class ItemRegistry {
     public static final Item BUTTERDEW_SQUASH_SEEDS = registerItem("butterdew_squash_seeds", new ItemNameBlockItem(BlockRegistry.BUTTERDEW_SQUASH_STEM, new FabricItemSettings()));
 
     public static final Item DRAGONFRUIT_SEEDS = registerItem("dragonfruit_seeds", new ItemNameBlockItem(BlockRegistry.DRAGONFRUIT_TREE, new FabricItemSettings()));
-    public static final Item DRAGONFRUIT = registerItem("dragonfruit", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(0.2f).build())));
+    public static final Item DRAGONFRUIT = registerItem("dragonfruit", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(3).saturationMod(0.2f).build())));
     public static final Item AMARANTH_SEEDS = registerItem("amaranth_seeds", new ItemNameBlockItem(BlockRegistry.AMARANTH, new FabricItemSettings()));
-    public static final Item AMARANTH = registerItem("amaranth", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(4).saturationMod(0.2f).build())));
+    public static final Item AMARANTH = registerItem("amaranth", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(5).saturationMod(0.6f).build())));
+    public static final Item BRADDISH_SEEDS = registerItem("braddish_seeds", new ItemNameBlockItem(BlockRegistry.BRADDISH, new FabricItemSettings()));
+    public static final Item BRADDISH = registerItem("braddish", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(7).saturationMod(0.4f).build())));
 
     private static void addItemsToColoredBlocksTab(FabricItemGroupEntries entries) {
         entries.accept(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);
@@ -94,6 +96,7 @@ public class ItemRegistry {
         entries.accept(ItemRegistry.SPICY_HONEY_BOTTLE);
         entries.accept(ItemRegistry.DRAGONFRUIT);
         entries.accept(ItemRegistry.AMARANTH);
+        entries.accept(ItemRegistry.BRADDISH);
     }
 
     private static void addItemsToIngredientsTab(FabricItemGroupEntries entries) {
@@ -115,6 +118,7 @@ public class ItemRegistry {
         entries.accept(BlockRegistry.CAWVED_BUTTEWDEW_SQUASH);
         entries.accept(BlockRegistry.BUTTEWDEW_LANTEWN);
         entries.accept(ItemRegistry.DRAGONFRUIT_SEEDS);
+        entries.accept(ItemRegistry.BRADDISH_SEEDS);
     }
 
     private static Item registerItem(String name, Item item) {

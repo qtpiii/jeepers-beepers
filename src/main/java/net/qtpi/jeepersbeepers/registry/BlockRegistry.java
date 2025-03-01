@@ -22,6 +22,7 @@ import net.qtpi.jeepersbeepers.block.*;
 import net.qtpi.jeepersbeepers.world.tree.FloweringMignonetteTreeGrower;
 import net.qtpi.jeepersbeepers.world.tree.MignonetteTreeGrower;
 
+@SuppressWarnings("deprecation")
 public class BlockRegistry {
 
     //functional blocks
@@ -171,6 +172,9 @@ public class BlockRegistry {
             new TallFlowerBlock(FabricBlockSettings.copyOf(Blocks.PEONY).noCollision().forceSolidOff()), true);
     public static final Block AMARANTH = registerBlock("amaranth",
             new DoubleCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT).noCollision().forceSolidOff()), false);
+
+    public static final Block BRADDISH = registerBlock("braddish",
+            new BraddishBlock(FabricBlockSettings.create().strength(0.2F).mapColor(MapColor.PLANT).randomTicks().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY).forceSolidOff()), false);
 
     public static final BlockFamily MIGNONETTE_FAMILY = new BlockFamily.Builder(MIGNONETTE_PLANKS)
             .stairs(MIGNONETTE_STAIRS)

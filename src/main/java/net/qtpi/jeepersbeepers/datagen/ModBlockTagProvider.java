@@ -66,7 +66,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.PITCHER_CROP)
                 .add(BlockRegistry.DRAGONFRUIT_TREE)
                 .add(BlockRegistry.AMARANTH)
-                .add(BlockRegistry.WILD_AMARANTH);
+                .add(BlockRegistry.WILD_AMARANTH)
+                .add(BlockRegistry.BRADDISH);
         getOrCreateTagBuilder(TagRegistry.Blocks.SEEDLESS_CROPS) // 8
                 .add(Blocks.POTATOES)
                 .add(Blocks.CARROTS);
@@ -90,7 +91,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.TORCHFLOWER_CROP)
                 .add(Blocks.PITCHER_CROP)
                 .add(BlockRegistry.AMARANTH)
-                .add(BlockRegistry.WILD_AMARANTH);
+                .add(BlockRegistry.WILD_AMARANTH)
+                .add(BlockRegistry.BRADDISH);
         getOrCreateTagBuilder(TagRegistry.Blocks.FRUIT_CROPS) // 8
                 .add(Blocks.MELON_STEM)
                 .add(Blocks.ATTACHED_MELON_STEM)
@@ -101,7 +103,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(TagRegistry.Blocks.VEGETABLE_CROPS) // 4
                 .add(Blocks.POTATOES)
                 .add(Blocks.CARROTS)
-                .add(Blocks.BEETROOTS);
+                .add(Blocks.BEETROOTS)
+                .add(BlockRegistry.BRADDISH);
         getOrCreateTagBuilder(TagRegistry.Blocks.ANCIENT_CROPS) // 6
                 .add(Blocks.TORCHFLOWER_CROP)
                 .add(Blocks.PITCHER_CROP);
@@ -111,7 +114,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.WILD_AMARANTH);
         getOrCreateTagBuilder(TagRegistry.Blocks.HYBRID_CROPS) // 2
                 .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
-                .add(BlockRegistry.DRAGONFRUIT_TREE);
+                .add(BlockRegistry.DRAGONFRUIT_TREE)
+                .add(BlockRegistry.BRADDISH);
 
         FabricTagBuilder beeperCanPollinateBuilder = getOrCreateTagBuilder(TagRegistry.Blocks.BEEPER_CAN_POLLINATE);
         for (var tag : TagRegistry.Blocks.ALL_CROP_TAGS) {

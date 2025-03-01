@@ -90,7 +90,7 @@ public class PollenCloud extends Entity {
             tryPlaceHybrid(viableBlockMatchingTags.get(i), viableBlockPositions.get(i));
         }
         if (!level().isClientSide()) {
-            discard();
+            remove(RemovalReason.DISCARDED);
         }
     }
 
