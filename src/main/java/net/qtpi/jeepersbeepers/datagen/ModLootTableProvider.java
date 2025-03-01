@@ -2,8 +2,13 @@ package net.qtpi.jeepersbeepers.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.world.level.block.BeetrootBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.qtpi.jeepersbeepers.block.BraddishBlock;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.registry.ItemRegistry;
 
@@ -43,6 +48,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         createStemDrops(BlockRegistry.BUTTERDEW_SQUASH_STEM, ItemRegistry.BUTTERDEW_SQUASH_SEEDS);
         createAttachedStemDrops(BlockRegistry.ATTACHED_BUTTERDEW_SQUASH_STEM, ItemRegistry.BUTTERDEW_SQUASH_SEEDS);
+
+        createCropDrops(BlockRegistry.BRADDISH, ItemRegistry.BRADDISH, ItemRegistry.BRADDISH_SEEDS,
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(BlockRegistry.BRADDISH)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BraddishBlock.AGE, 3)));
 
         dropOther(BlockRegistry.DRAGONFRUIT_TREE, ItemRegistry.DRAGONFRUIT_SEEDS);
 

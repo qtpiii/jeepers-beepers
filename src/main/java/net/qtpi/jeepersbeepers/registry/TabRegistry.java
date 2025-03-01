@@ -67,6 +67,8 @@ public class TabRegistry {
                         entries.accept(BlockRegistry.WILD_AMARANTH);
                         entries.accept(ItemRegistry.AMARANTH_SEEDS);
                         entries.accept(ItemRegistry.AMARANTH);
+                        entries.accept(ItemRegistry.BRADDISH_SEEDS);
+                        entries.accept(ItemRegistry.BRADDISH);
                         entries.accept(BlockRegistry.MIGNONETTE_SAPLING);
                         entries.accept(BlockRegistry.FLOWERING_MIGNONETTE_SAPLING);
                         entries.accept(BlockRegistry.LOAM);
