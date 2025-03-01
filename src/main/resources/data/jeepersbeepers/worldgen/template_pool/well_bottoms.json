@@ -6,7 +6,7 @@
       "weight": 1,
       "element":{
         "element_type": "minecraft:single_pool_element",
-        "location": "jeepersbeepers:well_parts/bottom_1",
+        "location": "jeepersbeepers:well_parts/bottoms/bottom_1",
         "processors": "minecraft:empty",
         "projection": "rigid"
       }
@@ -15,7 +15,7 @@
       "weight": 3,
       "element":{
         "element_type": "minecraft:single_pool_element",
-        "location": "jeepersbeepers:well_parts/starting_stairwell",
+        "location": "jeepersbeepers:well_parts/bottoms/starting_stairwell",
         "processors": "minecraft:empty",
         "projection": "rigid"
       }

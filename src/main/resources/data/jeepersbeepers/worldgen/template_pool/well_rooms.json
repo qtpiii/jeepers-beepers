@@ -3,7 +3,7 @@
   "fallback": "minecraft:empty",
   "elements": [
     {
-      "weight": 8,
+      "weight": 4,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/halls/hall_1",
@@ -12,7 +12,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 3,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/halls/hall_2",
@@ -21,7 +21,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 2,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/halls/hall_3",
@@ -30,7 +30,7 @@
       }
     },
     {
-      "weight": 6,
+      "weight": 4,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/halls/hall_4",
@@ -39,7 +39,7 @@
       }
     },
     {
-      "weight": 10,
+      "weight": 5,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/halls/hall_1a",
@@ -48,7 +48,7 @@
       }
     },
     {
-      "weight": 6,
+      "weight": 4,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/halls/hall_2a",
@@ -57,7 +57,7 @@
       }
     },
     {
-      "weight": 5,
+      "weight": 4,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/halls/hall_3a",
@@ -66,7 +66,7 @@
       }
     },
     {
-      "weight": 5,
+      "weight": 4,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/stairwells/stairwell_1",
@@ -75,7 +75,7 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 1,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/stairwells/stairwell_1_trapped",
@@ -84,7 +84,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 3,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/tunnels/tunnel_1",
@@ -93,7 +93,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 3,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/tunnels/tunnel_2",
@@ -102,7 +102,7 @@
       }
     },
     {
-      "weight": 3,
+      "weight": 2,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/tunnels/tunnel_3",
@@ -111,7 +111,7 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 1,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/tunnels/tunnel_4",
@@ -120,7 +120,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 3,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/tunnels/tunnel_5",
@@ -129,7 +129,7 @@
       }
     },
     {
-      "weight": 5,
+      "weight": 4,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/tunnels/tunnel_6",
@@ -138,7 +138,7 @@
       }
     },
     {
-      "weight": 5,
+      "weight": 4,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/tunnels/tunnel_7",
@@ -147,7 +147,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 3,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/tunnels/tunnel_8",
@@ -156,7 +156,7 @@
       }
     },
     {
-      "weight": 6,
+      "weight": 4,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/tunnels/tunnel_9",
@@ -165,7 +165,7 @@
       }
     },
     {
-      "weight": 3,
+      "weight": 2,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/tunnels/tunnel_9_trapped",
@@ -174,7 +174,7 @@
       }
     },
     {
-      "weight": 4,
+      "weight": 6,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/dungeons/dungeon_1",
@@ -187,6 +187,15 @@
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/dungeons/dungeon_2",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 3,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/big_rooms/big_room_1",
         "processors": "minecraft:empty",
         "projection": "rigid"
       }
