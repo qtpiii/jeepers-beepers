@@ -90,9 +90,9 @@ public class TagRegistry {
         public static final TagKey<Block> SEED_CROPS = createTag("seed_crops", true, 4);
         public static final TagKey<Block> SEEDLESS_CROPS = createTag("seedless_crops", true, BlockRegistry.GINGER, 8);
         public static final TagKey<Block> BLOCK_CROPS = createTag("block_crops", true, BlockRegistry.BUTTERDEW_SQUASH_STEM, 8);
-        public static final TagKey<Block> MULTI_YIELD_CROPS = createTag("multi_yield_crops", true, BlockRegistry.DRAGONFRUIT_TREE, 6);
+        public static final TagKey<Block> MULTI_YIELD_CROPS = createTag("multi_yield_crops", true, 6);
         public static final TagKey<Block> SINGLE_YIELD_CROPS = createTag("single_yield_crops", true, 4);
-        public static final TagKey<Block> FRUIT_CROPS = createTag("fruit_crops", true, 8);
+        public static final TagKey<Block> FRUIT_CROPS = createTag("fruit_crops", true, BlockRegistry.DRAGONFRUIT_TREE, 8);
         public static final TagKey<Block> VEGETABLE_CROPS = createTag("vegetable_crops", true, BlockRegistry.BRADDISH, 4);
         public static final TagKey<Block> ANCIENT_CROPS = createTag("ancient_crops", true, 6);
         public static final TagKey<Block> GRAIN_CROPS = createTag("grain_crops", true, 8);
