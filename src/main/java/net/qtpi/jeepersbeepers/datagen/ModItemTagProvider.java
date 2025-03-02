@@ -30,7 +30,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(Items.TORCHFLOWER)
                 .add(ItemRegistry.DRAGONFRUIT)
                 .add(ItemRegistry.AMARANTH)
-                .add(ItemRegistry.BRADDISH);
+                .add(ItemRegistry.BRADDISH)
+                .add(ItemRegistry.GINGER);
         getOrCreateTagBuilder(ItemTags.PLANKS)
                 .add(BlockRegistry.MIGNONETTE_PLANKS.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS)
@@ -64,6 +65,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(BlockRegistry.BUTTERDEW_SQUASH.asItem())
                 .add(ItemRegistry.DRAGONFRUIT)
                 .add(ItemRegistry.AMARANTH)
-                .add(ItemRegistry.BRADDISH);
+                .add(ItemRegistry.BRADDISH)
+                .add(ItemRegistry.GINGER);
     }
 }

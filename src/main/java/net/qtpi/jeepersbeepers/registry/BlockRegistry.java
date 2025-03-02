@@ -178,6 +178,9 @@ public class BlockRegistry {
     public static final Block BRADDISH = registerBlock("braddish",
             new BraddishBlock(FabricBlockSettings.create().strength(0.2F).mapColor(MapColor.PLANT).randomTicks().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY).forceSolidOff()), false);
 
+    public static final Block GINGER = registerBlock("ginger",
+            new GingerBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)), false);
+
     public static final BlockFamily MIGNONETTE_FAMILY = new BlockFamily.Builder(MIGNONETTE_PLANKS)
             .stairs(MIGNONETTE_STAIRS)
             .slab(MIGNONETTE_SLAB)
