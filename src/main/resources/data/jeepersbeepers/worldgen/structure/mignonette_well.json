@@ -5,7 +5,7 @@
   "type": "minecraft:jigsaw",
   "start_pool": "jeepersbeepers:well_tops",
   "size": 7,
-  "step": "surface_structures",
+  "step": "raw_generation",
   "start_height": {
     "absolute": 1
   },

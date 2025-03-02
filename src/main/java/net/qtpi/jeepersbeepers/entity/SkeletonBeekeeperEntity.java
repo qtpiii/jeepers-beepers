@@ -7,6 +7,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
@@ -29,7 +30,11 @@ public class SkeletonBeekeeperEntity extends Skeleton {
     }
 
     public static AttributeSupplier.Builder setAttributes() {
-        return Skeleton.createAttributes();
+        var ret = Skeleton.createAttributes();
+
+        ret.add(Attributes.ATTACK_DAMAGE, 5);
+
+        return ret;
     }
 
     @Nullable
@@ -56,17 +61,18 @@ public class SkeletonBeekeeperEntity extends Skeleton {
         this.armorDropChances[EquipmentSlot.LEGS.getIndex()] = 0.05F;
         this.armorDropChances[EquipmentSlot.FEET.getIndex()] = 0.05F;
 
+        setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.AIR));
         double rand = randomSource.nextDouble();
         if (rand < 0.50) {
-            setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.AIR));
+            setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(Items.AIR));
         }
         if (rand < 0.75) {
-            setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_HOE));
+            setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(Items.WOODEN_HOE));
         }
         else {
-            setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.STONE_HOE));
+            setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(Items.STONE_HOE));
         }
-        handDropChances[EquipmentSlot.MAINHAND.getIndex()] = 0.0f;
+        handDropChances[EquipmentSlot.OFFHAND.getIndex()] = 0.0f;
 
         return spawnData;
     }

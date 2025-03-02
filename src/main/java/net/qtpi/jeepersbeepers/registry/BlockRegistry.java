@@ -87,6 +87,8 @@ public class BlockRegistry {
     public static final Block MIGNONETTE_FLOWER = registerBlock("mignonette_flower",
             new WallFlowerBlock(MobEffects.REGENERATION, 30,
                     FabricBlockSettings.copyOf(Blocks.LILY_OF_THE_VALLEY).offsetType(BlockBehaviour.OffsetType.NONE)), true);
+    public static final Block MIGNONETTE_ROOT = registerBlock("mignonette_root",
+            new MignonetteRootBlock(FabricBlockSettings.create().nonOpaque().noCollision()), true);
 
     //wood blocks
 
