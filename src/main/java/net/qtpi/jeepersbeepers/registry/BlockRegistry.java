@@ -122,7 +122,7 @@ public class BlockRegistry {
 
     public static final Block MIGNONETTE_BUTTON = registerBlock("mignonette_button",
             new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
-            .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK, 30, true), true);
+            .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK, 10, true), true);
     public static final Block MIGNONETTE_PRESSURE_PLATE = registerBlock("mignonette_pressure_plate",
             new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
             .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK), true);
