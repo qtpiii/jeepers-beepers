@@ -7,7 +7,25 @@
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/bottoms/bottom_1",
-        "processors": "minecraft:empty",
+        "processors": "jeepersbeepers:well_block_scramble",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/bottoms/bottom_2",
+        "processors": "jeepersbeepers:well_block_scramble",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/bottoms/bottom_3",
+        "processors": "jeepersbeepers:well_block_scramble",
         "projection": "rigid"
       }
     },
@@ -15,8 +33,35 @@
       "weight": 3,
       "element":{
         "element_type": "minecraft:single_pool_element",
-        "location": "jeepersbeepers:well_parts/bottoms/starting_stairwell",
-        "processors": "minecraft:empty",
+        "location": "jeepersbeepers:well_parts/dungeon_starts/dungeon_start_1",
+        "processors": "jeepersbeepers:well_block_scramble",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 3,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/dungeon_starts/dungeon_start_2",
+        "processors": "jeepersbeepers:well_block_scramble",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 3,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/dungeon_starts/dungeon_start_3",
+        "processors": "jeepersbeepers:well_block_scramble",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 3,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/dungeon_starts/dungeon_start_4",
+        "processors": "jeepersbeepers:well_block_scramble",
         "projection": "rigid"
       }
     }

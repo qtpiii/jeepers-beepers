@@ -130,7 +130,7 @@ public class DoubleCropBlock extends DoublePlantBlock implements BonemealableBlo
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return super.canSurvive(state, level, pos);
+        return (level.getRawBrightness(pos, 0) >= 8 || level.canSeeSky(pos)) && super.canSurvive(state, level, pos);
     }
 
     private static boolean sufficientLight(LevelReader level, BlockPos pos) {

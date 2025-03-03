@@ -72,6 +72,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .unlockedBy("spicy_honeycomb", has(ItemRegistry.SPICY_HONEYCOMB))
                 .save(consumer);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.BEEPER_FLUFF_BLOCK, 1)
+                .pattern("LL")
+                .pattern("LL")
+                .define('L', ItemRegistry.BEEPER_FLUFF)
+                .unlockedBy("beeper_fluff", has(ItemRegistry.BEEPER_FLUFF))
+                .save(consumer);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.LOAM_BRICKS, 4)
                 .pattern("LL")
                 .pattern("LL")

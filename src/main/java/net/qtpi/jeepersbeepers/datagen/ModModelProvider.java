@@ -84,5 +84,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ItemRegistry.BRADDISH, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ItemRegistry.GINGER, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ItemRegistry.POLLEN_PUFF, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(BlockRegistry.MIGNONETTE_ROOT.asItem(), ModelTemplates.FLAT_ITEM);
     }
 }
