@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
+import net.qtpi.jeepersbeepers.block.MignonetteRootBlock;
 import net.qtpi.jeepersbeepers.block.entity.MignonetteRootBlockEntity;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Quaternionf;
@@ -24,11 +25,12 @@ public class MignonetteRootBlockEntityRenderer implements BlockEntityRenderer<Mi
         var random = blockEntity.getLevel().random.fork();
         random.setSeed(blockEntity.getBlockPos().asLong());
 
-        for (int i = 0; i < random.nextInt(4, 10); i++) {
+        int roots = blockEntity.getBlockState().getValue(MignonetteRootBlock.ROOTS);
+        for (int i = 0; i < roots; i++) {
             Vec3 currentPos = new Vec3(0, 0, 0);
             currentPos = currentPos.add(0.5, 1.5, 0.5);
             currentPos = currentPos.add((random.nextFloat() - 0.5f) * 0.5, 0, (random.nextFloat() - 0.5f) * 0.5f);
-            int segments = random.nextInt(2, 20);
+            int segments = random.nextInt(5, 20);
 
             float xRot = random.nextFloat() * 180f;
             float zRot = random.nextFloat() * 180f;
@@ -58,7 +60,7 @@ public class MignonetteRootBlockEntityRenderer implements BlockEntityRenderer<Mi
                 int currentScale = (int)Mth.lerp((double)j / segments, 4, 1);
 
                 poseStack.pushPose();
-                poseStack.translate(currentPos.x, currentPos.y, currentPos.z);
+                poseStack.translate(currentPos.x + random.nextFloat() * 0.0001, currentPos.y + random.nextFloat() * 0.0001, currentPos.z + random.nextFloat() * 0.0001);
                 poseStack.mulPose(Axis.YP.rotationDegrees(zRotSnapped + 90));
                 poseStack.mulPose(Axis.ZP.rotationDegrees(360f - xRotSnapped + 90));// THIS WORKS DONT TOUCH
                 poseStack.scale(currentScale, currentLength, currentScale);

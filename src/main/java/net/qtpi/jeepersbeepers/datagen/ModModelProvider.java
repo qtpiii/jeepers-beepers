@@ -48,6 +48,8 @@ public class ModModelProvider extends FabricModelProvider {
                 .log(BlockRegistry.STRIPPED_MIGNONETTE_LOG).wood(BlockRegistry.STRIPPED_MIGNONETTE_WOOD);
         blockModelGenerators.createTrivialCube(BlockRegistry.MIGNONETTE_LEAVES);
 
+        blockModelGenerators.createTrivialCube(BlockRegistry.MIGNONETTE_ROOT);
+
         BlockModelGenerators.BlockFamilyProvider mignonette_family = blockModelGenerators.family(BlockRegistry.MIGNONETTE_PLANKS);
         mignonette_family.stairs(BlockRegistry.MIGNONETTE_STAIRS);
         mignonette_family.slab(BlockRegistry.MIGNONETTE_SLAB);
