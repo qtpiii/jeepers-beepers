@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "L": {
+      "item": "jeepersbeepers:beeper_fluff"
+    }
+  },
+  "pattern": [
+    "LL",
+    "LL"
+  ],
+  "result": {
+    "item": "jeepersbeepers:beeper_fluff_block"
+  },
+  "show_notification": true
+}
