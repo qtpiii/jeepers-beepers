@@ -3,6 +3,7 @@ package net.qtpi.jeepersbeepers.mixin;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,6 +22,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class GuiMixin {
 
 	@Shadow protected abstract Player getCameraPlayer();
+
+	@Shadow protected abstract void renderHeart(GuiGraphics guiGraphics, Gui.HeartType heartType, int x, int y, int yOffset, boolean renderHighlight, boolean halfHeart);
 
 	@Inject(at = @At("HEAD"), method = "renderHeart", cancellable = true)
 	private void renderHeart(GuiGraphics guiGraphics, Gui.HeartType heartType, int x, int y, int yOffset, boolean renderHighlight, boolean halfHeart, CallbackInfo ci) {
@@ -45,7 +48,7 @@ public abstract class GuiMixin {
 	private static void renderInvigoratedHeart(CallbackInfo ci, GuiGraphics guiGraphics, int x, int y, int yOffset, boolean half, boolean container) {
 		if (container) return;
 		ResourceLocation texture = new ResourceLocation("textures/gui/sprites/hud/heart/invigorated" + (half ? "_half.png" : "_full.png"));
-		guiGraphics.blit(texture, x, y + yOffset, 0, 0, 9, 9, 9, 9);
+		guiGraphics.blit(texture, x - 2, y - 4, 0, 0, 13, 13, 13, 13);
 		ci.cancel();
 	}
 }
