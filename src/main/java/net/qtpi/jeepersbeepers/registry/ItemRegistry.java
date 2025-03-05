@@ -33,6 +33,8 @@ public class ItemRegistry {
     public static final Item BEEKEEPER_BOOTS = registerItem("beekeeper_boots", new BeekeeperArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
     public static final Item BUTTERDEW_SQUASH_SEEDS = registerItem("butterdew_squash_seeds", new ItemNameBlockItem(BlockRegistry.BUTTERDEW_SQUASH_STEM, new FabricItemSettings()));
+    public static final Item BUTTERDEW_SQUASH_SLICE = registerItem("butterdew_squash_slice", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(3).saturationMod(0.2f).build())));
+    public static final Item ROASTED_BUTTERDEW_SQUASH_SLICE = registerItem("roasted_butterdew_squash_slice", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(6).saturationMod(0.6f).build())));
 
     public static final Item DRAGONFRUIT_SEEDS = registerItem("dragonfruit_seeds", new ItemNameBlockItem(BlockRegistry.DRAGONFRUIT_TREE, new FabricItemSettings()));
     public static final Item DRAGONFRUIT = registerItem("dragonfruit", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(3).saturationMod(0.2f).build())));
@@ -40,7 +42,7 @@ public class ItemRegistry {
     public static final Item AMARANTH = registerItem("amaranth", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(5).saturationMod(0.6f).build())));
     public static final Item BRADDISH_SEEDS = registerItem("braddish_seeds", new ItemNameBlockItem(BlockRegistry.BRADDISH, new FabricItemSettings()));
     public static final Item BRADDISH = registerItem("braddish", new Item(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(7).saturationMod(0.4f).build())));
-    public static final Item GINGER = registerItem("ginger", new ItemNameBlockItem(BlockRegistry.GINGER, new FabricItemSettings().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.2f).build())));
+    public static final Item GINGER = registerItem("ginger", new ItemNameBlockItem(BlockRegistry.GINGER, new FabricItemSettings().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.1f).build())));
 
     private static void addItemsToColoredBlocksTab(FabricItemGroupEntries entries) {
         entries.accept(BlockRegistry.WHITE_BEEPER_FLUFF_BLOCK);
@@ -95,6 +97,8 @@ public class ItemRegistry {
 
     private static void addItemsToFoodAndDrinksTab(FabricItemGroupEntries entries) {
         entries.accept(ItemRegistry.SPICY_HONEY_BOTTLE);
+        entries.accept(ItemRegistry.BUTTERDEW_SQUASH_SLICE);
+        entries.accept(ItemRegistry.ROASTED_BUTTERDEW_SQUASH_SLICE);
         entries.accept(ItemRegistry.DRAGONFRUIT);
         entries.accept(ItemRegistry.AMARANTH);
         entries.accept(ItemRegistry.BRADDISH);

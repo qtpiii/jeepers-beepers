@@ -3,11 +3,18 @@ package net.qtpi.jeepersbeepers.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.BeetrootBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.IntRange;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.LimitCount;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.qtpi.jeepersbeepers.block.BraddishBlock;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.registry.ItemRegistry;
@@ -59,7 +66,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         dropOther(BlockRegistry.DRAGONFRUIT_TREE, ItemRegistry.DRAGONFRUIT_SEEDS);
 
-        dropSelf(BlockRegistry.BUTTERDEW_SQUASH);
         dropSelf(BlockRegistry.CARVED_BUTTERDEW_SQUASH);
         dropSelf(BlockRegistry.BUTTERDEW_LANTERN);
         dropSelf(BlockRegistry.CAWVED_BUTTEWDEW_SQUASH);

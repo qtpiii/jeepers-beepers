@@ -59,6 +59,8 @@ public class TabRegistry {
                         entries.accept(ItemRegistry.BEEKEEPER_PANTS);
                         entries.accept(ItemRegistry.BEEKEEPER_BOOTS);
                         entries.accept(ItemRegistry.BUTTERDEW_SQUASH_SEEDS);
+                        entries.accept(ItemRegistry.BUTTERDEW_SQUASH_SLICE);
+                        entries.accept(ItemRegistry.ROASTED_BUTTERDEW_SQUASH_SLICE);
                         entries.accept(BlockRegistry.BUTTERDEW_SQUASH);
                         entries.accept(BlockRegistry.CARVED_BUTTERDEW_SQUASH);
                         entries.accept(BlockRegistry.BUTTERDEW_LANTERN);

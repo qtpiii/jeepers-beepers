@@ -12,6 +12,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Blocks;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.registry.CompatibilityTagRegistry;
@@ -36,6 +37,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         generateRecipes(consumer, BlockRegistry.SHALE_FAMILY);
 
         oneToOneConversionRecipe(consumer, ItemRegistry.DRAGONFRUIT_SEEDS, ItemRegistry.DRAGONFRUIT, "dragonfruit_seeds", 4);
+        oneToOneConversionRecipe(consumer, ItemRegistry.BUTTERDEW_SQUASH_SEEDS, ItemRegistry.BUTTERDEW_SQUASH_SLICE, "butterdew_squash_seeds", 2);
+
+        simpleCookingRecipe(consumer, "smelting", RecipeSerializer.SMELTING_RECIPE, 200,
+                ItemRegistry.BUTTERDEW_SQUASH_SLICE, ItemRegistry.ROASTED_BUTTERDEW_SQUASH_SLICE, 0.1f);
+        simpleCookingRecipe(consumer, "smoking", RecipeSerializer.SMOKING_RECIPE, 100,
+                ItemRegistry.BUTTERDEW_SQUASH_SLICE, ItemRegistry.ROASTED_BUTTERDEW_SQUASH_SLICE, 0.1f);
+        simpleCookingRecipe(consumer, "campfire_cooking", RecipeSerializer.CAMPFIRE_COOKING_RECIPE, 600,
+                ItemRegistry.BUTTERDEW_SQUASH_SLICE, ItemRegistry.ROASTED_BUTTERDEW_SQUASH_SLICE, 0.1f);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.SPICY_HONEY_LAMP, 1)
                 .pattern("HHH")
@@ -74,9 +83,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.BEEPER_FLUFF_BLOCK, 1)
-                .pattern("LL")
-                .pattern("LL")
-                .define('L', ItemRegistry.BEEPER_FLUFF)
+                .pattern("FF")
+                .pattern("FF")
+                .define('F', ItemRegistry.BEEPER_FLUFF)
                 .unlockedBy("beeper_fluff", has(ItemRegistry.BEEPER_FLUFF))
                 .save(consumer);
 
@@ -93,6 +102,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .define('S', Blocks.SAND)
                 .define('C', Blocks.CLAY)
                 .unlockedBy("loam", has(BlockRegistry.LOAM))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, BlockRegistry.BUTTERDEW_SQUASH, 4)
+                .pattern("SS")
+                .pattern("SS")
+                .define('S', ItemRegistry.BUTTERDEW_SQUASH_SLICE)
+                .unlockedBy("butterdew_squash_slice", has(ItemRegistry.BUTTERDEW_SQUASH_SLICE))
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.BUTTERDEW_LANTERN, 1)

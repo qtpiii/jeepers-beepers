@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "jeepersbeepers:butterdew_squash_slice"
+  },
+  "result": "jeepersbeepers:roasted_butterdew_squash_slice"
+}

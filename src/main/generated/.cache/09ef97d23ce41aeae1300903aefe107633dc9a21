@@ -1,9 +1,8 @@
-// 1.20.1	2025-03-04T21:42:13.3746654	Jeepers Beepers!/Block Loot Tables
+// 1.20.1	2025-03-05T11:28:51.9930641	Jeepers Beepers!/Block Loot Tables
 b1127f79088dddc8bcd4c0b64194863942a62017 data\jeepersbeepers\loot_tables\blocks\loam_brick_stairs.json
 0ef4d7ac59a68fe4f70c36bb844ce5c605ae8826 data\jeepersbeepers\loot_tables\blocks\mignonette_planks.json
 b49e72a1784bb6e694332cb0cd20a9e0b1359e58 data\jeepersbeepers\loot_tables\blocks\mignonette_button.json
 f17546b72a41069408cf93485becb7b13a645c6a data\jeepersbeepers\loot_tables\blocks\mignonette_pressure_plate.json
-ea75a8c2293adfda5422fc7f80c59a7ab0468d79 data\jeepersbeepers\loot_tables\blocks\butterdew_squash.json
 34404b604e70787e73fc2010c49c1be2e3cdd899 data\jeepersbeepers\loot_tables\blocks\mignonette_trapdoor.json
 52b754a68e7283e30f38232867e4b79452727c28 data\jeepersbeepers\loot_tables\blocks\mignonette_stairs.json
 d3c60737be95d81912fb55a9699de6f3c71d6b57 data\jeepersbeepers\loot_tables\blocks\stripped_mignonette_wood.json

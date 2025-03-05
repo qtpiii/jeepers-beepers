@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "butterdew_squash_seeds",
+  "ingredients": [
+    {
+      "item": "jeepersbeepers:butterdew_squash_slice"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "jeepersbeepers:butterdew_squash_seeds"
+  }
+}

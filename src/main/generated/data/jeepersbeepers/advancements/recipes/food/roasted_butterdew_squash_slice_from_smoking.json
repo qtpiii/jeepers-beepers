@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_butterdew_squash_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jeepersbeepers:butterdew_squash_slice"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:roasted_butterdew_squash_slice_from_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_butterdew_squash_slice",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:roasted_butterdew_squash_slice_from_smoking"
+    ]
+  },
+  "sends_telemetry_event": false
+}

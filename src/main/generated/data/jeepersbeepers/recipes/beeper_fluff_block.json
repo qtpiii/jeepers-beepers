@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "L": {
+    "F": {
       "item": "jeepersbeepers:beeper_fluff"
     }
   },
   "pattern": [
-    "LL",
-    "LL"
+    "FF",
+    "FF"
   ],
   "result": {
     "item": "jeepersbeepers:beeper_fluff_block"
