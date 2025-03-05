@@ -79,6 +79,9 @@ public class TabRegistry {
                         entries.accept(BlockRegistry.LOAM_BRICK_STAIRS);
                         entries.accept(BlockRegistry.LOAM_BRICK_SLAB);
                         entries.accept(BlockRegistry.LOAM_BRICK_WALL);
+                        entries.accept(BlockRegistry.SHALE);
+                        entries.accept(BlockRegistry.SHALE_STAIRS);
+                        entries.accept(BlockRegistry.SHALE_SLAB);
                         entries.accept(BlockRegistry.SPICY_HONEY_BLOCK);
                         entries.accept(BlockRegistry.SPICY_HONEYCOMB_BLOCK);
                         entries.accept(BlockRegistry.HONEY_LAMP);

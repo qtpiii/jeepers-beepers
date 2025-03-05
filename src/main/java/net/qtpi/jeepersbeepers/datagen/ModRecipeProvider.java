@@ -33,6 +33,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         planksFromLog(consumer, BlockRegistry.MIGNONETTE_PLANKS, TagRegistry.Items.MIGNONETTE_LOGS, 4);
         generateRecipes(consumer, BlockRegistry.MIGNONETTE_FAMILY);
         generateRecipes(consumer, BlockRegistry.LOAM_BRICK_FAMILY);
+        generateRecipes(consumer, BlockRegistry.SHALE_FAMILY);
 
         oneToOneConversionRecipe(consumer, ItemRegistry.DRAGONFRUIT_SEEDS, ItemRegistry.DRAGONFRUIT, "dragonfruit_seeds", 4);
 

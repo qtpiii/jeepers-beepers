@@ -23,7 +23,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.LOAM_BRICKS)
                 .add(BlockRegistry.LOAM_BRICK_STAIRS)
                 .add(BlockRegistry.LOAM_BRICK_SLAB)
-                .add(BlockRegistry.LOAM_BRICK_WALL);
+                .add(BlockRegistry.LOAM_BRICK_WALL)
+                .add(BlockRegistry.SHALE)
+                .add(BlockRegistry.SHALE_STAIRS)
+                .add(BlockRegistry.SHALE_SLAB);
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(BlockRegistry.LOAM);
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
@@ -51,6 +54,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.DIRT)
                 .add(BlockRegistry.LOAM);
+
+        getOrCreateTagBuilder(BlockTags.BASE_STONE_OVERWORLD);
 
         getOrCreateTagBuilder(CompatibilityTagRegistry.FARMLAND)
                 .add(BlockRegistry.LOAM_FARMLAND);
@@ -170,10 +175,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.MIGNONETTE_SLAB);
 
         getOrCreateTagBuilder(BlockTags.STAIRS)
-                .add(BlockRegistry.LOAM_BRICK_STAIRS);
+                .add(BlockRegistry.LOAM_BRICK_STAIRS)
+                .add(BlockRegistry.SHALE_STAIRS);
 
         getOrCreateTagBuilder(BlockTags.SLABS)
-                .add(BlockRegistry.LOAM_BRICK_SLAB);
+                .add(BlockRegistry.LOAM_BRICK_SLAB)
+                .add(BlockRegistry.SHALE_SLAB);
 
         getOrCreateTagBuilder(BlockTags.FENCES)
                 .add(BlockRegistry.MIGNONETTE_FENCE);

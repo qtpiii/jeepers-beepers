@@ -30,6 +30,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(BlockRegistry.LOAM_BRICK_WALL);
         createSlabItemTable(BlockRegistry.LOAM_BRICK_SLAB);
 
+        dropSelf(BlockRegistry.SHALE);
+        dropSelf(BlockRegistry.SHALE_STAIRS);
+        createSlabItemTable(BlockRegistry.SHALE_SLAB);
+
         dropSelf(BlockRegistry.MIGNONETTE_LOG);
         dropSelf(BlockRegistry.MIGNONETTE_WOOD);
         dropSelf(BlockRegistry.STRIPPED_MIGNONETTE_LOG);

@@ -62,8 +62,6 @@ import java.util.List;
 public class BeeperHiveBlock extends BaseEntityBlock implements EntityBlock {
     public static final DirectionProperty FACING;
     public static final IntegerProperty HONEY_LEVEL;
-    public static final int MAX_HONEY_LEVELS = 5;
-    private static final int SHEARED_HONEYCOMB_COUNT = 3;
     public BeeperHiveBlock(Properties properties) {
         super(properties);
         this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(HONEY_LEVEL, 0)).setValue(FACING, Direction.NORTH));
@@ -85,8 +83,6 @@ public class BeeperHiveBlock extends BaseEntityBlock implements EntityBlock {
                 level.updateNeighbourForOutputSignal(pos, this);
                 this.angerNearbyBeepers(level, pos);
             }
-
-            CriteriaTriggers.BEE_NEST_DESTROYED.trigger((ServerPlayer)player, state, tool, beeperHiveBlockEntity.getOccupantCount());
         }
 
     }
@@ -98,7 +94,7 @@ public class BeeperHiveBlock extends BaseEntityBlock implements EntityBlock {
             int i = list2.size();
 
             for(BeeperEntity beeper : list) {
-                if (beeper.getTarget() == null) {
+                if (beeper.getTarget() == null && !beeper.isWild()) {
                     beeper.setTarget((LivingEntity)list2.get(level.random.nextInt(i)));
                 }
             }
@@ -110,7 +106,7 @@ public class BeeperHiveBlock extends BaseEntityBlock implements EntityBlock {
         popResource(level, pos, new ItemStack(ItemRegistry.SPICY_HONEYCOMB, 3));
     }
 
-    public static void dropFluff(Level level, BlockPos pos) {
+    public static void dropExtra(Level level, BlockPos pos) {
         for(int i = 0; i < level.random.nextInt(2) + 1; ++i) {
             popResource(level, pos, new ItemStack(ItemRegistry.BEEPER_FLUFF));
         }
@@ -140,7 +136,7 @@ public class BeeperHiveBlock extends BaseEntityBlock implements EntityBlock {
                 bl = true;
                 level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
             }
-            dropFluff(level, pos);
+            dropExtra(level, pos);
             if (!level.isClientSide() && bl) {
                 player.awardStat(Stats.ITEM_USED.get(item));
             }

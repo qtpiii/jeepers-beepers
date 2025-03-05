@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "jeepersbeepers:block/shale_end",
+    "side": "jeepersbeepers:block/shale_side",
+    "top": "jeepersbeepers:block/shale_end"
+  }
+}

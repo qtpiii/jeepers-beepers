@@ -29,17 +29,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class BeeperHiveBlockEntity extends BlockEntity {
-    public static final String TAG_FLOWER_POS = "FlowerPos";
-    public static final String MIN_OCCUPATION_TICKS = "MinOccupationTicks";
-    public static final String ENTITY_DATA = "EntityData";
-    public static final String TICKS_IN_HIVE = "TicksInHive";
-    public static final String HAS_NECTAR = "HasNectar";
-    public static final String BEEPERS = "Beepers";
     private static final List<String> IGNORED_BEE_TAGS = Arrays.asList("Air", "ArmorDropChances", "ArmorItems", "Brain", "CanPickUpLoot", "DeathTime", "FallDistance", "FallFlying", "Fire", "HandDropChances", "HandItems", "HurtByTimestamp", "HurtTime", "LeftHanded", "Motion", "NoGravity", "OnGround", "PortalCooldown", "Pos", "Rotation", "CannotEnterHiveTicks", "TicksSincePollination", "CropsGrownSincePollination", "HivePos", "Passengers", "Leash", "UUID");
-    public static final int MAX_OCCUPANTS = 3;
-    private static final int MIN_TICKS_BEFORE_REENTERING_HIVE = 400;
-    private static final int MIN_OCCUPATION_TICKS_NECTAR = 2400;
-    public static final int MIN_OCCUPATION_TICKS_NECTARLESS = 600;
     private final List<BeeperHiveBlockEntity.BeeperData> stored = Lists.newArrayList();
     @Nullable
     private BlockPos savedFlowerPos;
@@ -169,7 +159,7 @@ public class BeeperHiveBlockEntity extends BlockEntity {
             } else {
                 Entity entity = EntityType.loadEntityRecursive(compoundTag, level, (entityx) -> entityx);
                 if (entity != null) {
-                    if (!entity.getType().is(TagRegistry.Misc.BEEPER_HIVE_INHABITORS)) {
+                    if (!entity.getType().is(TagRegistry.Misc.BEEPER_HOME_INHABITORS)) {
                         return false;
                     } else {
                         if (entity instanceof BeeperEntity beeper) {

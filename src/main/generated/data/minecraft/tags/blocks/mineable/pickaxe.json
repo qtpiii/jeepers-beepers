@@ -4,6 +4,9 @@
     "jeepersbeepers:loam_bricks",
     "jeepersbeepers:loam_brick_stairs",
     "jeepersbeepers:loam_brick_slab",
-    "jeepersbeepers:loam_brick_wall"
+    "jeepersbeepers:loam_brick_wall",
+    "jeepersbeepers:shale",
+    "jeepersbeepers:shale_stairs",
+    "jeepersbeepers:shale_slab"
   ]
 }

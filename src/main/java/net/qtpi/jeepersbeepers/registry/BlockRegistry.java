@@ -28,10 +28,11 @@ public class BlockRegistry {
     //functional blocks
 
     public static final Block BEEPER_HIVE = registerBlock("beeper_hive", new BeeperHiveBlock(FabricBlockSettings.copyOf(Blocks.BEEHIVE).mapColor(MapColor.GLOW_LICHEN)), true);
-    public static final Block BEEPER_NEST = registerBlock("beeper_nest", new BeeperHiveBlock(FabricBlockSettings.copyOf(Blocks.BEE_NEST).mapColor(MapColor.STONE)), true);
+    public static final Block BEEPER_NEST = registerBlock("beeper_nest", new BeeperNestBlock(FabricBlockSettings.copyOf(Blocks.BEE_NEST).mapColor(MapColor.STONE)), true);
     public static final Block LOAM = registerBlock("loam", new Block(FabricBlockSettings.copyOf(Blocks.DIRT)), true);
     public static final Block LOAM_FARMLAND = registerBlock("loam_farmland", new LoamFarmlandBlock(FabricBlockSettings.copyOf(Blocks.FARMLAND)), true);
     public static final Block SPICY_HONEY_BLOCK = registerBlock("spicy_honey_block", new HoneyBlock(FabricBlockSettings.copyOf(Blocks.HONEY_BLOCK).mapColor(MapColor.FIRE)), true);
+    public static final Block SHALE = registerBlock("shale", new Block(FabricBlockSettings.copyOf(Blocks.STONE)), true);
 
     //decorative blocks
 
@@ -41,6 +42,10 @@ public class BlockRegistry {
             FabricBlockSettings.copyOf(Blocks.MUD_BRICK_STAIRS)), true);
     public static final Block LOAM_BRICK_SLAB = registerBlock("loam_brick_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.MUD_BRICK_SLAB)), true);
     public static final Block LOAM_BRICK_WALL = registerBlock("loam_brick_wall", new WallBlock(FabricBlockSettings.copyOf(Blocks.MUD_BRICK_WALL)), true);
+
+    public static final Block SHALE_STAIRS = registerBlock("shale_stairs", new StairBlock(BlockRegistry.SHALE.defaultBlockState(),
+            FabricBlockSettings.copyOf(Blocks.STONE_STAIRS)), true);
+    public static final Block SHALE_SLAB = registerBlock("shale_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.STONE_SLAB)), true);
 
     public static final Block BEEPER_FLUFF_BLOCK = registerBlock("beeper_fluff_block", new BeeperFluffBlock(FabricBlockSettings.create()
             .instrument(NoteBlockInstrument.GUITAR).mapColor(MapColor.GLOW_LICHEN).strength(0.6f).sound(SoundType.WOOL)), true);
@@ -197,6 +202,11 @@ public class BlockRegistry {
             .stairs(LOAM_BRICK_STAIRS)
             .slab(LOAM_BRICK_SLAB)
             .wall(LOAM_BRICK_WALL)
+            .getFamily();
+
+    public static final BlockFamily SHALE_FAMILY = new BlockFamily.Builder(SHALE)
+            .stairs(SHALE_STAIRS)
+            .slab(SHALE_SLAB)
             .getFamily();
 
     private static Block registerBlock(String name, Block block, Boolean registerItem) {

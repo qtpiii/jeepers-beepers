@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "jeepersbeepers:block/shale_slab"
+    },
+    "type=double": {
+      "model": "jeepersbeepers:block/shale"
+    },
+    "type=top": {
+      "model": "jeepersbeepers:block/shale_slab_top"
+    }
+  }
+}

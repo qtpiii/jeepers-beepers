@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "jeepersbeepers:loam_brick_slab"
+    "jeepersbeepers:loam_brick_slab",
+    "jeepersbeepers:shale_slab"
   ]
 }

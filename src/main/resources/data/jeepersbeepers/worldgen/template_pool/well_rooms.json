@@ -66,6 +66,24 @@
       }
     },
     {
+      "weight": 2,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/halls/skeleton_corridor",
+        "processors": "jeepersbeepers:well_block_scramble",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/halls/pattern_hall",
+        "processors": "jeepersbeepers:well_block_scramble",
+        "projection": "rigid"
+      }
+    },
+    {
       "weight": 4,
       "element":{
         "element_type": "minecraft:single_pool_element",
@@ -105,15 +123,6 @@
       "weight": 1,
       "element":{
         "element_type": "minecraft:single_pool_element",
-        "location": "jeepersbeepers:well_parts/tunnels/big_t_junct",
-        "processors": "jeepersbeepers:well_block_scramble",
-        "projection": "rigid"
-      }
-    },
-    {
-      "weight": 1,
-      "element":{
-        "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/tunnels/big_x_junct",
         "processors": "jeepersbeepers:well_block_scramble",
         "projection": "rigid"
@@ -142,6 +151,15 @@
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/tunnels/chest_trap",
+        "processors": "jeepersbeepers:well_block_scramble",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 3,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/tunnels/dead_end_chest",
         "processors": "jeepersbeepers:well_block_scramble",
         "projection": "rigid"
       }
@@ -201,7 +219,7 @@
       }
     },
     {
-      "weight": 8,
+      "weight": 5,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/dungeons/stripper_dungeon",
@@ -210,7 +228,7 @@
       }
     },
     {
-      "weight": 10,
+      "weight": 7,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/dungeons/4_way_dungeon",
@@ -237,10 +255,28 @@
       }
     },
     {
-      "weight": 3,
+      "weight": 4,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/medium_rooms/amaranth_farm",
+        "processors": "jeepersbeepers:well_block_scramble",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 3,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/medium_rooms/skeleton_pit",
+        "processors": "jeepersbeepers:well_block_scramble",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element":{
+        "element_type": "minecraft:single_pool_element",
+        "location": "jeepersbeepers:well_parts/medium_rooms/terraria_tree",
         "processors": "jeepersbeepers:well_block_scramble",
         "projection": "rigid"
       }
@@ -264,7 +300,7 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 3,
       "element":{
         "element_type": "minecraft:single_pool_element",
         "location": "jeepersbeepers:well_parts/big_rooms/water_channel",

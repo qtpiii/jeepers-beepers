@@ -99,6 +99,7 @@ public class TagRegistry {
         public static final TagKey<Block> HYBRID_CROPS = createTag("hybrid_crops", true, 2);
 
         public static final TagKey<Block> BEEPER_HIVES = createTag("beeper_hives", false);
+        public static final TagKey<Block> BEEPER_NESTS = createTag("beeper_nests", false);
 
         public static final TagKey<Block> BEEPER_CAN_POLLINATE = createTag("beeper_can_pollinate", false);
 
@@ -138,8 +139,9 @@ public class TagRegistry {
     }
 
     public static class Misc {
-        public static final TagKey<PoiType> BEEPER_HOME = TagKey.create(Registries.POINT_OF_INTEREST_TYPE, new ResourceLocation(JeepersBeepers.MOD_ID, "beeper_home"));
-        public static final TagKey<EntityType<?>> BEEPER_HIVE_INHABITORS = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(JeepersBeepers.MOD_ID, "beeper_hive_inhabitors"));
+        public static final TagKey<PoiType> BEEPER_HIVE = TagKey.create(Registries.POINT_OF_INTEREST_TYPE, new ResourceLocation(JeepersBeepers.MOD_ID, "beeper_hive"));
+        public static final TagKey<PoiType> BEEPER_NEST = TagKey.create(Registries.POINT_OF_INTEREST_TYPE, new ResourceLocation(JeepersBeepers.MOD_ID, "beeper_nest"));
+        public static final TagKey<EntityType<?>> BEEPER_HOME_INHABITORS = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(JeepersBeepers.MOD_ID, "beeper_home_inhabitors"));
     }
 
     public static void registerModTags() {
