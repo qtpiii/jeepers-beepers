@@ -1,25 +1,32 @@
 structure ideas:
 TREE VILLAGE!!!
-well leading to an underground structure??
-or just a well!!
+well leading to an underground structure?? (WIP)
+or just a well!! (ADDED)
 abandoned beeper farm...
-greenhouse!!!
+greenhouse!!! (ADDED)
 
 deco ideas:
-loam bricks?
+loam bricks? (ADDED)
 beeper fluff carpet!!
 BEEPER FLUFF TAPESTRY!!!
-HONEY LAMP
+HONEY LAMP (ADDED)
 
 crop ideas:
 lulo
 gulupa
 maracuya
-amaranth
+amaranth (ADDED)
 cassava
 sunchoke
 chard
 okra
-broccoli + radish
+broccoli + radish (ADDED: BRADDISH)
 corn
 
+meal ideas:
+
+
+FARMER'S DELIGHT INTEGRATION:
+cooking pot recipes:
+butterdew squash soup (roasted butterdew squash slice + onion + #vegetables + milk + ginger)
+[FEAST] stuffed butterdew squash (butterdew squash + onion + #vegetables + minced beef + #honeys)
