@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "ginger": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jeepersbeepers:ginger"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jeepersbeepers:gingerbread_cookie"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "ginger",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jeepersbeepers:gingerbread_cookie"
+    ]
+  },
+  "sends_telemetry_event": false
+}

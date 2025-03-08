@@ -46,6 +46,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         simpleCookingRecipe(consumer, "campfire_cooking", RecipeSerializer.CAMPFIRE_COOKING_RECIPE, 600,
                 ItemRegistry.BUTTERDEW_SQUASH_SLICE, ItemRegistry.ROASTED_BUTTERDEW_SQUASH_SLICE, 0.1f);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistry.GINGERBREAD_COOKIE, 8)
+                .requires(Items.WHEAT, 2)
+                .requires(ItemRegistry.GINGER, 1)
+                .requires(Items.SUGAR, 1)
+                .unlockedBy("ginger", has(ItemRegistry.GINGER))
+                .save(consumer);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.SPICY_HONEY_LAMP, 1)
                 .pattern("HHH")
                 .pattern("HBH")

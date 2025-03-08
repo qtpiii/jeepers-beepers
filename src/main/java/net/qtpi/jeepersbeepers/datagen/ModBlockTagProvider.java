@@ -106,6 +106,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.PUMPKIN_STEM)
                 .add(Blocks.ATTACHED_PUMPKIN_STEM)
                 .add(BlockRegistry.BUTTERDEW_SQUASH_STEM)
+                .add(BlockRegistry.ATTACHED_BUTTERDEW_SQUASH_STEM)
                 .add(BlockRegistry.DRAGONFRUIT_TREE);
         getOrCreateTagBuilder(TagRegistry.Blocks.VEGETABLE_CROPS) // 4
                 .add(Blocks.POTATOES)

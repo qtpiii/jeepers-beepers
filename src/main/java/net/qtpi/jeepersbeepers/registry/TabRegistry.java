@@ -72,6 +72,7 @@ public class TabRegistry {
                         entries.accept(ItemRegistry.BRADDISH_SEEDS);
                         entries.accept(ItemRegistry.BRADDISH);
                         entries.accept(ItemRegistry.GINGER);
+                        entries.accept(ItemRegistry.GINGERBREAD_COOKIE);
                         entries.accept(BlockRegistry.MIGNONETTE_SAPLING);
                         entries.accept(BlockRegistry.FLOWERING_MIGNONETTE_SAPLING);
                         entries.accept(BlockRegistry.LOAM);

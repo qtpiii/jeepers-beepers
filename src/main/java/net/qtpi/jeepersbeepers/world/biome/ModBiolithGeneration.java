@@ -8,7 +8,7 @@ public class ModBiolithGeneration {
 
     public static void addBiomes() {
         BiomePlacement.replaceOverworld(Biomes.FOREST, BiomeRegistry.MIGNONETTE_FOREST, 0.3D);
-        BiomePlacement.replaceOverworld(Biomes.BIRCH_FOREST, BiomeRegistry.MIGNONETTE_FOREST, 0.3D);
+        BiomePlacement.replaceOverworld(Biomes.BIRCH_FOREST, BiomeRegistry.BIRCH_MIGNONETTE_FOREST, 0.3D);
     }
 
     public static void init() {

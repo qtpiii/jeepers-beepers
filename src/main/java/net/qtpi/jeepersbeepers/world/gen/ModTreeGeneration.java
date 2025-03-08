@@ -14,5 +14,12 @@ public class ModTreeGeneration {
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.FLOWERING_MIGNONETTE_PLACED_KEY);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeRegistry.MIGNONETTE_FOREST),
                 GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_MIGNONETTE_PLACED_KEY);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeRegistry.BIRCH_MIGNONETTE_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.MIGNONETTE_PLACED_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeRegistry.BIRCH_MIGNONETTE_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.FLOWERING_MIGNONETTE_PLACED_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeRegistry.BIRCH_MIGNONETTE_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SMALL_MIGNONETTE_PLACED_KEY);
     }
 }
