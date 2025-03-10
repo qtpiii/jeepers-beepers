@@ -32,7 +32,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public void buildRecipes(Consumer<FinishedRecipe> consumer) {
 
         planksFromLog(consumer, BlockRegistry.MIGNONETTE_PLANKS, TagRegistry.Items.MIGNONETTE_LOGS, 4);
+        planksFromLog(consumer, BlockRegistry.PETRIFIED_MIGNONETTE_PLANKS, TagRegistry.Items.PETRIFIED_MIGNONETTE_LOGS, 4);
         generateRecipes(consumer, BlockRegistry.MIGNONETTE_FAMILY);
+        generateRecipes(consumer, BlockRegistry.PETRIFIED_MIGNONETTE_FAMILY);
         generateRecipes(consumer, BlockRegistry.LOAM_BRICK_FAMILY);
         generateRecipes(consumer, BlockRegistry.SHALE_FAMILY);
 

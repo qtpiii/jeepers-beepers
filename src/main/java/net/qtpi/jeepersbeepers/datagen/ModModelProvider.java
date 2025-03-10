@@ -46,6 +46,12 @@ public class ModModelProvider extends FabricModelProvider {
                 .log(BlockRegistry.MIGNONETTE_LOG).wood(BlockRegistry.MIGNONETTE_WOOD);
         blockModelGenerators.woodProvider(BlockRegistry.STRIPPED_MIGNONETTE_LOG)
                 .log(BlockRegistry.STRIPPED_MIGNONETTE_LOG).wood(BlockRegistry.STRIPPED_MIGNONETTE_WOOD);
+
+        blockModelGenerators.woodProvider(BlockRegistry.PETRIFIED_MIGNONETTE_LOG)
+                .log(BlockRegistry.PETRIFIED_MIGNONETTE_LOG).wood(BlockRegistry.PETRIFIED_MIGNONETTE_WOOD);
+        blockModelGenerators.woodProvider(BlockRegistry.STRIPPED_PETRIFIED_MIGNONETTE_LOG)
+                .log(BlockRegistry.STRIPPED_PETRIFIED_MIGNONETTE_LOG).wood(BlockRegistry.STRIPPED_PETRIFIED_MIGNONETTE_WOOD);
+
         blockModelGenerators.createTrivialCube(BlockRegistry.MIGNONETTE_LEAVES);
 
         blockModelGenerators.createTrivialCube(BlockRegistry.MIGNONETTE_ROOT);
@@ -58,8 +64,19 @@ public class ModModelProvider extends FabricModelProvider {
         mignonette_family.fence(BlockRegistry.MIGNONETTE_FENCE);
         mignonette_family.fenceGate(BlockRegistry.MIGNONETTE_FENCE_GATE);
 
+        BlockModelGenerators.BlockFamilyProvider petrified_mignonette_family = blockModelGenerators.family(BlockRegistry.PETRIFIED_MIGNONETTE_PLANKS);
+        petrified_mignonette_family.stairs(BlockRegistry.PETRIFIED_MIGNONETTE_STAIRS);
+        petrified_mignonette_family.slab(BlockRegistry.PETRIFIED_MIGNONETTE_SLAB);
+        petrified_mignonette_family.button(BlockRegistry.PETRIFIED_MIGNONETTE_BUTTON);
+        petrified_mignonette_family.pressurePlate(BlockRegistry.PETRIFIED_MIGNONETTE_PRESSURE_PLATE);
+        petrified_mignonette_family.fence(BlockRegistry.PETRIFIED_MIGNONETTE_FENCE);
+        petrified_mignonette_family.fenceGate(BlockRegistry.PETRIFIED_MIGNONETTE_FENCE_GATE);
+
         blockModelGenerators.createDoor(BlockRegistry.MIGNONETTE_DOOR);
         blockModelGenerators.createOrientableTrapdoor(BlockRegistry.MIGNONETTE_TRAPDOOR);
+
+        blockModelGenerators.createDoor(BlockRegistry.PETRIFIED_MIGNONETTE_DOOR);
+        blockModelGenerators.createOrientableTrapdoor(BlockRegistry.PETRIFIED_MIGNONETTE_TRAPDOOR);
 
         blockModelGenerators.createCrossBlockWithDefaultItem(BlockRegistry.MIGNONETTE_SAPLING, BlockModelGenerators.TintState.NOT_TINTED);
         blockModelGenerators.createCrossBlockWithDefaultItem(BlockRegistry.FLOWERING_MIGNONETTE_SAPLING, BlockModelGenerators.TintState.NOT_TINTED);

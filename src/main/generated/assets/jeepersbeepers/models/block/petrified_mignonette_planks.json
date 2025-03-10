@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "jeepersbeepers:block/petrified_mignonette_planks"
+  }
+}

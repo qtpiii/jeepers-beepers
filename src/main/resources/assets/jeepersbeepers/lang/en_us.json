@@ -69,6 +69,21 @@
   "block.jeepersbeepers.mignonette_door": "Mignonette Door",
   "block.jeepersbeepers.mignonette_trapdoor": "Mignonette Trapdoor",
 
+  "block.jeepersbeepers.petrified_mignonette_log": "Petrified Mignonette Log",
+  "block.jeepersbeepers.petrified_mignonette_wood": "Petrified Mignonette Wood",
+  "block.jeepersbeepers.stripped_petrified_mignonette_log": "Stripped Petrified Mignonette Log",
+  "block.jeepersbeepers.stripped_petrified_mignonette_wood": "Stripped Petrified Mignonette Wood",
+  "block.jeepersbeepers.petrified_mignonette_planks": "Petrified Mignonette Planks",
+
+  "block.jeepersbeepers.petrified_mignonette_stairs": "Petrified Mignonette Stairs",
+  "block.jeepersbeepers.petrified_mignonette_slab": "Petrified Mignonette Slab",
+  "block.jeepersbeepers.petrified_mignonette_button": "Petrified Mignonette Button",
+  "block.jeepersbeepers.petrified_mignonette_pressure_plate": "Petrified Mignonette Pressure Plate",
+  "block.jeepersbeepers.petrified_mignonette_fence": "Petrified Mignonette Fence",
+  "block.jeepersbeepers.petrified_mignonette_fence_gate": "Petrified Mignonette Fence Gate",
+  "block.jeepersbeepers.petrified_mignonette_door": "Petrified Mignonette Door",
+  "block.jeepersbeepers.petrified_mignonette_trapdoor": "Petrified Mignonette Trapdoor",
+
   "block.jeepersbeepers.butterdew_squash": "Butterdew Squash",
   "block.jeepersbeepers.carved_butterdew_squash": "Carved Butterdew Squash",
   "block.jeepersbeepers.butterdew_lantern": "Butterdew Lantern",

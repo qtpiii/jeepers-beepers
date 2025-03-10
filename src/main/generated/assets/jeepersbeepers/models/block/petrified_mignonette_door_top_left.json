@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "textures": {
+    "bottom": "jeepersbeepers:block/petrified_mignonette_door_bottom",
+    "top": "jeepersbeepers:block/petrified_mignonette_door_top"
+  }
+}

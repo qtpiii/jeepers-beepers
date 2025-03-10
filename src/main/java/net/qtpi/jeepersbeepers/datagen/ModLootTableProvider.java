@@ -3,18 +3,7 @@ package net.qtpi.jeepersbeepers.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.block.BeetrootBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.storage.loot.IntRange;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
-import net.minecraft.world.level.storage.loot.functions.LimitCount;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.qtpi.jeepersbeepers.block.BraddishBlock;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.registry.ItemRegistry;
@@ -49,6 +38,12 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(BlockRegistry.MIGNONETTE_SAPLING);
         dropSelf(BlockRegistry.FLOWERING_MIGNONETTE_SAPLING);
 
+        dropSelf(BlockRegistry.PETRIFIED_MIGNONETTE_LOG);
+        dropSelf(BlockRegistry.PETRIFIED_MIGNONETTE_WOOD);
+        dropSelf(BlockRegistry.STRIPPED_PETRIFIED_MIGNONETTE_LOG);
+        dropSelf(BlockRegistry.STRIPPED_PETRIFIED_MIGNONETTE_WOOD);
+        dropSelf(BlockRegistry.PETRIFIED_MIGNONETTE_PLANKS);
+
         dropSelf(BlockRegistry.MIGNONETTE_STAIRS);
         dropSelf(BlockRegistry.MIGNONETTE_BUTTON);
         dropSelf(BlockRegistry.MIGNONETTE_PRESSURE_PLATE);
@@ -56,6 +51,14 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(BlockRegistry.MIGNONETTE_FENCE_GATE);
         dropSelf(BlockRegistry.MIGNONETTE_TRAPDOOR);
         createSlabItemTable(BlockRegistry.MIGNONETTE_SLAB);
+
+        dropSelf(BlockRegistry.PETRIFIED_MIGNONETTE_STAIRS);
+        dropSelf(BlockRegistry.PETRIFIED_MIGNONETTE_BUTTON);
+        dropSelf(BlockRegistry.PETRIFIED_MIGNONETTE_PRESSURE_PLATE);
+        dropSelf(BlockRegistry.PETRIFIED_MIGNONETTE_FENCE);
+        dropSelf(BlockRegistry.PETRIFIED_MIGNONETTE_FENCE_GATE);
+        dropSelf(BlockRegistry.PETRIFIED_MIGNONETTE_TRAPDOOR);
+        createSlabItemTable(BlockRegistry.PETRIFIED_MIGNONETTE_SLAB);
 
         createStemDrops(BlockRegistry.BUTTERDEW_SQUASH_STEM, ItemRegistry.BUTTERDEW_SQUASH_SEEDS);
         createAttachedStemDrops(BlockRegistry.ATTACHED_BUTTERDEW_SQUASH_STEM, ItemRegistry.BUTTERDEW_SQUASH_SEEDS);

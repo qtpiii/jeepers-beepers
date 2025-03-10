@@ -29,12 +29,18 @@ public class MiscRegistry {
 
         StrippableBlockRegistry.register(BlockRegistry.MIGNONETTE_LOG, BlockRegistry.STRIPPED_MIGNONETTE_LOG);
         StrippableBlockRegistry.register(BlockRegistry.MIGNONETTE_WOOD, BlockRegistry.STRIPPED_MIGNONETTE_WOOD);
+        StrippableBlockRegistry.register(BlockRegistry.PETRIFIED_MIGNONETTE_LOG, BlockRegistry.STRIPPED_PETRIFIED_MIGNONETTE_LOG);
+        StrippableBlockRegistry.register(BlockRegistry.PETRIFIED_MIGNONETTE_WOOD, BlockRegistry.STRIPPED_PETRIFIED_MIGNONETTE_WOOD);
 
         FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.MIGNONETTE_LOG, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.MIGNONETTE_WOOD, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.STRIPPED_MIGNONETTE_LOG, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.STRIPPED_MIGNONETTE_WOOD, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.MIGNONETTE_PLANKS, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.MIGNONETTE_STAIRS, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.MIGNONETTE_SLAB, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.MIGNONETTE_FENCE, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.MIGNONETTE_FENCE_GATE, 5, 20);
         FlammableBlockRegistry.getDefaultInstance().add(BlockRegistry.MIGNONETTE_LEAVES, 30, 60);
 
         TillableBlockRegistry.register(BlockRegistry.LOAM, HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(BlockRegistry.LOAM_FARMLAND.defaultBlockState()));

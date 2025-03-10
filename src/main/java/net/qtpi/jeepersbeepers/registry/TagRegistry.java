@@ -133,6 +133,8 @@ public class TagRegistry {
 
         public static final TagKey<Item> MIGNONETTE_LOGS = createTag("mignonette_logs");
 
+        public static final TagKey<Item> PETRIFIED_MIGNONETTE_LOGS = createTag("petrified_mignonette_logs");
+
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, new ResourceLocation(JeepersBeepers.MOD_ID, name));
         }

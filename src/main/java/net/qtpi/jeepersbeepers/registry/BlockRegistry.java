@@ -110,6 +110,19 @@ public class BlockRegistry {
             new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_WOOD)
             .mapColor(MapColor.GLOW_LICHEN)), true);
 
+    public static final Block PETRIFIED_MIGNONETTE_LOG = registerBlock("petrified_mignonette_log",
+            new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_STEM)
+            .mapColor(MapColor.COLOR_GREEN).sound(SoundType.WOOD).strength(3.0F)), true);
+    public static final Block PETRIFIED_MIGNONETTE_WOOD = registerBlock("petrified_mignonette_wood",
+            new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_HYPHAE)
+            .mapColor(MapColor.COLOR_GREEN).sound(SoundType.WOOD).strength(3.0F)), true);
+    public static final Block STRIPPED_PETRIFIED_MIGNONETTE_LOG = registerBlock("stripped_petrified_mignonette_log",
+            new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_WARPED_STEM)
+            .mapColor(MapColor.GLOW_LICHEN).sound(SoundType.WOOD).strength(3.0F)), true);
+    public static final Block STRIPPED_PETRIFIED_MIGNONETTE_WOOD = registerBlock("stripped_petrified_mignonette_wood",
+            new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_WARPED_HYPHAE)
+            .mapColor(MapColor.GLOW_LICHEN).sound(SoundType.WOOD).strength(3.0F)), true);
+
     public static final Block MIGNONETTE_LEAVES = registerBlock("mignonette_leaves",
             new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)
                     .mapColor(MapColor.COLOR_LIGHT_GREEN).nonOpaque()), true);
@@ -125,26 +138,54 @@ public class BlockRegistry {
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
             .mapColor(MapColor.GLOW_LICHEN)), true);
 
+    public static final Block PETRIFIED_MIGNONETTE_PLANKS = registerBlock("petrified_mignonette_planks",
+            new Block(FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS)
+            .mapColor(MapColor.GLOW_LICHEN).sound(SoundType.WOOD).strength(3.0F)), true);
+    public static final Block PETRIFIED_MIGNONETTE_STAIRS = registerBlock("petrified_mignonette_stairs",
+            new StairBlock(BlockRegistry.PETRIFIED_MIGNONETTE_PLANKS.defaultBlockState(),
+                    FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS)
+                    .mapColor(MapColor.GLOW_LICHEN).sound(SoundType.WOOD).strength(3.0F)), true);
+    public static final Block PETRIFIED_MIGNONETTE_SLAB = registerBlock("petrified_mignonette_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS)
+            .mapColor(MapColor.GLOW_LICHEN).sound(SoundType.WOOD).strength(3.0F)), true);
+
     public static final Block MIGNONETTE_BUTTON = registerBlock("mignonette_button",
             new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
             .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK, 10, true), true);
     public static final Block MIGNONETTE_PRESSURE_PLATE = registerBlock("mignonette_pressure_plate",
             new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
             .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK), true);
-
     public static final Block MIGNONETTE_FENCE = registerBlock("mignonette_fence",
             new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
             .mapColor(MapColor.GLOW_LICHEN)), true);
     public static final Block MIGNONETTE_FENCE_GATE = registerBlock("mignonette_fence_gate",
             new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
             .mapColor(MapColor.GLOW_LICHEN), WoodType.OAK), true);
-
     public static final Block MIGNONETTE_DOOR = registerBlock("mignonette_door",
             new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR)
             .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK), true);
     public static final Block MIGNONETTE_TRAPDOOR = registerBlock("mignonette_trapdoor",
             new TrapDoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR)
             .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK), true);
+
+    public static final Block PETRIFIED_MIGNONETTE_BUTTON = registerBlock("petrified_mignonette_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+            .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK, 40, true), true);
+    public static final Block PETRIFIED_MIGNONETTE_PRESSURE_PLATE = registerBlock("petrified_mignonette_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+            .mapColor(MapColor.GLOW_LICHEN), BlockSetType.OAK), true);
+    public static final Block PETRIFIED_MIGNONETTE_FENCE = registerBlock("petrified_mignonette_fence",
+            new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+            .mapColor(MapColor.GLOW_LICHEN).strength(3.0F)), true);
+    public static final Block PETRIFIED_MIGNONETTE_FENCE_GATE = registerBlock("petrified_mignonette_fence_gate",
+            new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+            .mapColor(MapColor.GLOW_LICHEN).strength(3.0F), WoodType.OAK), true);
+    public static final Block PETRIFIED_MIGNONETTE_DOOR = registerBlock("petrified_mignonette_door",
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR)
+            .mapColor(MapColor.GLOW_LICHEN).strength(3.0F), BlockSetType.OAK), true);
+    public static final Block PETRIFIED_MIGNONETTE_TRAPDOOR = registerBlock("petrified_mignonette_trapdoor",
+            new TrapDoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR)
+            .mapColor(MapColor.GLOW_LICHEN).strength(3.0F), BlockSetType.OAK), true);
 
     public static final Block MIGNONETTE_SAPLING = registerBlock("mignonette_sapling",
             new SaplingBlock(new MignonetteTreeGrower(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), true);
@@ -195,6 +236,17 @@ public class BlockRegistry {
             .fenceGate(MIGNONETTE_FENCE_GATE)
             .door(MIGNONETTE_DOOR)
             .trapdoor(MIGNONETTE_TRAPDOOR)
+            .getFamily();
+
+    public static final BlockFamily PETRIFIED_MIGNONETTE_FAMILY = new BlockFamily.Builder(PETRIFIED_MIGNONETTE_PLANKS)
+            .stairs(PETRIFIED_MIGNONETTE_STAIRS)
+            .slab(PETRIFIED_MIGNONETTE_SLAB)
+            .button(PETRIFIED_MIGNONETTE_BUTTON)
+            .pressurePlate(PETRIFIED_MIGNONETTE_PRESSURE_PLATE)
+            .fence(PETRIFIED_MIGNONETTE_FENCE)
+            .fenceGate(PETRIFIED_MIGNONETTE_FENCE_GATE)
+            .door(PETRIFIED_MIGNONETTE_DOOR)
+            .trapdoor(PETRIFIED_MIGNONETTE_TRAPDOOR)
             .getFamily();
 
     public static final BlockFamily LOAM_BRICK_FAMILY = new BlockFamily.Builder(LOAM_BRICKS)

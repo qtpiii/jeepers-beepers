@@ -33,33 +33,52 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ItemRegistry.BRADDISH)
                 .add(ItemRegistry.GINGER);
         getOrCreateTagBuilder(ItemTags.PLANKS)
-                .add(BlockRegistry.MIGNONETTE_PLANKS.asItem());
+                .add(BlockRegistry.MIGNONETTE_PLANKS.asItem())
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_PLANKS.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS)
-                .add(BlockRegistry.MIGNONETTE_BUTTON.asItem());
+                .add(BlockRegistry.MIGNONETTE_BUTTON.asItem())
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_BUTTON.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_DOORS)
-                .add(BlockRegistry.MIGNONETTE_DOOR.asItem());
+                .add(BlockRegistry.MIGNONETTE_DOOR.asItem())
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_DOOR.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_TRAPDOOR.asItem())
                 .add(BlockRegistry.MIGNONETTE_TRAPDOOR.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS)
-                .add(BlockRegistry.MIGNONETTE_STAIRS.asItem());
+                .add(BlockRegistry.MIGNONETTE_STAIRS.asItem())
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_STAIRS.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_SLABS)
-                .add(BlockRegistry.MIGNONETTE_SLAB.asItem());
+                .add(BlockRegistry.MIGNONETTE_SLAB.asItem())
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_SLAB.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_FENCES)
-                .add(BlockRegistry.MIGNONETTE_FENCE.asItem());
+                .add(BlockRegistry.MIGNONETTE_FENCE.asItem())
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_FENCE.asItem());
         getOrCreateTagBuilder(ItemTags.FENCE_GATES)
-                .add(BlockRegistry.MIGNONETTE_FENCE_GATE.asItem());
+                .add(BlockRegistry.MIGNONETTE_FENCE_GATE.asItem())
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_FENCE_GATE.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES)
-                .add(BlockRegistry.MIGNONETTE_PRESSURE_PLATE.asItem());
+                .add(BlockRegistry.MIGNONETTE_PRESSURE_PLATE.asItem())
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_PRESSURE_PLATE.asItem());
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
                 .add(BlockRegistry.MIGNONETTE_LOG.asItem())
                 .add(BlockRegistry.MIGNONETTE_WOOD.asItem())
                 .add(BlockRegistry.STRIPPED_MIGNONETTE_LOG.asItem())
                 .add(BlockRegistry.STRIPPED_MIGNONETTE_WOOD.asItem());
+        getOrCreateTagBuilder(ItemTags.LOGS)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_LOG.asItem())
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_WOOD.asItem())
+                .add(BlockRegistry.STRIPPED_PETRIFIED_MIGNONETTE_LOG.asItem())
+                .add(BlockRegistry.STRIPPED_PETRIFIED_MIGNONETTE_WOOD.asItem());
         getOrCreateTagBuilder(TagRegistry.Items.MIGNONETTE_LOGS)
                 .add(BlockRegistry.MIGNONETTE_LOG.asItem())
                 .add(BlockRegistry.MIGNONETTE_WOOD.asItem())
                 .add(BlockRegistry.STRIPPED_MIGNONETTE_LOG.asItem())
                 .add(BlockRegistry.STRIPPED_MIGNONETTE_WOOD.asItem());
+        getOrCreateTagBuilder(TagRegistry.Items.PETRIFIED_MIGNONETTE_LOGS)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_LOG.asItem())
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_WOOD.asItem())
+                .add(BlockRegistry.STRIPPED_PETRIFIED_MIGNONETTE_LOG.asItem())
+                .add(BlockRegistry.STRIPPED_PETRIFIED_MIGNONETTE_WOOD.asItem());
 
         getOrCreateTagBuilder(CompatibilityTagRegistry.CROPS)
                 .add(BlockRegistry.BUTTERDEW_SQUASH.asItem())

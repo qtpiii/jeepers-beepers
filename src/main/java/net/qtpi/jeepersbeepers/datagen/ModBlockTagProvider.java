@@ -46,6 +46,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.MIGNONETTE_FENCE_GATE)
                 .add(BlockRegistry.MIGNONETTE_DOOR)
                 .add(BlockRegistry.MIGNONETTE_TRAPDOOR)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_PLANKS)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_STAIRS)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_SLAB)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_BUTTON)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_PRESSURE_PLATE)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_FENCE)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_FENCE_GATE)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_DOOR)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_TRAPDOOR)
                 .add(BlockRegistry.DRAGONFRUIT_TREE);
         getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
                 .addTag(TagRegistry.Blocks.BEEPER_FLUFF_BLOCKS);
@@ -158,22 +167,28 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.STRIPPED_MIGNONETTE_WOOD);
 
         getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
-                .add(BlockRegistry.MIGNONETTE_PRESSURE_PLATE);
+                .add(BlockRegistry.MIGNONETTE_PRESSURE_PLATE)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_PRESSURE_PLATE);
 
         getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS)
-                .add(BlockRegistry.MIGNONETTE_BUTTON);
+                .add(BlockRegistry.MIGNONETTE_BUTTON)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_BUTTON);
 
         getOrCreateTagBuilder(BlockTags.WOODEN_DOORS)
-                .add(BlockRegistry.MIGNONETTE_DOOR);
+                .add(BlockRegistry.MIGNONETTE_DOOR)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_DOOR);
 
         getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS)
-                .add(BlockRegistry.MIGNONETTE_TRAPDOOR);
+                .add(BlockRegistry.MIGNONETTE_TRAPDOOR)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_TRAPDOOR);
 
         getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS)
-                .add(BlockRegistry.MIGNONETTE_STAIRS);
+                .add(BlockRegistry.MIGNONETTE_STAIRS)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_STAIRS);
 
         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS)
-                .add(BlockRegistry.MIGNONETTE_SLAB);
+                .add(BlockRegistry.MIGNONETTE_SLAB)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_SLAB);
 
         getOrCreateTagBuilder(BlockTags.STAIRS)
                 .add(BlockRegistry.LOAM_BRICK_STAIRS)
@@ -184,9 +199,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(BlockRegistry.SHALE_SLAB);
 
         getOrCreateTagBuilder(BlockTags.FENCES)
-                .add(BlockRegistry.MIGNONETTE_FENCE);
+                .add(BlockRegistry.MIGNONETTE_FENCE)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_FENCE);
         getOrCreateTagBuilder(BlockTags.FENCE_GATES)
-                .add(BlockRegistry.MIGNONETTE_FENCE_GATE);
+                .add(BlockRegistry.MIGNONETTE_FENCE_GATE)
+                .add(BlockRegistry.PETRIFIED_MIGNONETTE_FENCE_GATE);
 
         getOrCreateTagBuilder(BlockTags.WALLS)
                 .add(BlockRegistry.LOAM_BRICK_WALL);

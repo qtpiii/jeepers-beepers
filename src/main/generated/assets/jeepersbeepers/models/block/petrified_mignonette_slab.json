@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "jeepersbeepers:block/petrified_mignonette_planks",
+    "side": "jeepersbeepers:block/petrified_mignonette_planks",
+    "top": "jeepersbeepers:block/petrified_mignonette_planks"
+  }
+}
