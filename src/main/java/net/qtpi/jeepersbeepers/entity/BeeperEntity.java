@@ -914,8 +914,8 @@ public class BeeperEntity extends Animal implements GeoEntity, NeutralMob, Flyin
             enumMap.put(DyeColor.ORANGE, 16746823);
             enumMap.put(DyeColor.MAGENTA, 11357810);
             enumMap.put(DyeColor.LIGHT_BLUE, 9099502);
-            enumMap.put(DyeColor.YELLOW, 16436533);
-            enumMap.put(DyeColor.LIME, 10406776);
+            enumMap.put(DyeColor.YELLOW, 15388003);
+            enumMap.put(DyeColor.LIME, 11125382);
             enumMap.put(DyeColor.PINK, 16691143);
             enumMap.put(DyeColor.GRAY, 5263439);
             enumMap.put(DyeColor.LIGHT_GRAY, 11184552);
