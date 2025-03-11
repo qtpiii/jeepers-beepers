@@ -7,6 +7,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.qtpi.jeepersbeepers.JeepersBeepers;
@@ -144,6 +145,7 @@ public class TagRegistry {
         public static final TagKey<PoiType> BEEPER_HIVE = TagKey.create(Registries.POINT_OF_INTEREST_TYPE, new ResourceLocation(JeepersBeepers.MOD_ID, "beeper_hive"));
         public static final TagKey<PoiType> BEEPER_NEST = TagKey.create(Registries.POINT_OF_INTEREST_TYPE, new ResourceLocation(JeepersBeepers.MOD_ID, "beeper_nest"));
         public static final TagKey<EntityType<?>> BEEPER_HOME_INHABITORS = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(JeepersBeepers.MOD_ID, "beeper_home_inhabitors"));
+        public static final TagKey<Biome> MIGNONETTE_FORESTS = TagKey.create(Registries.BIOME, new ResourceLocation(JeepersBeepers.MOD_ID, "mignonette_forests"));
     }
 
     public static void registerModTags() {

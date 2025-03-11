@@ -23,6 +23,7 @@ import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.world.tree.custom.BeeperNestDecorator;
 import net.qtpi.jeepersbeepers.world.tree.custom.MignonetteFoliagePlacer;
 import net.qtpi.jeepersbeepers.world.tree.custom.MignonetteTrunkPlacer;
+import net.qtpi.jeepersbeepers.world.tree.custom.PetrifiedMignonetteStumpPlacer;
 
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> MIGNONETTE_KEY = registerKey("mignonette");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FLOWERING_MIGNONETTE_KEY = registerKey("flowering_mignonette");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_MIGNONETTE_KEY = registerKey("small_mignonette");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PETRIFIED_MIGNONETTE_STUMP_KEY = registerKey("petrified_mignonette_stump");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<Block> holderGetter = context.lookup(Registries.BLOCK);
@@ -64,8 +66,7 @@ public class ModConfiguredFeatures {
                                 5, List.of(Direction.SOUTH)),
                         new AttachedToLeavesDecorator(0.25F, 1, 1,
                                 BlockStateProvider.simple(BlockRegistry.MIGNONETTE_FLOWER.defaultBlockState().setValue(WallFlowerBlock.FACING, Direction.NORTH)),
-                                5, List.of(Direction.NORTH)),
-                        new BeeperNestDecorator(0.04F))).build());
+                                5, List.of(Direction.NORTH)))).build());
 
         register(context, SMALL_MIGNONETTE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(BlockRegistry.MIGNONETTE_LOG),
@@ -75,6 +76,16 @@ public class ModConfiguredFeatures {
                 new MignonetteFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
 
                 new TwoLayersFeatureSize(1, 0, 2))
+                .decorators(List.of(new AlterGroundDecorator(BlockStateProvider.simple(BlockRegistry.LOAM)))).build());
+
+        register(context, PETRIFIED_MIGNONETTE_STUMP_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(BlockRegistry.PETRIFIED_MIGNONETTE_LOG),
+                new PetrifiedMignonetteStumpPlacer(0, 1, 3),
+
+                BlockStateProvider.simple(BlockRegistry.MIGNONETTE_LEAVES),
+                new MignonetteFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
+
+                new TwoLayersFeatureSize(1, 0, 1))
                 .decorators(List.of(new AlterGroundDecorator(BlockStateProvider.simple(BlockRegistry.LOAM)))).build());
     }
 

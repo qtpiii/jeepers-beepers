@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.qtpi.jeepersbeepers.block.BeeperHiveBlock;
+import net.qtpi.jeepersbeepers.block.BeeperNestBlock;
 import net.qtpi.jeepersbeepers.registry.BlockEntityRegistry;
 import net.qtpi.jeepersbeepers.registry.BlockRegistry;
 import net.qtpi.jeepersbeepers.registry.EntityRegistry;
@@ -61,14 +62,14 @@ public class BeeperNestDecorator extends TreeDecorator {
                 Collections.shuffle(list3);
                 Optional<BlockPos> optional = list3.stream().filter(blockPos -> context.isAir(blockPos) && context.isAir(blockPos.relative(WORLDGEN_FACING))).findFirst();
                 if (!optional.isEmpty()) {
-                    context.setBlock(optional.get(), BlockRegistry.BEEPER_NEST.defaultBlockState().setValue(BeeperHiveBlock.FACING, WORLDGEN_FACING));
-                    context.level().getBlockEntity(optional.get(), BlockEntityRegistry.BEEPER_HIVE_BLOCK_ENTITY).ifPresent(beeperHiveBlockEntity -> {
+                    context.setBlock(optional.get(), BlockRegistry.BEEPER_NEST.defaultBlockState().setValue(BeeperNestBlock.FACING, WORLDGEN_FACING));
+                    context.level().getBlockEntity(optional.get(), BlockEntityRegistry.BEEPER_NEST_BLOCK_ENTITY).ifPresent(beeperNestBlockEntity -> {
                         int ix = 2 + randomSource.nextInt(2);
 
                         for (int j = 0; j < ix; j++) {
                             CompoundTag compoundTag = new CompoundTag();
                             compoundTag.putString("id", "jeepersbeepers:beeper");
-                            beeperHiveBlockEntity.storeBeeper(compoundTag, randomSource.nextInt(599), false, false);
+                            beeperNestBlockEntity.storeBeeper(compoundTag, randomSource.nextInt(599), false, false);
                         }
                     });
                 }

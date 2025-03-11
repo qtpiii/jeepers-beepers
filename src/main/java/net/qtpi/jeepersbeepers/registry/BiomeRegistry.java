@@ -21,7 +21,7 @@ public class BiomeRegistry {
             new ResourceLocation(JeepersBeepers.MOD_ID, "mignonette_forest"));
 
     public static void bootstrap(BootstapContext<Biome> context) {
-        context.register(BIRCH_MIGNONETTE_FOREST, mignonetteForest(context));
+        context.register(BIRCH_MIGNONETTE_FOREST, birchMignonetteForest(context));
         context.register(MIGNONETTE_FOREST, mignonetteForest(context));
     }
 
@@ -101,14 +101,14 @@ public class BiomeRegistry {
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
                 .downfall(0.5f)
-                .temperature(0.4f)
+                .temperature(0.3f)
                 .generationSettings(biomeBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(4552946)
                         .waterFogColor(267827)
                         .fogColor(12638463)
-                        .skyColor(calculateSkyColor(0.4f))
+                        .skyColor(calculateSkyColor(0.3f))
                         .grassColorOverride(8100713)
                         .foliageColorOverride(8100713)
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)

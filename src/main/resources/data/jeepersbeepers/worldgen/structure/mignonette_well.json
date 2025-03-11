@@ -1,5 +1,5 @@
 {
-  "biomes": "jeepersbeepers:mignonette_forest",
+  "biomes": "#jeepersbeepers:mignonette_forests",
   "spawn_overrides": {},
   "type": "minecraft:jigsaw",
   "start_pool": "jeepersbeepers:well_tops",

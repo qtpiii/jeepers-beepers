@@ -77,10 +77,6 @@
         "exclusion_radius_y": 1,
         "probability": 0.25,
         "required_empty_blocks": 5
-      },
-      {
-        "type": "minecraft:beeper_nest_decorator",
-        "probability": 0.04
       }
     ],
     "dirt_provider": {
